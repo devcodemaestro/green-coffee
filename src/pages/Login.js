@@ -21,7 +21,7 @@ const Login = () => {
     try {
       const { status, result } = await postLogin({ payload });
       if (result && status === 200) {
-        navigate("/");
+        navigate("/home");
       }
     } catch (err) {
       console.log(err);
@@ -30,16 +30,14 @@ const Login = () => {
 
   return (
     <LoginWrap>
-      <div className="inner">
-        <div className="logo">
-          <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
-        </div>
-        <LoginInput
-          payload={payload}
-          handleChange={handleChange}
-          handleLogin={handleLogin}
-        />
+      <div className="logo">
+        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
       </div>
+      <LoginInput
+        payload={payload}
+        handleChange={handleChange}
+        handleLogin={handleLogin}
+      />
     </LoginWrap>
   );
 };

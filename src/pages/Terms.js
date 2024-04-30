@@ -62,6 +62,9 @@ const Terms = () => {
 
   return (
     <TermsWrap>
+      <div className="logo">
+        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
+      </div>
       <TermsButtons handleCheckBox={handleCheckBox} />
       <div className="info-text">
         <span>※필수 약관에 동의하지 않을 시 서비스를 이용할 수 없습니다.</span>

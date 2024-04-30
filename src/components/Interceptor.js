@@ -32,7 +32,7 @@ export const Interceptor = ({ children }) => {
           if (config && config.headers && config.headers.Authorization) {
             removeCookie("accessToken");
           }
-          navigate("/login");
+          navigate("/");
         } catch (error) {
           console.error(error);
         }

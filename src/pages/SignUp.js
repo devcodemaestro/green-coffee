@@ -49,6 +49,9 @@ const SignUp = () => {
 
   return (
     <SignUpWrap>
+      <div className="logo">
+        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
+      </div>
       <SignUpInput
         payload={payload}
         handleChange={handleChange}

@@ -1,30 +1,27 @@
 import styled from "@emotion/styled";
 
 export const LoginWrap = styled.div`
-  width: 100%;
-  .inner {
-    padding-top: 30px;
-    .logo {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-bottom: 50px;
-    }
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
   }
 `;
 
 export const LoginInputWrap = styled.div`
-  width: 100%;
+  width: 330px;
   & form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     > div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
       font-size: 16px;
       font-weight: 500;
       > label {
@@ -45,6 +42,9 @@ export const LoginInputWrap = styled.div`
     }
     > ul {
       li {
+        > div {
+          cursor: pointer;
+        }
         :first-of-type {
           display: flex;
           justify-content: space-between;
@@ -52,6 +52,10 @@ export const LoginInputWrap = styled.div`
           padding: 0 10px;
           & input {
             margin-right: 5px;
+            cursor: pointer;
+          }
+          & label {
+            cursor: pointer;
           }
         }
         :last-of-type {
@@ -65,6 +69,7 @@ export const LoginInputWrap = styled.div`
             background: #b99470;
             border: none;
             border-radius: 8px;
+            cursor: pointer;
           }
         }
       }

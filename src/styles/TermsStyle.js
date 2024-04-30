@@ -1,6 +1,16 @@
 import styled from "@emotion/styled";
 
 export const TermsWrap = styled.div`
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+  }
   .info-text {
     display: flex;
     flex-direction: column;
@@ -45,7 +55,6 @@ export const TermsWrap = styled.div`
 `;
 
 export const TermsButtonWrap = styled.div`
-  padding-top: 30px;
   ul {
     li {
       margin-bottom: 20px;

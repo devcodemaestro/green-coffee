@@ -14,7 +14,7 @@ const Footer = () => {
   const footerIcon = [
     {
       pathName: "home",
-      path: "/",
+      path: "/home",
       icon: <FontAwesomeIcon icon={faHouse} />,
     },
     {
