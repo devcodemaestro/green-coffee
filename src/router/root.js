@@ -31,15 +31,15 @@ const rootRouter = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<Loading />}>
-            <Home />
+            <Login />
           </Suspense>
         ),
       },
       {
-        path: "login",
+        path: "Home",
         element: (
           <Suspense fallback={<Loading />}>
-            <Login />
+            <Home />
           </Suspense>
         ),
       },
