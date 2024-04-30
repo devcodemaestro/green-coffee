@@ -10,20 +10,22 @@ export const UserInputWrap = styled.div`
   & form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     > div {
       width: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 5px;
       font-size: 16px;
       font-weight: 500;
       > label {
         margin-left: 2px;
-        width: 100%;
+        width: 350px;
       }
       > input {
-        width: 335px;
+        width: 350px;
         height: 30px;
         border: none;
         border-bottom: 1px solid #583732;
@@ -36,6 +38,7 @@ export const UserInputWrap = styled.div`
     }
     .password {
       > div {
+        width: 350px;
         display: flex;
         justify-content: space-between;
         padding-right: 5px;
@@ -52,7 +55,7 @@ export const UserInputWrap = styled.div`
       }
     }
     > ul {
-      width: 335px;
+      width: 350px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -78,7 +81,7 @@ export const UserInputWrap = styled.div`
     .buttons {
       width: 100%;
       button {
-        width: 335px;
+        width: 350px;
         height: 45px;
         font-size: 17px;
         font-weight: 600;

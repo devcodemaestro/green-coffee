@@ -3,21 +3,23 @@ import styled from "@emotion/styled";
 export const PassChangeWrap = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   padding-top: 30px;
   > div {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 5px;
     font-size: 16px;
     font-weight: 500;
     > label {
       margin-left: 2px;
-      width: 100%;
+      width: 350px;
     }
     > input {
-      width: 335px;
+      width: 350px;
       height: 30px;
       border: none;
       border-bottom: 1px solid #583732;
@@ -32,7 +34,7 @@ export const PassChangeWrap = styled.div`
     width: 100%;
     padding-top: 20px;
     button {
-      width: 335px;
+      width: 350px;
       height: 45px;
       font-size: 17px;
       font-weight: 600;
