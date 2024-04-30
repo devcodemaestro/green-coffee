@@ -1,13 +1,6 @@
 import axios from "axios";
 import { setCookie } from "./cookie";
 
-const member = axios.create({
-  baseURL: `http://back.green-coffee.shop`,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
 const api = axios.create({
   baseURL: `http://back.green-coffee.shop`,
   headers: {
@@ -17,7 +10,7 @@ const api = axios.create({
 
 const postLogin = async ({ payload }) => {
   try {
-    const res = await member.post(`/token`, payload);
+    const res = await api.post(`/token`, payload);
     const status = res.status;
     const result = res.data;
     if (status === 200) {
@@ -29,5 +22,5 @@ const postLogin = async ({ payload }) => {
   }
 };
 
-export default member;
-export { api, postLogin };
+export default api;
+export { postLogin };

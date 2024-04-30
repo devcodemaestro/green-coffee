@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { getCookie, removeCookie } from "../api/cookie";
-import member from "../api/client";
+import api from "../api/client";
 
 export const Interceptor = ({ children }) => {
   const navigate = useNavigate();
 
-  const requestInterceptor = member.interceptors.request.use(
+  const requestInterceptor = api.interceptors.request.use(
     async config => {
       const token = getCookie("accessToken");
       if (token) {
@@ -19,7 +19,7 @@ export const Interceptor = ({ children }) => {
     },
   );
 
-  const responseInterceptor = member.interceptors.response.use(
+  const responseInterceptor = api.interceptors.response.use(
     response => {
       return response;
     },
@@ -43,8 +43,8 @@ export const Interceptor = ({ children }) => {
 
   useEffect(() => {
     return () => {
-      member.interceptors.request.eject(requestInterceptor);
-      member.interceptors.response.eject(responseInterceptor);
+      api.interceptors.request.eject(requestInterceptor);
+      api.interceptors.response.eject(responseInterceptor);
     };
   }, [responseInterceptor, requestInterceptor]);
 
