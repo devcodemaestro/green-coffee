@@ -1,8 +1,9 @@
 import React from "react";
 import { ItemWrap } from "../../styles/MyPageStyle";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Item = () => {
+  const navigate = useNavigate();
   const menu = [
     {
       id: "1",
@@ -25,20 +26,23 @@ const Item = () => {
       path: "/mypage",
     },
   ];
+  const handlePageMove = path => {
+    navigate(path);
+  };
 
   return (
     <ItemWrap>
-      <ul>
-        <li>정보변경</li>
-        {menu.map(item => (
-          <Link to={item.path} key={item.id}>
-            <li>{item.title}</li>
-          </Link>
-        ))}
-        <li>
-          <span>로그아웃</span>
-        </li>
-      </ul>
+      <div>
+        <span>정보변경</span>
+      </div>
+      {menu.map(item => (
+        <div key={item.id} onClick={() => handlePageMove(item.path)}>
+          <span>{item.title}</span>
+        </div>
+      ))}
+      <div>
+        <span>로그아웃</span>
+      </div>
     </ItemWrap>
   );
 };

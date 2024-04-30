@@ -33,41 +33,26 @@ export const HomeWelcomWrap = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 140px;
+        width: 40%;
         height: 140px;
         background: #f0f0f0;
         border-radius: 50%;
       }
       :last-of-type {
+        width: 50%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        > h2 {
-          color: #444;
+        gap: 10px;
+        padding-left: 20px;
+        color: #444;
+        .welcome {
+          font-size: 20px;
+          font-weight: 500;
         }
-        > .buttons {
+        .coupon {
           display: flex;
-          gap: 10px;
-          button {
-            :first-of-type {
-              width: 80px;
-              height: 35px;
-              border-radius: 6px;
-              border: none;
-              color: #f7f7f7;
-              background: #b99470;
-              cursor: pointer;
-            }
-            :last-of-type {
-              width: 80px;
-              height: 35px;
-              border-radius: 6px;
-              border: 1px solid #b99470;
-              color: #b99470;
-              background: #fff;
-              cursor: pointer;
-            }
-          }
+          flex-direction: column;
+          font-size: 14px;
         }
       }
     }
@@ -111,23 +96,25 @@ export const PopularMenuWrap = styled.div`
   width: 100%;
   > .inner {
     h3 {
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
     .content {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 11px;
+      gap: 20px;
+      width: 100%;
       ul {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
+        width: calc(33.333% - 20px);
         li {
           :first-of-type {
-            width: 100px;
+            width: 100%;
             height: 100px;
             display: flex;
             justify-content: center;

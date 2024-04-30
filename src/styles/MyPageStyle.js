@@ -14,37 +14,30 @@ export const MyPageWrap = styled.div`
       padding-bottom: 20px;
     }
     :nth-of-type(2) {
-      padding-left: 10px;
       padding: 0 0 5px 10px;
     }
     :nth-of-type(3) {
-      padding: 0 0 40px 10px;
+      padding: 0 0 50px 10px;
     }
   }
 `;
 
 export const ItemWrap = styled.div`
   width: 100%;
-  ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  color: #444;
+  & div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
-    li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 90px;
-      height: 85px;
-      border-radius: 8px;
-      box-shadow: 1px 1px 5px 1px rgba(51, 51, 51, 0.2);
-      cursor: pointer;
-    }
-    a {
-      width: 90px;
-      height: 85px;
-      color: #444;
-    }
+    width: calc(33.333% - 20px);
+    height: 90px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(51, 51, 51, 0.2);
+    cursor: pointer;
   }
 `;

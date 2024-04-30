@@ -44,7 +44,7 @@ const SignUp = () => {
 
   const handleConfirm = () => {
     setModalOpen(false);
-    navigate("/login");
+    navigate("/");
   };
 
   return (
