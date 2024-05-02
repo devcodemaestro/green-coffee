@@ -8,13 +8,14 @@ const Terms = () => {
   const navigate = useNavigate();
 
   const handleNextPage = () => {
-    // if (saveCheckBox.length > 1231232) {
-    //   navigate("/signup");
-    // }
-    navigate("/signup");
+    if (
+      saveCheckBox.includes(1) &&
+      saveCheckBox.includes(2) &&
+      (saveCheckBox.includes(3) || saveCheckBox.includes(4))
+    ) {
+      navigate("/signup");
+    }
   };
-
-  // 약관동의 API 만들어지면 체크박스 기능 추가 할 것
 
   let resultIdArray = saveCheckBox;
 
@@ -24,9 +25,7 @@ const Terms = () => {
     if (e.target.checked === true) {
       allCheckBox.forEach(item => {
         item.checked = true;
-        if (item.consentList && item.consentList[1]) {
-          resultIdArray.push(parseInt(item.consentList[1].slice(6)));
-        }
+        resultIdArray.push(parseInt(item.classList[1].slice(6)));
       });
     } else {
       allCheckBox.forEach(item => {
@@ -39,17 +38,25 @@ const Terms = () => {
 
   const handleCheckBox = e => {
     const clickList = e.currentTarget;
-    const consentValue =
-      clickList.consentList && clickList.consentList[0]
-        ? clickList.consentList[0]
-        : "";
-    const pk = parseInt(consentValue.slice(6));
+    const checkBoxId = parseInt(clickList.classList[1].slice(6));
     if (e.target.checked === true) {
-      resultIdArray.push(pk);
+      resultIdArray.push(checkBoxId);
     } else {
-      resultIdArray = resultIdArray.filter(item => item !== pk);
+      resultIdArray = resultIdArray.filter(item => item !== checkBoxId);
     }
     setSaveCheckBox(resultIdArray);
+    const allConsent = document.getElementById("all-consent");
+    allConsent.checked = handleCheckBoxWatch();
+  };
+
+  const handleCheckBoxWatch = () => {
+    const allCheckBox = document.querySelectorAll(".consent");
+    for (let i = 0; i < allCheckBox.length; i++) {
+      if (!allCheckBox[i].checked) {
+        return false;
+      }
+    }
+    return true;
   };
 
   useEffect(() => {

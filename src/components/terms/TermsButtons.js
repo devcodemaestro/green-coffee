@@ -14,7 +14,7 @@ const TermsButtons = ({ handleCheckBox }) => {
             <input
               type="checkbox"
               id="service-consent"
-              className="consent"
+              className={`consent itemId${1}`}
               defaultChecked={false}
               onChange={e => handleCheckBox(e)}
             />
@@ -30,8 +30,7 @@ const TermsButtons = ({ handleCheckBox }) => {
             <input
               type="checkbox"
               id="privacy-consent"
-              // className="consent"
-              className={`consent itemId`}
+              className={`consent itemId${2}`}
               defaultChecked={false}
               onChange={e => handleCheckBox(e)}
             />
@@ -47,7 +46,7 @@ const TermsButtons = ({ handleCheckBox }) => {
             <input
               type="checkbox"
               id="email-consent"
-              className="consent"
+              className={`consent itemId${3}`}
               defaultChecked={false}
               onChange={e => handleCheckBox(e)}
             />
@@ -55,7 +54,7 @@ const TermsButtons = ({ handleCheckBox }) => {
             <input
               type="checkbox"
               id="sns-consent"
-              className="consent"
+              className={`consent itemId${4}`}
               defaultChecked={false}
               onChange={e => handleCheckBox(e)}
             />

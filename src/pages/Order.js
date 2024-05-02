@@ -5,8 +5,9 @@ import { getMenuCate } from "../api/orderAxios";
 import ItemBox from "../components/order/ItemBox";
 
 const Order = () => {
-  const [cateId, setCateId] = useState(2);
+  const [cateId, setCateId] = useState(1);
   const [menuData, setMenuData] = useState([]);
+
   const menuCate = [
     {
       id: 1,
@@ -25,20 +26,26 @@ const Order = () => {
       mname: "Goods",
     },
   ];
+
   const handleSelectBox = id => {
     setCateId(id);
   };
 
   useEffect(() => {
     getMenuCate(cateId, setMenuData);
+    console.log(cateId);
   }, [cateId]);
 
   return (
     <OrderWrap>
       <Banner />
-      <ul>
+      <ul className="menu-wrap">
         {menuCate.map(item => (
-          <li key={item.id} onClick={() => handleSelectBox(item.id)}>
+          <li
+            key={item.id}
+            className={`menu-${item.id === cateId ? "active" : "tab"}`}
+            onClick={() => handleSelectBox(item.id)}
+          >
             <span>{item.mname}</span>
           </li>
         ))}
