@@ -1,24 +1,24 @@
 import React from "react";
-import { BoxWrap } from "../../styles/OrderStyle";
+import { ItemBoxWrap } from "../../styles/OrderStyle";
 
 const ItemBox = ({ menuData }) => {
   return (
-    <BoxWrap>
+    <ItemBoxWrap>
       <div>
         {menuData.map(item => (
-          <div key={item.id} className="box-wrap">
+          <div key={item.menu_id} className="box-wrap">
             <div className="box-img">
               <img src={`${item.mimgurl}`} alt="" />
             </div>
             <div className="box-text">
               <div>{item.mname}</div>
               <div>{item.mename}</div>
-              <div>{item.price}</div>
+              <div>{item.price}원</div>
             </div>
           </div>
         ))}
       </div>
-    </BoxWrap>
+    </ItemBoxWrap>
   );
 };
 

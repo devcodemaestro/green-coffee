@@ -11,19 +11,19 @@ const Order = () => {
   const menuCate = [
     {
       id: 1,
-      mname: "Coffee",
+      mname: "커피",
     },
     {
       id: 2,
-      mname: "Beverage",
+      mname: "음료",
     },
     {
       id: 3,
-      mname: "Food",
+      mname: "푸드",
     },
     {
       id: 4,
-      mname: "Goods",
+      mname: "선물",
     },
   ];
 
@@ -38,9 +38,9 @@ const Order = () => {
 
   return (
     <OrderWrap>
-      <Banner />
+      {/* <Banner /> */}
       <ul className="menu-wrap">
-        {menuCate.map(item => (
+        {menuCate.map((item, index) => (
           <li
             key={item.id}
             className={`menu-${item.id === cateId ? "active" : "tab"}`}

@@ -1,13 +1,18 @@
 import React from "react";
 import { UserInputWrap } from "../../styles/UserInfoStyle";
 
-const UserInfoInput = ({ handlePageMove, handleOk }) => {
+const UserInfoInput = ({ handlePageMove, handleModalOpen }) => {
   return (
     <UserInputWrap>
       <form>
         <div>
           <label htmlFor="info-nick">닉네임 (Call Sign)</label>
-          <input type="text" id="info-nick" placeholder="닉네임" />
+          <input
+            type="text"
+            id="info-nick"
+            placeholder="닉네임"
+            autoComplete="username"
+          />
         </div>
         <div className="password">
           <div>
@@ -41,7 +46,7 @@ const UserInfoInput = ({ handlePageMove, handleOk }) => {
           </li>
         </ul>
         <div className="buttons">
-          <button onClick={handleOk}>확인</button>
+          <button onClick={handleModalOpen}>확인</button>
         </div>
       </form>
     </UserInputWrap>

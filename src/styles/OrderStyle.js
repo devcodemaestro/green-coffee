@@ -4,20 +4,17 @@ export const OrderWrap = styled.div`
   padding-top: 35px;
   .menu-wrap {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    gap: 10px;
+    border-bottom: 1px solid #d9d9d9;
     & .menu-tab {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 90px;
+      width: 50px;
       height: 45px;
-      background: #d9d9d9;
-      border-radius: 8px;
       cursor: pointer;
       :hover {
-        background: #683732;
         color: #fff;
       }
     }
@@ -25,13 +22,10 @@ export const OrderWrap = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 90px;
+      width: 50px;
       height: 45px;
-      background: #d9d9d9;
-      border-radius: 8px;
       cursor: pointer;
-      background: #683732;
-      color: #fff;
+      border-bottom: 2px solid #bf8a30;
     }
   }
 `;
@@ -43,34 +37,33 @@ export const BannerWrap = styled.div`
   border-radius: 14px;
 `;
 
-export const BoxWrap = styled.div`
+export const ItemBoxWrap = styled.div`
   width: 100%;
+  padding-top: 20px;
   > div {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
     .box-wrap {
-      width: calc(50% - 20px);
-      height: 220px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      background: #d9d9d9;
-      border-radius: 10px;
+      gap: 15px;
+      width: 100%;
+      height: 120px;
+      border-bottom: 1px solid #d9d9d9;
       .box-img {
-        width: 150px;
-        height: 120px;
-        background: red;
-        border-radius: 10px;
+        width: 85px;
+        height: 85px;
+        border-radius: 20px;
+        box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.5);
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          object-fit: fill;
+        }
       }
       .box-text {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-left: 9%;
         > div {
           :nth-of-type(1) {
             font-size: 20px;
@@ -78,9 +71,10 @@ export const BoxWrap = styled.div`
           }
           :nth-of-type(2) {
             font-size: 13px;
-            color: #f7f7f7;
+            color: #d9d9d9;
           }
           :nth-of-type(3) {
+            margin-top: 10px;
           }
         }
       }

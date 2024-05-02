@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const FooterWrap = styled.div`
-  width: 500px;
+  width: 100%;
   position: fixed;
   bottom: 0;
   height: 60px;
