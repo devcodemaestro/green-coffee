@@ -19,10 +19,11 @@ const Login = () => {
   const handleLogin = async e => {
     e.preventDefault();
     try {
-      const { status, result } = await postLogin({ payload });
-      if (result && status === 200) {
+      const { role, token, ...result } = await postLogin({ payload });
+      if (role === "USER" && token) {
         navigate("/home");
       }
+      console.log(result);
     } catch (err) {
       console.log(err);
     }

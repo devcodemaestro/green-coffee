@@ -12,7 +12,7 @@ const Layout = () => {
 
   // useEffect(() => {
   //   if (!token) {
-  //     navigate("/");
+  //     navigate("/"); 
   //   }
   // }, [token, navigate]);
 

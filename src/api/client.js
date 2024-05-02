@@ -10,13 +10,12 @@ const api = axios.create({
 
 const postLogin = async ({ payload }) => {
   try {
-    const res = await api.post(`/token`, payload);
-    const status = res.status;
-    const result = res.data;
-    if (status === 200) {
-      setCookie("accessToken", result);
+    const res = await api.post(`/user/login`, payload);
+    const { role, token, ...result } = res.data;
+    if (role === "USER" && token) {
+      setCookie("token", token);
     }
-    return { status, result };
+    return { role, token, result };
   } catch (err) {
     console.log(err);
   }

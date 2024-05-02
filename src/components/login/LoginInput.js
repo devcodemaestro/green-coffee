@@ -24,6 +24,7 @@ const LoginInput = ({ payload, handleChange, handleLogin }) => {
             id="login-pass"
             placeholder="비밀번호"
             autoComplete="current-password"
+            value={payload.password}
             onChange={e => handleChange(e, "password")}
           />
         </div>
