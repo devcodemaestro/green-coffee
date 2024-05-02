@@ -18,15 +18,16 @@ const Login = () => {
 
   const handleLogin = async e => {
     e.preventDefault();
-    try {
-      const { role, token, ...result } = await postLogin({ payload });
-      if (role === "USER" && token) {
-        navigate("/home");
-      }
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
+    navigate("/home")
+    // try {
+    //   const { role, token, ...result } = await postLogin({ payload });
+    //   if (role === "USER" && token) {
+    //     navigate("/home");
+    //   }
+    //   console.log(result);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (
