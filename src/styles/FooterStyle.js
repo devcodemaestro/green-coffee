@@ -7,6 +7,11 @@ export const FooterWrap = styled.div`
   height: 60px;
   background: #f7f7f7;
   overflow: hidden;
+
+  @media all and (min-width: 767px) {
+    width: 480px;
+    /* margin: 0 auto; */
+  }
 `;
 
 export const FooterInner = styled.ul`

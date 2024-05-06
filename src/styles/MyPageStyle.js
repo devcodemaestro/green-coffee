@@ -35,7 +35,7 @@ export const ItemWrap = styled.div`
     justify-content: center;
     align-items: center;
     width: calc(33.333% - 20px);
-    height: 90px;
+    height: 100px;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(51, 51, 51, 0.2);
     cursor: pointer;

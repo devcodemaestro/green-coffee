@@ -6,6 +6,9 @@ export const LayoutWrap = styled.div`
   /* height: 100vh; */
   margin: 0 auto;
   background: #fff;
+  @media all and (min-width: 767px) {
+    width: 480px;
+  }
 `;
 
 export const LayoutInner = styled.div`
@@ -15,5 +18,8 @@ export const LayoutInner = styled.div`
   margin: 0 auto;
   .space {
     height: 60px;
+  }
+  @media all and (min-width: 767px) {
+    width: 480px;
   }
 `;

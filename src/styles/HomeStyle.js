@@ -73,13 +73,13 @@ export const HomeSwiperWrap = styled.div`
     }
     .swiper-wrap {
       width: 100%;
-      height: 130px;
+      height: 150px;
       border-radius: 20px;
       .swiper-slide {
         div {
           > img {
             width: 100%;
-            height: 130px;
+            height: 150px;
             object-fit: cover;
           }
         }
