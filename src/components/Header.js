@@ -13,7 +13,7 @@ const Header = () => {
   const pathName = location.pathname.replace("/", "");
 
   const headerList = {
-    login: "로그인",
+    "": "로그인",
     cart: "장바구니",
     menudetail: "상세메뉴",
     mypage: "마이페이지",
@@ -35,9 +35,16 @@ const Header = () => {
   return (
     <HeaderWrap>
       <HeaderInner>
-        <li className="img" onClick={handelBack}>
-          <img src={`${process.env.PUBLIC_URL}/assets/arrow-left.png`} alt="" />
-        </li>
+        {headerTitle === "로그인" ? (
+          <li></li>
+        ) : (
+          <li className="img" onClick={handelBack}>
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/arrow-left.png`}
+              alt=""
+            />
+          </li>
+        )}
         <li>
           <h1>{headerTitle}</h1>
         </li>

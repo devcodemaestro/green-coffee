@@ -1,8 +1,15 @@
 import React from "react";
 import { LoginInputWrap } from "../../styles/LoginStyle";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
-const LoginInput = ({ payload, handleChange, handleLogin }) => {
+const LoginInput = ({
+  payload,
+  handleChange,
+  handleLogin,
+  handleWriteCancel,
+}) => {
   return (
     <LoginInputWrap>
       <form>
@@ -11,10 +18,16 @@ const LoginInput = ({ payload, handleChange, handleLogin }) => {
           <input
             type="email"
             id="login-id"
+            className={payload.email ? "isActiveLine" : ""}
             placeholder="아이디"
             autoComplete="username"
             value={payload.email}
             onChange={e => handleChange(e, "email")}
+          />
+          <FontAwesomeIcon
+            icon={faCircleXmark}
+            className="write-cancel"
+            onClick={() => handleWriteCancel("email")}
           />
         </div>
         <div>
@@ -22,10 +35,16 @@ const LoginInput = ({ payload, handleChange, handleLogin }) => {
           <input
             type="password"
             id="login-pass"
+            className={payload.password ? "isActiveLine" : ""}
             placeholder="비밀번호"
             autoComplete="current-password"
             value={payload.password}
             onChange={e => handleChange(e, "password")}
+          />
+          <FontAwesomeIcon
+            icon={faCircleXmark}
+            className="write-cancel"
+            onClick={() => handleWriteCancel("password")}
           />
         </div>
         <ul>

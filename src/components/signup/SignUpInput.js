@@ -6,8 +6,10 @@ const SignUpInput = ({
   handleChange,
   handlePassCheck,
   passCheck,
+  passConfirm,
   setPassConfirm,
   handleSignUp,
+  buttonColor,
 }) => {
   return (
     <SignInputWrap>
@@ -16,6 +18,7 @@ const SignUpInput = ({
         <input
           type="email"
           id="sign-id"
+          className={payload.email ? "isActive-input" : ""}
           placeholder="greencoffee123@gamil.com"
           autoComplete="username"
           value={payload.email}
@@ -27,25 +30,27 @@ const SignUpInput = ({
         <input
           type="password"
           id="sign-pass"
+          className={payload.password ? "isActive-input" : ""}
           placeholder="영문과 숫자와 기호를 모두 포함하는 6자 이상"
           autoComplete="current-password"
           value={payload.password}
           onChange={e => handleChange(e, "password")}
           onBlur={handlePassCheck}
         />
-        {passCheck && <p>{passCheck}</p>}
+        {payload.password && passCheck && <p className="warning-message">{passCheck}</p>}
       </div>
       <div>
         <label htmlFor="sign-passok">비밀번호 확인</label>
         <input
           type="password"
           id="sign-passok"
+          className={passConfirm ? "isActive-input" : ""}
           placeholder="영문과 숫자와 기호를 모두 포함하는 6자 이상"
           autoComplete="current-password"
+          value={passConfirm}
           onChange={e => setPassConfirm(e.target.value)}
-          onBlur={handlePassCheck}
         />
-        {passCheck && <p>{passCheck}</p>}
+        {/* {passCheck && <p>{passCheck}</p>} */}
       </div>
       <div>
         <label htmlFor="sign-nick">닉네임</label>
@@ -53,6 +58,7 @@ const SignUpInput = ({
           type="text"
           id="sign-nick"
           placeholder="닉네임을 입력해주세요."
+          className={payload.nickname ? "isActive-input" : ""}
           value={payload.nickname}
           onChange={e => handleChange(e, "nickname")}
         />
@@ -63,6 +69,7 @@ const SignUpInput = ({
           <input
             type="number"
             id="sign-phone"
+            className={payload.phone ? "isActive-input" : ""}
             placeholder="010-1234-1234"
             value={payload.phone}
             onChange={e => handleChange(e, "phone")}
@@ -73,6 +80,7 @@ const SignUpInput = ({
           <input
             type="number"
             id="sign-date"
+            className={payload.birthdate ? "isActive-input" : ""}
             placeholder="910101"
             value={payload.birthdate}
             onChange={e => handleChange(e, "birthdate")}
@@ -80,7 +88,7 @@ const SignUpInput = ({
         </li>
       </ul>
       <div className="buttons">
-        <button onClick={handleSignUp}>확인</button>
+        <button className={buttonColor ? "isActive-button":""} onClick={handleSignUp}>확인</button>
       </div>
     </SignInputWrap>
   );

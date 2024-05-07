@@ -1,16 +1,10 @@
 import styled from "@emotion/styled";
 
 export const SignUpWrap = styled.div`
-  padding-top: 15%;
+  padding-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 60px;
-  }
 `;
 
 export const SignInputWrap = styled.form`
@@ -19,6 +13,10 @@ export const SignInputWrap = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  .warning-message {
+    font-size: 12px;
+    color: #eb5757;
+  }
   div {
     font-size: 16px;
     font-weight: 500;
@@ -29,7 +27,15 @@ export const SignInputWrap = styled.form`
       width: 330px;
       height: 25px;
       border: none;
-      border-bottom: 1px solid #583732;
+      border-bottom: 1px solid #d9d9d9;
+      padding: 0 5px;
+      font-size: 16px;
+    }
+    .isActive-input {
+      width: 330px;
+      height: 25px;
+      border: none;
+      border-bottom: 1px solid #6a1b1b;
       padding: 0 5px;
       font-size: 16px;
     }
@@ -37,7 +43,7 @@ export const SignInputWrap = styled.form`
       font-size: 13px;
     }
   }
-  > ul {
+  ul {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -50,7 +56,16 @@ export const SignInputWrap = styled.form`
         width: 160px;
         height: 25px;
         border: none;
-        border-bottom: 1px solid #583732;
+        border-bottom: 1px solid #d9d9d9;
+        padding: 0 5px;
+        font-size: 16px;
+        margin-top: 5px;
+      }
+      .isActive-input {
+        width: 160px;
+        height: 25px;
+        border: none;
+        border-bottom: 1px solid #6a1b1b;
         padding: 0 5px;
         font-size: 16px;
         margin-top: 5px;
@@ -64,12 +79,24 @@ export const SignInputWrap = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
     button {
       width: 334px;
       height: 45px;
       font-size: 17px;
       font-weight: 600;
-      color: #f7f7f7;
+      color: #fff;
+      background: #d9d9d9;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .isActive-button {
+      width: 334px;
+      height: 45px;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
       background: #b99470;
       border: none;
       border-radius: 8px;

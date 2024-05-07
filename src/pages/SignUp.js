@@ -13,6 +13,7 @@ const SignUp = () => {
     phone: "",
     birthdate: "",
   });
+  const [buttonColor, setButtonColor] = useState(false);
   const [passConfirm, setPassConfirm] = useState("");
   const [passCheck, setPassCheck] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,6 +34,11 @@ const SignUp = () => {
   const handleChange = (e, item) => {
     const { value } = e.target;
     setPayload({ ...payload, [item]: value });
+
+    const checkPayload = Object.values(payload).every(value => value !== "");
+    const checkPassConfirm = passConfirm !== "";
+
+    setButtonColor(checkPayload && checkPassConfirm);
   };
 
   const handlePassCheck = () => {
@@ -49,16 +55,15 @@ const SignUp = () => {
 
   return (
     <SignUpWrap>
-      <div className="logo">
-        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
-      </div>
       <SignUpInput
         payload={payload}
         handleChange={handleChange}
         handlePassCheck={handlePassCheck}
         passCheck={passCheck}
+        passConfirm={passConfirm}
         setPassConfirm={setPassConfirm}
         handleSignUp={handleSignUp}
+        buttonColor={buttonColor}
       />
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>

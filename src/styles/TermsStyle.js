@@ -1,15 +1,18 @@
 import styled from "@emotion/styled";
 
 export const TermsWrap = styled.div`
-  padding-top: 15%;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   .logo {
+    width: 76.15%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding-bottom: 60px;
+    font-size: 20px;
+    color: #444;
+    padding-bottom: 20px;
   }
   .info-text {
     display: flex;
@@ -25,7 +28,7 @@ export const TermsWrap = styled.div`
     cursor: pointer;
     width: 334px;
     height: 45px;
-    border: 1px solid #583732;
+    border: 1px solid #6a1b1b;
     border-radius: 8px;
     line-height: 45px;
     text-align: center;
@@ -33,14 +36,26 @@ export const TermsWrap = styled.div`
   }
   & input[type="checkbox"] + label {
     background-color: #fff;
-    color: #583732;
+    color: #6a1b1b;
   }
   & input[type="checkbox"]:checked + label {
-    background-color: #b99470;
-    color: #222;
+    background-color: #6a1b1b;
+    color: #fff;
     border: none;
   }
-  & button {
+  .no-active-button {
+    width: 334px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f7f7f7;
+    border: none;
+    border-radius: 8px;
+    background: #d9d9d9;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .active-button {
     width: 334px;
     height: 45px;
     font-size: 16px;
@@ -66,7 +81,7 @@ export const TermsButtonWrap = styled.div`
         cursor: pointer;
         width: 334px;
         height: 45px;
-        border: 1px solid #583732;
+        border: 1px solid #6a1b1b;
         border-radius: 8px;
         line-height: 45px;
         text-align: center;
@@ -77,8 +92,8 @@ export const TermsButtonWrap = styled.div`
         color: #d9d9d9;
       }
       & input[type="checkbox"]:checked + label {
-        background-color: #b99470;
-        color: #222;
+        background-color: #6a1b1b;
+        color: #fff;
         border: none;
       }
     }
@@ -107,7 +122,7 @@ export const TermsButtonWrap = styled.div`
         cursor: pointer;
         height: 45px;
         width: 160px;
-        border: 1px solid #583732;
+        border: 1px solid #6a1b1b;
         border-radius: 8px;
         line-height: 45px;
         text-align: center;
@@ -118,8 +133,8 @@ export const TermsButtonWrap = styled.div`
         color: #d9d9d9;
       }
       > input[type="checkbox"]:checked + label {
-        background-color: #b99470;
-        color: #222;
+        background-color: #6a1b1b;
+        color: #fff;
         border: none;
       }
     }

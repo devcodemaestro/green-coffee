@@ -8,9 +8,16 @@ const api = axios.create({
   },
 });
 
+const client = axios.create({
+  baseURL: `http://back.green-coffee.shop`,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 const postLogin = async ({ payload }) => {
   try {
-    const res = await api.post(`/user/login`, payload);
+    const res = await client.post(`/user/login`, payload);
     const { role, token, ...result } = res.data;
     if (role === "USER" && token) {
       setCookie("token", token);

@@ -8,16 +8,12 @@ const Terms = () => {
   const navigate = useNavigate();
 
   const handleNextPage = () => {
-    if (
-      saveCheckBox.includes(1) &&
-      saveCheckBox.includes(2) &&
-      (saveCheckBox.includes(3) || saveCheckBox.includes(4))
-    ) {
+    if (saveCheckBox.includes(1) && saveCheckBox.includes(2)) {
       navigate("/signup");
     }
   };
 
-  let resultIdArray = saveCheckBox;
+  let resultIdArray = [...saveCheckBox];
 
   const handleAllCheck = e => {
     const allCheckBox = document.querySelectorAll(".consent");
@@ -67,10 +63,12 @@ const Terms = () => {
     setSaveCheckBox([]);
   }, []);
 
+  console.log(saveCheckBox);
+
   return (
     <TermsWrap>
       <div className="logo">
-        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
+        <h2>약관동의</h2>
       </div>
       <TermsButtons handleCheckBox={handleCheckBox} />
       <div className="info-text">
@@ -88,7 +86,16 @@ const Terms = () => {
         <label htmlFor="all-consent">모든 약관에 동의합니다.</label>
       </div>
       <div>
-        <button onClick={handleNextPage}>다음</button>
+        <button
+          className={
+            saveCheckBox.includes(1) && saveCheckBox.includes(2)
+              ? "active-button"
+              : "no-active-button"
+          }
+          onClick={handleNextPage}
+        >
+          다음
+        </button>
       </div>
     </TermsWrap>
   );

@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 export const NoLayoutWrap = styled.div`
   position: relative;
   width: 100%;
-  /* height: 100vh; */
   margin: 0 auto;
   background: #fff;
+  @media all and (min-width: 767px) {
+    width: 480px;
+  }
 `;
 
 export const NoLayoutInner = styled.main`
@@ -13,7 +15,7 @@ export const NoLayoutInner = styled.main`
   height: 100%;
   padding: 0 20px;
   margin: 0 auto;
-  .space {
-    height: 70px;
+  @media all and (min-width: 767px) {
+    width: 480px;
   }
 `;

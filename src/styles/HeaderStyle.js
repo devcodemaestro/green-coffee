@@ -17,6 +17,7 @@ export const HeaderInner = styled.ul`
   box-shadow: 0px 0px 5px 0px rgba(51, 51, 51, 0.2);
   > li:nth-of-type(1) {
     cursor: pointer;
+    width: 24px;
   }
   > li:nth-of-type(2) {
     h1 {
@@ -25,6 +26,5 @@ export const HeaderInner = styled.ul`
   }
   > li:nth-of-type(3) {
     width: 24px;
-    height: 100%;
   }
 `;

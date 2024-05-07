@@ -9,6 +9,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e, item) => {
@@ -18,7 +19,7 @@ const Login = () => {
 
   const handleLogin = async e => {
     e.preventDefault();
-    navigate("/home")
+    navigate("/home");
     // try {
     //   const { role, token, ...result } = await postLogin({ payload });
     //   if (role === "USER" && token) {
@@ -30,15 +31,30 @@ const Login = () => {
     // }
   };
 
+  const handleWriteCancel = item => {
+    setPayload({ ...payload, [item]: "" });
+  };
+
   return (
     <LoginWrap>
       <div className="logo">
-        <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="" />
+        <div>
+          <h2>Green Coffee</h2>
+        </div>
+        <div>
+          <h3>
+            안녕하세요.
+            <br />
+            그린커피입니다.
+          </h3>
+          <span>회원 서비스 이용을 위해 로그인 해주세요.</span>
+        </div>
       </div>
       <LoginInput
         payload={payload}
         handleChange={handleChange}
         handleLogin={handleLogin}
+        handleWriteCancel={handleWriteCancel}
       />
     </LoginWrap>
   );
