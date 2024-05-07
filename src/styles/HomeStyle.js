@@ -36,8 +36,6 @@ export const HomeWelcomWrap = styled.div`
         align-items: center;
         width: 40%;
         height: 140px;
-        background: #f0f0f0;
-        border-radius: 50%;
       }
       :last-of-type {
         width: 50%;
@@ -116,13 +114,13 @@ export const PopularMenuWrap = styled.div`
         li {
           :first-of-type {
             width: 100%;
-            height: 100px;
+            height: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 20px;
-            background: #f0f0f0;
-            box-shadow: 1px 1px 5px 1px rgba(51, 51, 51, 0.2);
+            border-radius: 30px;
+            background: #7c1d34;
+            box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.5);
           }
           :last-of-type {
             display: flex;

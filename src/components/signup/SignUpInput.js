@@ -5,11 +5,13 @@ const SignUpInput = ({
   payload,
   handleChange,
   handlePassCheck,
-  passCheck,
+  warningMsg,
   passConfirm,
   setPassConfirm,
   handleSignUp,
   buttonColor,
+  handlePassCrossCheck,
+  formatPhoneNumber,
 }) => {
   return (
     <SignInputWrap>
@@ -37,7 +39,9 @@ const SignUpInput = ({
           onChange={e => handleChange(e, "password")}
           onBlur={handlePassCheck}
         />
-        {payload.password && passCheck && <p className="warning-message">{passCheck}</p>}
+        {payload.password && warningMsg.passCheck && (
+          <p className="warning-message">{warningMsg.passCheck}</p>
+        )}
       </div>
       <div>
         <label htmlFor="sign-passok">비밀번호 확인</label>
@@ -49,8 +53,11 @@ const SignUpInput = ({
           autoComplete="current-password"
           value={passConfirm}
           onChange={e => setPassConfirm(e.target.value)}
+          onBlur={handlePassCrossCheck}
         />
-        {/* {passCheck && <p>{passCheck}</p>} */}
+        {passConfirm && (
+          <p className="warning-message">{warningMsg.passConfirmCheck}</p>
+        )}
       </div>
       <div>
         <label htmlFor="sign-nick">닉네임</label>
@@ -61,34 +68,57 @@ const SignUpInput = ({
           className={payload.nickname ? "isActive-input" : ""}
           value={payload.nickname}
           onChange={e => handleChange(e, "nickname")}
+          onBlur={handlePassCrossCheck}
         />
+        {payload.nickname && (
+          <p className="warning-message">{warningMsg.nickCheck}</p>
+        )}
       </div>
       <ul>
         <li>
-          <label htmlFor="sign-phone">휴대전화</label>
-          <input
-            type="number"
-            id="sign-phone"
-            className={payload.phone ? "isActive-input" : ""}
-            placeholder="010-1234-1234"
-            value={payload.phone}
-            onChange={e => handleChange(e, "phone")}
-          />
-        </li>
-        <li>
           <label htmlFor="sign-date">생년월일</label>
           <input
-            type="number"
+            type="text"
             id="sign-date"
             className={payload.birthdate ? "isActive-input" : ""}
             placeholder="910101"
             value={payload.birthdate}
             onChange={e => handleChange(e, "birthdate")}
+            onBlur={handlePassCrossCheck}
+            maxLength={6}
           />
+          {payload.birthdate.length < 6 ? (
+            <p className="warning-message">{warningMsg.birthCheck}</p>
+          ) : (
+            ""
+          )}
+        </li>
+        <li>
+          <label htmlFor="sign-phone">휴대전화</label>
+          <input
+            type="text"
+            id="sign-phone"
+            className={payload.phone ? "isActive-input" : ""}
+            placeholder="010-1234-1234"
+            value={formatPhoneNumber}
+            onChange={e => handleChange(e, "phone")}
+            onBlur={handlePassCrossCheck}
+            maxLength={11}
+          />
+          {payload.phone.length < 11 ? (
+            <p className="warning-message">{warningMsg.phoneCheck}</p>
+          ) : (
+            ""
+          )}
         </li>
       </ul>
       <div className="buttons">
-        <button className={buttonColor ? "isActive-button":""} onClick={handleSignUp}>확인</button>
+        <button
+          className={buttonColor ? "isActive-button" : ""}
+          onClick={handleSignUp}
+        >
+          확인
+        </button>
       </div>
     </SignInputWrap>
   );

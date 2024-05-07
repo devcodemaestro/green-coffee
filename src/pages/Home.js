@@ -3,12 +3,16 @@ import Welcome from "../components/home/Welcome";
 import HomeSwiper from "../components/home/HomeSwiper";
 import PopularMenu from "../components/home/PopularMenu";
 import { HomeInner, HomeWrap } from "../styles/HomeStyle";
-import { getEvent } from "../api/homeAxios";
+import { getEvent, getPopularMenu } from "../api/homeAxios";
 
 const Home = () => {
   const [eventData, setEventData] = useState([]);
+  const [popularData, setPopularData] = useState([]);
+
+
   useEffect(() => {
     getEvent(setEventData);
+    getPopularMenu(setPopularData);
   }, []);
   return (
     <HomeWrap>
@@ -18,7 +22,7 @@ const Home = () => {
         </div>
         <Welcome />
         <HomeSwiper eventData={eventData} />
-        <PopularMenu />
+        <PopularMenu popularData={popularData} />
       </HomeInner>
     </HomeWrap>
   );

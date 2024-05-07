@@ -3,12 +3,15 @@ import { LoginWrap } from "../styles/LoginStyle";
 import LoginInput from "../components/login/LoginInput";
 import { postLogin } from "../api/client";
 import { useNavigate } from "react-router";
+import { useRecoilState } from "recoil";
+import { AuthStateAtom } from "../recoil/atoms/AuthState";
 
 const Login = () => {
   const [payload, setPayload] = useState({
     email: "",
     password: "",
   });
+  const [authData, setAuthData] = useRecoilState(AuthStateAtom);
 
   const navigate = useNavigate();
 
@@ -19,16 +22,26 @@ const Login = () => {
 
   const handleLogin = async e => {
     e.preventDefault();
-    navigate("/home");
-    // try {
-    //   const { role, token, ...result } = await postLogin({ payload });
-    //   if (role === "USER" && token) {
-    //     navigate("/home");
-    //   }
-    //   console.log(result);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const { role, token, result } = await postLogin({ payload });
+      if (role === "USER" && token) {
+        console.log(result);
+        setAuthData({
+          user_id: result.user_id,
+          email: result.email,
+          nickname: result.nickname,
+          phone: result.phone,
+          birthdate: result.birthdate,
+          coupon: result.coupon,
+          stamp: result.stamp,
+          token: token,
+          loginstate: result.loginstate,
+        });
+        navigate("/home");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleWriteCancel = item => {

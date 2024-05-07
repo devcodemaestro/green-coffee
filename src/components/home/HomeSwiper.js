@@ -12,7 +12,7 @@ const HomeSwiper = ({ eventData }) => {
   return (
     <HomeSwiperWrap>
       <div className="inner">
-        <h3>4월 프로모션</h3>
+        <h3>진행중인 이벤트</h3>
         <Swiper
           className="swiper-wrap"
           modules={[Navigation, Pagination, Autoplay]}

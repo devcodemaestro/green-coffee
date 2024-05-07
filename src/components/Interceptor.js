@@ -8,7 +8,7 @@ export const Interceptor = ({ children }) => {
 
   const requestInterceptor = api.interceptors.request.use(
     async config => {
-      const token = getCookie("accessToken");
+      const token = getCookie("token");
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -30,7 +30,7 @@ export const Interceptor = ({ children }) => {
       if (status === 401) {
         try {
           if (config && config.headers && config.headers.Authorization) {
-            removeCookie("accessToken");
+            removeCookie("token");
           }
           navigate("/");
         } catch (error) {
