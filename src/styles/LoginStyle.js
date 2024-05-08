@@ -56,13 +56,6 @@ export const LoginInputWrap = styled.div`
       input::placeholder {
         font-size: 13px;
       }
-      .write-cancel {
-        position: absolute;
-        right: 2%;
-        color: #bababa;
-        font-size: 20px;
-        cursor: pointer;
-      }
       .isActiveLine {
         border-bottom: 1px solid #583732;
       }
@@ -72,6 +65,7 @@ export const LoginInputWrap = styled.div`
         > div {
           cursor: pointer;
         }
+
         :first-of-type {
           display: flex;
           justify-content: space-between;
@@ -87,17 +81,23 @@ export const LoginInputWrap = styled.div`
         }
         :last-of-type {
           padding-top: 20px;
-          & button {
-            width: 334px;
-            height: 45px;
-            font-size: 17px;
-            font-weight: 600;
-            color: #f7f7f7;
-            background: #b99470;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-          }
+          // 컴포넌트로 뽑겠습니다.
+          // & button {
+          //   width: 334px;
+          //   height: 45px;
+          //   font-size: 17px;
+          //   font-weight: 600;
+          //   color: #f7f7f7;
+          //   background: #BF8A30;
+          //   border: none;
+          //   border-radius: 8px;
+          //   cursor: pointer;
+          // }
+        }
+        a:hover{
+          color: #6A1B1B;
+          transition: 0.2s;
+          font-weight:700;
         }
       }
     }
@@ -109,6 +109,11 @@ export const LoginInputWrap = styled.div`
     padding-top: 30px;
     > a {
       color: #444;
+    }
+    a:hover{
+      color: #6A1B1B;
+      transition: 0.2s;
+      font-weight:700;
     }
   }
 `;

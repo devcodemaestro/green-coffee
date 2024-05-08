@@ -30,7 +30,7 @@ export const TermsWrap = styled.div`
     height: 45px;
     border: 1px solid #6a1b1b;
     border-radius: 8px;
-    line-height: 45px;
+    line-height: 43px;
     text-align: center;
     font-size: 18px;
   }
@@ -63,7 +63,7 @@ export const TermsWrap = styled.div`
     color: #f7f7f7;
     border: none;
     border-radius: 8px;
-    background: #b99470;
+    background: #BF8A30;
     cursor: pointer;
     margin-top: 20px;
   }
@@ -83,7 +83,6 @@ export const TermsButtonWrap = styled.div`
         height: 45px;
         border: 1px solid #6a1b1b;
         border-radius: 8px;
-        line-height: 45px;
         text-align: center;
         font-size: 18px;
       }
@@ -124,7 +123,6 @@ export const TermsButtonWrap = styled.div`
         width: 160px;
         border: 1px solid #6a1b1b;
         border-radius: 8px;
-        line-height: 45px;
         text-align: center;
         font-size: 18px;
       }

@@ -83,7 +83,7 @@ export const ModalOkBtn = styled.button`
   width: 250px;
   height: 45px;
   font-size: 16px;
-  background: #b99470;
+  background: #BF8A30;
   color: #fff;
   border: none;
   border-radius: 6px;

@@ -39,7 +39,7 @@ export const FooterInner = styled.ul`
       justify-content: center;
       align-items: center;
       width: 50px;
-      color: #b99470;
+      color: #BF8A30;
     }
   }
 `;

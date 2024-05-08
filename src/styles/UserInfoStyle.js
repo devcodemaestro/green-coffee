@@ -86,7 +86,7 @@ export const UserInputWrap = styled.div`
         font-size: 17px;
         font-weight: 600;
         color: #f7f7f7;
-        background: #b99470;
+        background: #BF8A30;
         border: none;
         border-radius: 8px;
         cursor: pointer;
