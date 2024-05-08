@@ -10,7 +10,7 @@ export const MyPageWrap = styled.div`
       justify-content: center;
       align-items: center;
       font-size: 20px;
-      color: #b99470;
+      color: #BF8A30;
       padding-bottom: 20px;
     }
     :nth-of-type(2) {

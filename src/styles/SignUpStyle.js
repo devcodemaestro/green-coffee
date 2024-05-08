@@ -97,7 +97,7 @@ export const SignInputWrap = styled.form`
       font-size: 17px;
       font-weight: 600;
       color: #fff;
-      background: #b99470;
+      background: #BF8A30;
       border: none;
       border-radius: 8px;
       cursor: pointer;

@@ -1,8 +1,8 @@
 import React from "react";
 import { LoginInputWrap } from "../../styles/LoginStyle";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import { DisabledBtn, Xmark, xmarkStyle } from "../../styles/ui/buttons";
 
 const LoginInput = ({
   payload,
@@ -24,9 +24,8 @@ const LoginInput = ({
             value={payload.email}
             onChange={e => handleChange(e, "email")}
           />
-          <FontAwesomeIcon
+          <Xmark
             icon={faCircleXmark}
-            className="write-cancel"
             onClick={() => handleWriteCancel("email")}
           />
         </div>
@@ -41,9 +40,8 @@ const LoginInput = ({
             value={payload.password}
             onChange={e => handleChange(e, "password")}
           />
-          <FontAwesomeIcon
+          <Xmark
             icon={faCircleXmark}
-            className="write-cancel"
             onClick={() => handleWriteCancel("password")}
           />
         </div>
@@ -59,11 +57,12 @@ const LoginInput = ({
               <label htmlFor="login-check">자동 로그인</label>
             </div>
             <div>
-              <span>아이디 / 비밀번호 찾기</span>
+              <Link to="/findid">아이디찾기</Link> / <Link to="/findpw">비밀번호 찾기</Link>
             </div>
+
           </li>
           <li>
-            <button onClick={handleLogin}>로그인</button>
+          <DisabledBtn onClick={handleLogin}>로그인</DisabledBtn>
           </li>
         </ul>
       </form>

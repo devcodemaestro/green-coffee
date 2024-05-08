@@ -23,7 +23,7 @@ export const FavoriteItemWrap = styled.div`
         width: 75px;
         height: 30px;
         color: #f7f7f7;
-        background: #b99470;
+        background: #BF8A30;
         border: none;
         border-radius: 5px;
         cursor: pointer;

@@ -3,6 +3,8 @@ import Loading from "../components/Loading";
 const Login = lazy(() => import("../pages/Login"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const Terms = lazy(() => import("../pages/Terms"));
+const FindId =  lazy(() => import("../pages/FindId"));
+const FindPw =  lazy(() => import("../pages/FindPw"));
 
 const nonmemberRouter = () => {
   return [
@@ -28,6 +30,22 @@ const nonmemberRouter = () => {
       element: (
         <Suspense fallback={<Loading />}>
           <Terms />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/findid",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <FindId />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/findpw",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <FindPw />
         </Suspense>
       ),
     },
