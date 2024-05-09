@@ -94,3 +94,46 @@ export const UserInputWrap = styled.div`
     }
   }
 `;
+
+export const UserConfirmWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #444;
+  > h3 {
+    padding-bottom: 30px;
+  }
+  > span {
+    font-size: 13px;
+  }
+  > form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 30px;
+    input {
+      width: 330px;
+      height: 25px;
+      padding: 0 5px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 1px solid #d9d9d9;
+    }
+    button {
+      width: 335px;
+      height: 45px;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      background: #bf8a30;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .err-message {
+      color: #eb5757;
+    }
+  }
+`;

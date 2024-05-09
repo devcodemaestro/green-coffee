@@ -8,12 +8,12 @@ const ItemBox = ({ menuData }) => {
         {menuData.map(item => (
           <div key={item.menu_id} className="box-wrap">
             <div className="box-img">
-              <img src={`${item.mimgurl}`} alt="" />
+              <img src={`${item.menu_imgurl}`} alt="" />
             </div>
             <div className="box-text">
-              <div>{item.mname}</div>
-              <div>{item.mename}</div>
-              <div>{item.price}원</div>
+              <div>{item.name}</div>
+              <div>{item.menu_ename}</div>
+              <div>{item.menu_price}원</div>
             </div>
           </div>
         ))}

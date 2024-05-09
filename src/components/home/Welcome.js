@@ -1,10 +1,11 @@
 import React from "react";
 import { HomeWelcomWrap } from "../../styles/HomeStyle";
 import { useRecoilValue } from "recoil";
-import { AuthStateAtom } from "../../recoil/atoms/AuthState";
+import { UserStateAtom } from "../../recoil/atoms/UserState";
 
 const Welcome = () => {
-  const userInfo = useRecoilValue(AuthStateAtom);
+  const userInfo = useRecoilValue(UserStateAtom);
+  console.log(userInfo);
   return (
     <HomeWelcomWrap>
       <div className="inner">

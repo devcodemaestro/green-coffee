@@ -3,15 +3,17 @@ import { LoginWrap } from "../styles/LoginStyle";
 import LoginInput from "../components/login/LoginInput";
 import { postLogin } from "../api/client";
 import { useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { AuthStateAtom } from "../recoil/atoms/AuthState";
+import { UserStateAtom } from "../recoil/atoms/UserState";
 
 const Login = () => {
   const [payload, setPayload] = useState({
     email: "",
     password: "",
   });
-  const [authData, setAuthData] = useRecoilState(AuthStateAtom);
+  const setAuthData = useSetRecoilState(AuthStateAtom);
+  const setUserData = useSetRecoilState(UserStateAtom);
 
   const navigate = useNavigate();
 
@@ -27,6 +29,10 @@ const Login = () => {
       if (role === "USER" && token) {
         console.log(result);
         setAuthData({
+          token: token,
+          loginstate: result.loginstate,
+        });
+        setUserData({
           user_id: result.user_id,
           email: result.email,
           nickname: result.nickname,
@@ -34,8 +40,6 @@ const Login = () => {
           birthdate: result.birthdate,
           coupon: result.coupon,
           stamp: result.stamp,
-          token: token,
-          loginstate: result.loginstate,
         });
         navigate("/home");
       }

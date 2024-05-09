@@ -1,29 +1,44 @@
 import React from "react";
 import { ItemWrap } from "../../styles/MyPageStyle";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Item = () => {
   const navigate = useNavigate();
   const menu = [
     {
       id: "1",
+      title: "회원정보 변경",
+      path: "/userinfo",
+    },
+    {
+      id: "2",
+      title: "비밀번호 변경",
+      path: "/passchange",
+    },
+    {
+      id: "3",
       title: "장바구니",
       path: "/cart",
     },
     {
-      id: "2",
+      id: "4",
       title: "주문내역",
       path: "/orderlist",
     },
     {
-      id: "3",
+      id: "5",
       title: "즐겨찾기",
       path: "/favorite",
     },
     {
-      id: "4",
+      id: "6",
       title: "Pay",
       path: "/mypage",
+    },
+    {
+      id: "7",
+      title: "회원탈퇴",
+      path: "/resign",
     },
   ];
   const handlePageMove = path => {
@@ -32,12 +47,9 @@ const Item = () => {
 
   return (
     <ItemWrap>
-      <div>
-        <span>정보변경</span>
-      </div>
       {menu.map(item => (
-        <div key={item.id} onClick={() => handlePageMove(item.path)}>
-          <span>{item.title}</span>
+        <div key={item.id}>
+          <Link to={`${item.path}`}>{item.title}</Link>
         </div>
       ))}
       <div>
