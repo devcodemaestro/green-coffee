@@ -120,7 +120,11 @@ export const PopularMenuWrap = styled.div`
             align-items: center;
             border-radius: 30px;
             background: #7c1d34;
-            box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.5);
+            box-shadow: 3px 8px 5px 1px rgba(51, 51, 51, 0.5);
+            img {
+              width: 100%;
+              border-radius: 30px;
+            }
           }
           :last-of-type {
             display: flex;

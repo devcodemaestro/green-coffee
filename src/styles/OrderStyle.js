@@ -14,9 +14,6 @@ export const OrderWrap = styled.div`
       width: 50px;
       height: 45px;
       cursor: pointer;
-      :hover {
-        color: #fff;
-      }
     }
     & .menu-active {
       display: flex;
