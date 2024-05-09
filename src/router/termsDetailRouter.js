@@ -1,52 +1,47 @@
 import React, { Suspense, lazy } from "react";
 import Loading from "../components/Loading";
-import termsDetailRouter from "./termsDetailRouter";
-const Login = lazy(() => import("../pages/Login"));
-const SignUp = lazy(() => import("../pages/SignUp"));
-const FindId = lazy(() => import("../pages/FindId"));
-const FindPw = lazy(() => import("../pages/FindPw"));
 
-const nonmemberRouter = () => {
+const SignUp = lazy(() => import("../pages/SignUp"));
+const Terms = lazy(() => import("../pages/Terms"));
+const Detail1 = lazy(() => import("../pages/termsDetails/Detail1"));
+const Detail2 = lazy(() => import("../pages/termsDetails/Detail2"));
+const Detail3 = lazy(() => import("../pages/termsDetails/Detail3"));
+
+const termsDetailRouter = () => {
   return [
     {
-      path: "/",
-      index: true,
+      path: "",
       element: (
         <Suspense fallback={<Loading />}>
-          <Login />
+          <Terms />
         </Suspense>
       ),
     },
     {
-      path: "/signup",
+      path: "detail1",
       element: (
         <Suspense fallback={<Loading />}>
-          <SignUp />
+          <Detail1 />
         </Suspense>
       ),
     },
     {
-      path: "/terms",
-
-      children: termsDetailRouter(),
-    },
-    {
-      path: "/findid",
+      path: "detail2",
       element: (
         <Suspense fallback={<Loading />}>
-          <FindId />
+          <Detail2 />
         </Suspense>
       ),
     },
     {
-      path: "/findpw",
+      path: "detail3",
       element: (
         <Suspense fallback={<Loading />}>
-          <FindPw />
+          <Detail3 />
         </Suspense>
       ),
     },
   ];
 };
 
-export default nonmemberRouter;
+export default termsDetailRouter;

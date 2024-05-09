@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors, mq, shadow } from "../styles/basic";
 
 export const LoginWrap = styled.div`
   padding-top: 10%;
@@ -49,15 +50,16 @@ export const LoginInputWrap = styled.div`
         width: 330px;
         height: 25px;
         border: none;
-        border-bottom: 1px solid #d9d9d9;
+        border-bottom: 1px solid ${colors.disabled};
         padding: 0 5px;
         font-size: 16px;
       }
       input::placeholder {
         font-size: 13px;
+        color: ${colors.disabled};
       }
       .isActiveLine {
-        border-bottom: 1px solid #583732;
+        border-bottom: 1px solid ${colors.point};
       }
     }
     > ul {
@@ -94,10 +96,10 @@ export const LoginInputWrap = styled.div`
           //   cursor: pointer;
           // }
         }
-        a:hover{
-          color: #6A1B1B;
+        a:hover {
+          color: #6a1b1b;
           transition: 0.2s;
-          font-weight:700;
+          font-weight: 700;
         }
       }
     }
@@ -110,10 +112,10 @@ export const LoginInputWrap = styled.div`
     > a {
       color: #444;
     }
-    a:hover{
-      color: #6A1B1B;
+    a:hover {
+      color: #6a1b1b;
       transition: 0.2s;
-      font-weight:700;
+      font-weight: 700;
     }
   }
 `;

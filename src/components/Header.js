@@ -25,15 +25,18 @@ const Header = () => {
     resign: "회원탈퇴",
     signup: "회원가입",
     terms: "약관동의",
+    "terms/detail1": "서비스 이용약관",
+    "terms/detail2": "개인정보 처리방침",
+    "terms/detail3": "마케팅 정보 수신",
     userinfo: "정보수정",
     community: "커뮤니티",
     passchange: "비밀번호 변경",
     findid: "아이디 찾기",
-    findpw: "비밀번호 찾기"
+    findpw: "비밀번호 찾기",
   };
 
   const headerTitle = headerList[pathName] || "";
-
+  console.log("pathName", pathName);
   return (
     <HeaderWrap>
       <HeaderInner>

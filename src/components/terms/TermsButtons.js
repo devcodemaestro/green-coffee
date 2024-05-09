@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TermsButtonWrap } from "../../styles/TermsStyle";
+import { Link } from "react-router-dom";
 
 const TermsButtons = ({ handleCheckBox }) => {
   return (
@@ -8,7 +9,9 @@ const TermsButtons = ({ handleCheckBox }) => {
         <li>
           <div className="text">
             <span>서비스 이용약관 동의 (필수)</span>
-            <span>자세히 보기</span>
+            <Link to="detail1">
+              <span>자세히 보기</span>
+            </Link>
           </div>
           <div className="service-consent">
             <input
@@ -24,7 +27,9 @@ const TermsButtons = ({ handleCheckBox }) => {
         <li>
           <div className="text">
             <span>개인정보처리방침 동의 (필수)</span>
-            <span>자세히 보기</span>
+            <Link to="detail2">
+              <span>자세히 보기</span>
+            </Link>
           </div>
           <div className="privacy-consent">
             <input
@@ -40,7 +45,9 @@ const TermsButtons = ({ handleCheckBox }) => {
         <li>
           <div className="text">
             <span>마케팅 정보 수신 동의 (선택)</span>
-            <span>자세히 보기</span>
+            <Link to="detail3">
+              <span>자세히 보기</span>
+            </Link>
           </div>
           <div className="markecting-consent">
             <input
