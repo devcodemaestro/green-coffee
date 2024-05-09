@@ -26,8 +26,9 @@ const PasswordChange = () => {
   };
   const handlePassAccept = async e => {
     e.preventDefault();
+    const data = { password: pass };
     try {
-      const { result } = await postPassCheck(payload.password, setErrState);
+      const { result } = await postPassCheck(data, setErrState);
       if (result === 200) {
         setPassCheckBoolean(true);
       }

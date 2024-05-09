@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "./basic";
 
 export const ConfirmModalWarp = styled.div`
   position: absolute;
@@ -15,11 +16,11 @@ export const ConfirmModalWarp = styled.div`
     overflow: "unset";
   }
   .modalConfirm-wrapper {
+    padding-top: 30px;
     position: relative;
     width: 300px;
-    height: 400px;
+    height: 150px;
     margin: 0 auto;
-    padding-top: 60px;
     border-radius: 8px;
     border: none;
     background-color: #fff;
@@ -27,6 +28,7 @@ export const ConfirmModalWarp = styled.div`
     overflow: hidden;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
   }
+  
   .modalConfirm-img {
     display: flex;
     justify-content: center;
@@ -41,15 +43,21 @@ export const ConfirmModalWarp = styled.div`
   /* 모달 내용 */
   .modalConfirm-content {
     height: 100%;
-    padding-top: 30px;
-    font-size: 24px;
-    color: #444;
+    font-size: 16px;
+    color: ${colors.black};
     font-weight: 400;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    text-align: center;
     > div {
-      padding-top: 40px;
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 15px 30px 0;
     }
   }
 
@@ -80,11 +88,11 @@ export const ConfirmModalWarp = styled.div`
 `;
 
 export const ModalOkBtn = styled.button`
-  width: 250px;
-  height: 45px;
+  width: 100px;
+  height: 40px;
   font-size: 16px;
-  background: #bf8a30;
-  color: #fff;
+  background: ${colors.main};
+  color: ${colors.white};
   border: none;
   border-radius: 6px;
   text-align: center;

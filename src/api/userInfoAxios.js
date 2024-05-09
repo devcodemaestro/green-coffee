@@ -15,21 +15,6 @@ export const postPassCheck = async (data, setErrState) => {
 };
 
 export const putUserInfo = async payload => {
-  let data;
-  switch (payload) {
-    case 1:
-      data = `/menu/coffee`;
-      break;
-    case 2:
-      data = `/menu/beverage`;
-      break;
-    case 3:
-      data = `/menu/food`;
-      break;
-    case 4:
-      data = `/menu/goods`;
-      break;
-  }
   try {
     const res = await api.put(`/user/update`, payload);
     const status = res.status;
@@ -42,8 +27,9 @@ export const putUserInfo = async payload => {
 export const postLogout = async () => {
   try {
     const res = await api.post(`/user/logout`);
-    const result = res.data;
-    console.log(result);
+    const result = res.status;
+
+    return { result };
   } catch (err) {
     console.log(err);
   }
