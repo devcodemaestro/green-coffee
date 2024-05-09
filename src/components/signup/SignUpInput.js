@@ -64,7 +64,7 @@ const SignUpInput = ({
         <input
           type="text"
           id="sign-nick"
-          placeholder="닉네임을 입력해주세요."
+          placeholder="한글 2자 이상"
           className={payload.nickname ? "isActive-input" : ""}
           value={payload.nickname}
           onChange={e => handleChange(e, "nickname")}

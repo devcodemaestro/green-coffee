@@ -32,7 +32,7 @@ export const TermsWrap = styled.div`
     border-radius: 8px;
     line-height: 43px;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
   }
   & input[type="checkbox"] + label {
     background-color: #fff;
@@ -43,7 +43,8 @@ export const TermsWrap = styled.div`
     color: #fff;
     border: none;
   }
-  .no-active-button {
+`;
+/* .no-active-button {
     width: 334px;
     height: 45px;
     font-size: 16px;
@@ -67,7 +68,8 @@ export const TermsWrap = styled.div`
     cursor: pointer;
     margin-top: 20px;
   }
-`;
+`; 
+*/
 
 export const TermsButtonWrap = styled.div`
   ul {
@@ -84,7 +86,7 @@ export const TermsButtonWrap = styled.div`
         border: 1px solid #6a1b1b;
         border-radius: 8px;
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
       }
       & input[type="checkbox"] + label {
         background-color: #fff;
@@ -124,7 +126,7 @@ export const TermsButtonWrap = styled.div`
         border: 1px solid #6a1b1b;
         border-radius: 8px;
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
       }
       > input[type="checkbox"] + label {
         background-color: #fff;

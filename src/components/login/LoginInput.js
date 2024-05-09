@@ -2,7 +2,12 @@ import React from "react";
 import { LoginInputWrap } from "../../styles/LoginStyle";
 import { Link } from "react-router-dom";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-import { DisabledBtn, Xmark, xmarkStyle } from "../../styles/ui/buttons";
+import {
+  DisabledBtn,
+  MainBtn,
+  Xmark,
+  xmarkStyle,
+} from "../../styles/ui/buttons";
 
 const LoginInput = ({
   payload,
@@ -10,6 +15,7 @@ const LoginInput = ({
   handleLogin,
   handleWriteCancel,
 }) => {
+  const isFormComplete = payload.email && payload.password;
   return (
     <LoginInputWrap>
       <form>
@@ -57,12 +63,16 @@ const LoginInput = ({
               <label htmlFor="login-check">자동 로그인</label>
             </div>
             <div>
-              <Link to="/findid">아이디찾기</Link> / <Link to="/findpw">비밀번호 찾기</Link>
+              <Link to="/findid">아이디찾기</Link> /{" "}
+              <Link to="/findpw">비밀번호 찾기</Link>
             </div>
-
           </li>
           <li>
-          <DisabledBtn onClick={handleLogin}>로그인</DisabledBtn>
+            {isFormComplete ? (
+              <MainBtn onClick={handleLogin}>로그인</MainBtn>
+            ) : (
+              <DisabledBtn onClick={handleLogin}>로그인</DisabledBtn>
+            )}
           </li>
         </ul>
       </form>

@@ -69,7 +69,7 @@ const SignUp = () => {
   //     phoneCheck: payload.phone.length !== 11 ? "전화번호를 확인해주세요." : "",
   //   }));
   // };
-
+  const nonKoreanPattern = /[^가-힣]/;
   const handlePassCrossCheck = () => {
     setWarningMsg(warningMsg => {
       const newWarningMsg = { ...warningMsg };
@@ -80,7 +80,9 @@ const SignUp = () => {
       newWarningMsg.nickCheck =
         payload.nickname && payload.nickname.length < 2
           ? "2글자 이상 입력해주세요."
-          : "";
+          : nonKoreanPattern.test(payload.nickname)
+            ? "명확한 한글단어가 아닙니다."
+            : "";
 
       newWarningMsg.birthCheck =
         payload.birthdate && payload.birthdate.length !== 6

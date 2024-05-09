@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TermsWrap } from "../styles/TermsStyle";
 import TermsButtons from "../components/terms/TermsButtons";
 import { useNavigate } from "react-router";
+import { DisabledBtn, MainBtn } from "../styles/ui/buttons";
 
 const Terms = () => {
   const [saveCheckBox, setSaveCheckBox] = useState([]);
@@ -85,17 +86,12 @@ const Terms = () => {
         />
         <label htmlFor="all-consent">모든 약관에 동의합니다.</label>
       </div>
-      <div>
-        <button
-          className={
-            saveCheckBox.includes(1) && saveCheckBox.includes(2)
-              ? "active-button"
-              : "no-active-button"
-          }
-          onClick={handleNextPage}
-        >
-          다음
-        </button>
+      <div style={{ paddingTop: "20px" }}>
+        {saveCheckBox.includes(1) && saveCheckBox.includes(2) ? (
+          <MainBtn onClick={handleNextPage}>다음</MainBtn>
+        ) : (
+          <DisabledBtn onClick={handleNextPage}>다음</DisabledBtn>
+        )}
       </div>
     </TermsWrap>
   );
