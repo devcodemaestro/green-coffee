@@ -36,7 +36,6 @@ const Header = () => {
   };
 
   const headerTitle = headerList[pathName] || "";
-  console.log("pathName", pathName);
   return (
     <HeaderWrap>
       <HeaderInner>

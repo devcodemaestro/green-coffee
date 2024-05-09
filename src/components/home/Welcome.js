@@ -23,8 +23,8 @@ const Welcome = () => {
             </span>
           </div>
           <div className="coupon">
-            <span>마이 스탬프: {userInfo?.coupon}장</span>
-            <span>마이 쿠폰: {userInfo?.stamp}장</span>
+            <span>마이 스탬프: {userInfo?.stamp}장</span>
+            <span>마이 쿠폰: {userInfo?.coupon}장</span>
           </div>
         </div>
       </div>

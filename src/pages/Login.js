@@ -3,7 +3,7 @@ import { LoginWrap } from "../styles/LoginStyle";
 import LoginInput from "../components/login/LoginInput";
 import { postLogin } from "../api/client";
 import { useNavigate } from "react-router";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { AuthStateAtom } from "../recoil/atoms/AuthState";
 import { UserStateAtom } from "../recoil/atoms/UserState";
 
@@ -15,6 +15,7 @@ const Login = () => {
   const setAuthData = useSetRecoilState(AuthStateAtom);
   const setUserData = useSetRecoilState(UserStateAtom);
 
+  const data = useRecoilValue(UserStateAtom);
   const navigate = useNavigate();
 
   const handleChange = (e, item) => {
@@ -51,6 +52,8 @@ const Login = () => {
   const handleWriteCancel = item => {
     setPayload({ ...payload, [item]: "" });
   };
+
+  console.log(data);
 
   return (
     <LoginWrap>
