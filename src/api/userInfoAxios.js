@@ -42,8 +42,9 @@ export const putUserInfo = async payload => {
 export const postLogout = async () => {
   try {
     const res = await api.post(`/user/logout`);
-    const result = res.data;
-    console.log(result);
+    const result = res.status;
+
+    return { result };
   } catch (err) {
     console.log(err);
   }

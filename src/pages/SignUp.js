@@ -38,7 +38,7 @@ const SignUp = () => {
       console.log(err);
     }
   };
-  console.log(payload.phone);
+
   const handleChange = (e, item) => {
     const { value } = e.target;
     setPayload({ ...payload, [item]: value });
@@ -51,7 +51,7 @@ const SignUp = () => {
 
   const handlePassCheck = () => {
     const regex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/g;
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/g;
     const isValid = regex.test(payload.password);
     setWarningMsg(warningMsg => ({
       ...warningMsg,
@@ -59,17 +59,8 @@ const SignUp = () => {
     }));
   };
 
-  // const handlePassCrossCheck = () => {
-  //   setWarningMsg(warningMsg => ({
-  //     ...warningMsg,
-  //     passConfirmCheck:
-  //       passConfirm !== payload.password ? "비밀번호가 일치하지 않습니다." : "",
-  //     nickCheck: payload.nickname.length < 2 ? "2글자 이상 입력해주세요." : "",
-  //     birthCheck: payload.birthdate.length !== 6 ? "생년월일을 확인해주세요." : "",
-  //     phoneCheck: payload.phone.length !== 11 ? "전화번호를 확인해주세요." : "",
-  //   }));
-  // };
   const nonKoreanPattern = /[^가-힣]/;
+
   const handlePassCrossCheck = () => {
     setWarningMsg(warningMsg => {
       const newWarningMsg = { ...warningMsg };
@@ -134,8 +125,10 @@ const SignUp = () => {
       />
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
-          <span>가입이 완료되었습니다.</span>
-          <span>로그인 후 이용해주세요.</span>
+          <span>
+            가입이 완료되었습니다. <br />
+            로그인 화면으로 이동합니다.
+          </span>
         </ConfirmModal>
       )}
     </SignUpWrap>

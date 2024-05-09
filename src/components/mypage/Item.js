@@ -1,9 +1,8 @@
 import React from "react";
 import { ItemWrap } from "../../styles/MyPageStyle";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Item = () => {
-  const navigate = useNavigate();
+const Item = ({ handleLogout }) => {
   const menu = [
     {
       id: "1",
@@ -41,9 +40,6 @@ const Item = () => {
       path: "/resign",
     },
   ];
-  const handlePageMove = path => {
-    navigate(path);
-  };
 
   return (
     <ItemWrap>
@@ -53,7 +49,7 @@ const Item = () => {
         </div>
       ))}
       <div>
-        <span>로그아웃</span>
+        <span onClick={handleLogout}>로그아웃</span>
       </div>
     </ItemWrap>
   );
