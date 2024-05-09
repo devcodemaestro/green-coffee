@@ -17,8 +17,8 @@ const PasswordChange = () => {
   });
   const [passConfirm, setPassConfirm] = useState("");
   const [warningMsg, setWarningMsg] = useState({
-    passCheck: "비밀번호를 양식에 맞춰 작성해주세요.",
-    passConfirmCheck: "비밀번호가 일치하지 않습니다.",
+    passCheck: "",
+    passConfirmCheck: "",
   });
   const [pass, setPass] = useState("");
   const [passCheckBoolean, setPassCheckBoolean] = useState(false);
@@ -99,7 +99,7 @@ const PasswordChange = () => {
             />
             {payload.password && (
               <Xmark
-                style={{ top: "70%", right: "15%" }}
+                style={{ top: "70%" }}
                 icon={faCircleXmark}
                 onClick={() => setPayload({ ...payload, password: "" })}
               />
@@ -122,7 +122,7 @@ const PasswordChange = () => {
             />
             {passConfirm && (
               <Xmark
-                style={{ top: "70%", right: "15%" }}
+                style={{ top: "70%" }}
                 icon={faCircleXmark}
                 onClick={() => setPassConfirm("")}
               />

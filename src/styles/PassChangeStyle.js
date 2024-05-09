@@ -51,7 +51,7 @@ export const PassChangeWrap = styled.div`
       width: 100%;
       padding-top: 20px;
       button {
-        width: 350px;
+        width: 330px;
         height: 45px;
         font-size: 17px;
         font-weight: 600;

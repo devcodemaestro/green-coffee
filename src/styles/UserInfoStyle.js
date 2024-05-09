@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "./basic";
 
 export const UserInfoWrap = styled.div`
   width: 100%;
@@ -7,86 +8,89 @@ export const UserInfoWrap = styled.div`
 
 export const UserInputWrap = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
     > div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
       font-size: 16px;
       font-weight: 500;
-      > label {
-        margin-left: 2px;
-        width: 350px;
+      padding-bottom: 20px;
+      > div {
+        position: relative;
       }
-      > input {
-        width: 350px;
+      & label {
+        margin-left: 5px;
+        width: 330px;
+      }
+      & input {
+        width: 330px;
         height: 30px;
         border: none;
         border-bottom: 1px solid #583732;
         padding: 0 5px;
         font-size: 16px;
       }
-      input::placeholder {
+      .isActive-input {
+        width: 330px;
+        height: 25px;
+        border: none;
+        border-bottom: 1px solid ${colors.point};
+        padding: 0 5px;
+        font-size: 16px;
+      }
+      & input::placeholder {
         font-size: 13px;
       }
     }
-    .password {
-      > div {
-        width: 350px;
-        display: flex;
-        justify-content: space-between;
-        padding-right: 5px;
-        margin-left: 2px;
-        button {
-          width: 70px;
-          height: 25px;
-          background: #583732;
-          color: #fff;
-          border: none;
-          cursor: pointer;
-          border-radius: 4px;
-        }
-      }
-    }
-    > ul {
-      width: 350px;
+    ul {
+      width: 100%;
+      padding-bottom: 30px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       li {
         width: 160px;
-        > label {
+        position: relative;
+        & label {
           margin-left: 2px;
         }
-        > input {
+        & input {
           width: 160px;
           height: 25px;
           border: none;
-          border-bottom: 1px solid #583732;
+          border-bottom: 1px solid #d9d9d9;
           padding: 0 5px;
           font-size: 16px;
           margin-top: 5px;
         }
-        input::placeholder {
+        .isActive-input {
+          width: 160px;
+          height: 25px;
+          border: none;
+          border-bottom: 1px solid #6a1b1b;
+          padding: 0 5px;
+          font-size: 16px;
+          margin-top: 5px;
+        }
+        & input::placeholder {
           font-size: 13px;
         }
       }
     }
+    .warning-message {
+      padding-top: 3px;
+      font-size: 12px;
+      color: #eb5757;
+    }
     .buttons {
       width: 100%;
       button {
-        width: 350px;
+        width: 330px;
         height: 45px;
         font-size: 17px;
         font-weight: 600;
         color: #f7f7f7;
-        background: #BF8A30;
+        background: #bf8a30;
         border: none;
         border-radius: 8px;
         cursor: pointer;

@@ -21,6 +21,11 @@ const UserInfo = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [errState, setErrState] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [warningMsg, setWarningMsg] = useState({
+    nickCheck: "",
+    phoneCheck: "",
+    birthCheck: "",
+  });
 
   const navigate = useNavigate();
 
@@ -69,6 +74,57 @@ const UserInfo = () => {
     }
   };
 
+  const handleNickCheck = () => {
+    const regex = /[^가-힣]/;
+    const isValid = regex.test(payload.nickname);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      nickCheck:
+        payload.nickname && payload.nickname.length < 2
+          ? "2글자 이상 입력해주세요."
+          : isValid
+            ? "명확한 한글단어가 아닙니다."
+            : "",
+    }));
+  };
+
+  const handleBirthCheck = () => {
+    const regex = /^\d{6}$/;
+    const isValid = regex.test(payload.birthdate);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      birthCheck:
+        isValid && payload.birthdate ? "" : "생년월일을 확인해주세요.",
+    }));
+  };
+
+  const handlePhoneCheck = () => {
+    const regex = /^\d{11}$/;
+    const isValid = regex.test(payload.phone);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      phoneCheck: isValid && payload.phone ? "" : "전화번호를 확인해주세요.",
+    }));
+  };
+
+  const phoneFormatter = num => {
+    try {
+      num = num.replace(/\s/gi, "");
+
+      if (num.length === 11) {
+        return num.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+      } else {
+        return num;
+      }
+    } catch (err) {
+      return num;
+    }
+  };
+
+  const formatPhoneNumber = phoneFormatter(payload.phone);
+  const handleWriteCancel = item => {
+    setPayload({ ...payload, [item]: "" });
+  };
   return (
     <UserInfoWrap>
       {passCheckBoolean ? (
@@ -76,6 +132,12 @@ const UserInfo = () => {
           payload={payload}
           handleAccept={handleAccept}
           handleChange={handleChange}
+          formatPhoneNumber={formatPhoneNumber}
+          handlePhoneCheck={handlePhoneCheck}
+          handleBirthCheck={handleBirthCheck}
+          handleNickCheck={handleNickCheck}
+          handleWriteCancel={handleWriteCancel}
+          warningMsg={warningMsg}
         />
       ) : (
         <PassCheck
