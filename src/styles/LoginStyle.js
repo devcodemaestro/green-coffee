@@ -33,12 +33,16 @@ export const LoginWrap = styled.div`
 
 export const LoginInputWrap = styled.div`
   width: 330px;
+  .warning-message {
+    font-size: 12px;
+    color: #eb5757;
+  }
   & form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    > div {
+    > div > div {
       position: relative;
       font-size: 16px;
       font-weight: 500;

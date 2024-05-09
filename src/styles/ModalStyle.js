@@ -28,6 +28,17 @@ export const ConfirmModalWarp = styled.div`
     overflow: hidden;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
   }
+  
+  .modalConfirm-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img {
+      width: 130px;
+      height: 130px;
+      color: #683732;
+    }
+  }
 
   /* 모달 내용 */
   .modalConfirm-content {

@@ -14,7 +14,10 @@ const Login = () => {
   });
   const setAuthData = useSetRecoilState(AuthStateAtom);
   const setUserData = useSetRecoilState(UserStateAtom);
-
+  const [warningMsg, setWarningMsg] = useState({
+    emailCheck: "",
+    passCheck: "",
+  });
   const data = useRecoilValue(UserStateAtom);
   const navigate = useNavigate();
 
@@ -51,9 +54,33 @@ const Login = () => {
 
   const handleWriteCancel = item => {
     setPayload({ ...payload, [item]: "" });
+    switch (item) {
+      case "email":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          emailCheck: "이메일 형식을 확인해주세요.",
+        }));
+        break;
+      case "password":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          passCheck: "비밀번호를 양식에 맞춰 작성해주세요.",
+        }));
+        break;
+      default:
+        break;
+    }
   };
 
   console.log(data);
+  const handleEmailCheck = () => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const isValid = regex.test(payload.email);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      emailCheck: isValid ? "" : "이메일 형식을 확인해주세요.",
+    }));
+  };
 
   return (
     <LoginWrap>
@@ -75,6 +102,8 @@ const Login = () => {
         handleChange={handleChange}
         handleLogin={handleLogin}
         handleWriteCancel={handleWriteCancel}
+        handleEmailCheck={handleEmailCheck}
+        warningMsg={warningMsg}
       />
     </LoginWrap>
   );
