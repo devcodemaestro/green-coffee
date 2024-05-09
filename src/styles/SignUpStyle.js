@@ -28,7 +28,7 @@ export const SignInputWrap = styled.form`
       width: 330px;
       height: 25px;
       border: none;
-      border-bottom: 1px solid #d9d9d9;
+      border-bottom: 1px solid ${colors.disabled};
       padding: 0 5px;
       font-size: 16px;
     }
@@ -36,7 +36,7 @@ export const SignInputWrap = styled.form`
       width: 330px;
       height: 25px;
       border: none;
-      border-bottom: 1px solid #6a1b1b;
+      border-bottom: 1px solid ${colors.point};
       padding: 0 5px;
       font-size: 16px;
     }
