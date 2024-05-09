@@ -10,6 +10,14 @@ export const mq = {
   mobileSmall: "@media only screen and (max-width: 375px)",
 };
 
+// 폰트 굵기
+export const fontWeight = {
+  bold: 800,
+  medium: 500,
+  normal: 400,
+  light: 300,
+};
+
 // 기본색상
 export const colors = {
   // 헤더, 푸터 배경색
@@ -31,7 +39,6 @@ export const colors = {
   // 비활성화 배경색
   disabled: "#D9D9D9",
 };
-
 
 // 그림자효과
 export const shadow = {
@@ -231,7 +238,6 @@ export const FooterWrap = styled.div`
     color: #fff;
   }
 `;
-
 
 // 서브페이지 타이틀
 export const PageTitle = styled.h3`

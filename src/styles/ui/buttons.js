@@ -9,7 +9,29 @@ const defaultBtnStyle = {
   fontSize: "1rem",
   fontWeight: "700",
   border: "none",
-  borderRadius: ".5rem",
+  borderRadius: ".3125rem",
+  cursor: "pointer",
+};
+
+// 최소크기 버튼 기본 스타일
+const defaultMinBtnStyle = {
+  width: "4.6875rem",
+  height: "2.1875rem",
+  fontSize: "1rem",
+  fontWeight: "700",
+  border: "none",
+  borderRadius: ".3125rem",
+  cursor: "pointer",
+};
+
+// 1/3 버튼 기본 스타일
+const defaultOneThirdBtnStyle = {
+  width: "6.25rem",
+  height: "2.1875rem",
+  fontSize: "1rem",
+  fontWeight: "700",
+  border: "none",
+  borderRadius: ".3125rem",
   cursor: "pointer",
 };
 
@@ -54,11 +76,33 @@ export const PointBtn = styled.button`
   }
 `;
 
+// 담기
+export const PutBtn = styled.button`
+  ${defaultMinBtnStyle}
+  background: ${colors.main};
+  color: ${colors.white};
+  transition: 0.2s;
+  :hover {
+    ${buttonHover}
+  }
+`;
+
+// 주문하기
+export const OrderBtn = styled.button`
+  ${defaultOneThirdBtnStyle}
+  background: ${colors.point};
+  color: ${colors.white};
+  transition: 0.2s;
+  :hover {
+    ${buttonHover}
+  }
+`;
+
 // input 삭제 버튼
 export const Xmark = styled(FontAwesomeIcon)`
   position: absolute;
   right: 2%;
-  bottom: 10%;
+  top: 10%;
   color: #bababa;
   font-size: 14px;
   cursor: pointer;

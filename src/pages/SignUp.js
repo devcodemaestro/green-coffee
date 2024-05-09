@@ -17,10 +17,10 @@ const SignUp = () => {
   const [buttonColor, setButtonColor] = useState(false);
   const [passConfirm, setPassConfirm] = useState("");
   const [warningMsg, setWarningMsg] = useState({
-    emailCheck: "",
-    passCheck: "",
+    emailCheck: "이메일 형식을 확인해주세요.",
+    passCheck: "비밀번호를 양식에 맞춰 작성해주세요.",
     passConfirmCheck: "비밀번호가 일치하지 않습니다.",
-    nickCheck: "",
+    nickCheck: "2글자 이상 한글을 입력해주세요.",
     phoneCheck: "",
     birthCheck: "",
   });
@@ -49,6 +49,15 @@ const SignUp = () => {
     setButtonColor(checkPayload && checkPassConfirm);
   };
 
+  const handleEmailCheck = () => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const isValid = regex.test(payload.email);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      emailCheck: isValid ? "" : "이메일 형식을 확인해주세요.",
+    }));
+  };
+
   const handlePassCheck = () => {
     const regex =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/g;
@@ -57,6 +66,17 @@ const SignUp = () => {
       ...warningMsg,
       passCheck: isValid ? "" : "비밀번호를 양식에 맞춰 작성해주세요.",
     }));
+  };
+
+  const handlePassCrossCheck = () => {
+    setWarningMsg(warningMsg => {
+      const newWarningMsg = { ...warningMsg };
+
+      newWarningMsg.passConfirmCheck =
+        passConfirm !== payload.password ? "비밀번호가 일치하지 않습니다." : "";
+
+      return newWarningMsg;
+    });
   };
 
   // const handlePassCrossCheck = () => {
@@ -69,33 +89,38 @@ const SignUp = () => {
   //     phoneCheck: payload.phone.length !== 11 ? "전화번호를 확인해주세요." : "",
   //   }));
   // };
-  const nonKoreanPattern = /[^가-힣]/;
-  const handlePassCrossCheck = () => {
-    setWarningMsg(warningMsg => {
-      const newWarningMsg = { ...warningMsg };
 
-      newWarningMsg.passConfirmCheck =
-        passConfirm !== payload.password ? "비밀번호가 일치하지 않습니다." : "";
-
-      newWarningMsg.nickCheck =
+  const handleNickCheck = () => {
+    const regex = /[^가-힣]/;
+    const isValid = regex.test(payload.nickname);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      nickCheck:
         payload.nickname && payload.nickname.length < 2
           ? "2글자 이상 입력해주세요."
-          : nonKoreanPattern.test(payload.nickname)
+          : isValid
             ? "명확한 한글단어가 아닙니다."
-            : "";
+            : "",
+    }));
+  };
 
-      newWarningMsg.birthCheck =
-        payload.birthdate && payload.birthdate.length !== 6
-          ? "생년월일을 확인해주세요."
-          : "";
+  const handleBirthCheck = () => {
+    const regex = /^\d{6}$/;
+    const isValid = regex.test(payload.birthdate);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      birthCheck:
+        isValid && payload.birthdate ? "" : "생년월일을 확인해주세요.",
+    }));
+  };
 
-      newWarningMsg.phoneCheck =
-        payload.phone && payload.phone.length !== 11
-          ? "전화번호를 확인해주세요."
-          : "";
-
-      return newWarningMsg;
-    });
+  const handlePhoneCheck = () => {
+    const regex = /^\d{11}$/;
+    const isValid = regex.test(payload.phone);
+    setWarningMsg(warningMsg => ({
+      ...warningMsg,
+      phoneCheck: isValid && payload.phone ? "" : "전화번호를 확인해주세요.",
+    }));
   };
 
   const phoneFormatter = num => {
@@ -118,19 +143,62 @@ const SignUp = () => {
     navigate("/");
   };
 
+  const handleWriteCancel = item => {
+    setPayload({ ...payload, [item]: "" });
+    switch (item) {
+      case "email":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          emailCheck: "이메일 형식을 확인해주세요.",
+        }));
+        break;
+      case "password":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          passCheck: "비밀번호를 양식에 맞춰 작성해주세요.",
+        }));
+        break;
+      case "nickname":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          nickCheck: "2글자 이상 한글을 입력해주세요.",
+        }));
+        break;
+      case "birthdate":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          birthCheck: "생년월일을 확인해주세요.",
+        }));
+        break;
+      case "phone":
+        setWarningMsg(warningMsg => ({
+          ...warningMsg,
+          phoneCheck: "전화번호를 확인해주세요.",
+        }));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <SignUpWrap>
       <SignUpInput
         payload={payload}
         handleChange={handleChange}
-        handlePassCheck={handlePassCheck}
         warningMsg={warningMsg}
         passConfirm={passConfirm}
         setPassConfirm={setPassConfirm}
         handleSignUp={handleSignUp}
         buttonColor={buttonColor}
+        handlePassCheck={handlePassCheck}
+        handleEmailCheck={handleEmailCheck}
+        handleNickCheck={handleNickCheck}
+        handleBirthCheck={handleBirthCheck}
+        handlePhoneCheck={handlePhoneCheck}
         handlePassCrossCheck={handlePassCrossCheck}
         formatPhoneNumber={formatPhoneNumber}
+        handleWriteCancel={handleWriteCancel}
       />
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>

@@ -90,7 +90,13 @@ const Terms = () => {
         {saveCheckBox.includes(1) && saveCheckBox.includes(2) ? (
           <MainBtn onClick={handleNextPage}>다음</MainBtn>
         ) : (
-          <DisabledBtn onClick={handleNextPage}>다음</DisabledBtn>
+          <DisabledBtn
+            onClick={e => {
+              e.preventDefault();
+            }}
+          >
+            다음
+          </DisabledBtn>
         )}
       </div>
     </TermsWrap>

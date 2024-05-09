@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "./basic";
 
 export const SignUpWrap = styled.div`
   padding-top: 40px;
@@ -41,6 +42,7 @@ export const SignInputWrap = styled.form`
     }
     & input::placeholder {
       font-size: 13px;
+      color: ${colors.disabled};
     }
   }
   ul {
@@ -80,27 +82,5 @@ export const SignInputWrap = styled.form`
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-    button {
-      width: 334px;
-      height: 45px;
-      font-size: 17px;
-      font-weight: 600;
-      color: #fff;
-      background: #d9d9d9;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .isActive-button {
-      width: 334px;
-      height: 45px;
-      font-size: 17px;
-      font-weight: 600;
-      color: #fff;
-      background: #BF8A30;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
   }
 `;

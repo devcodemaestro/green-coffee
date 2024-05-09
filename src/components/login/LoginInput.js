@@ -2,18 +2,15 @@ import React from "react";
 import { LoginInputWrap } from "../../styles/LoginStyle";
 import { Link } from "react-router-dom";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-import {
-  DisabledBtn,
-  MainBtn,
-  Xmark,
-  xmarkStyle,
-} from "../../styles/ui/buttons";
+import { DisabledBtn, MainBtn, Xmark } from "../../styles/ui/buttons";
 
 const LoginInput = ({
   payload,
   handleChange,
   handleLogin,
   handleWriteCancel,
+  warningMsg,
+  handleEmailCheck,
 }) => {
   const isFormComplete = payload.email && payload.password;
   return (
@@ -21,35 +18,50 @@ const LoginInput = ({
       <form>
         <div>
           <label htmlFor="login-id">아이디 (이메일)</label>
-          <input
-            type="email"
-            id="login-id"
-            className={payload.email ? "isActiveLine" : ""}
-            placeholder="아이디"
-            autoComplete="username"
-            value={payload.email}
-            onChange={e => handleChange(e, "email")}
-          />
-          <Xmark
-            icon={faCircleXmark}
-            onClick={() => handleWriteCancel("email")}
-          />
+          <div>
+            <input
+              type="email"
+              id="login-id"
+              className={payload.email ? "isActiveLine" : ""}
+              placeholder="아이디"
+              autoComplete="username"
+              value={payload.email}
+              onChange={e => handleChange(e, "email")}
+              onBlur={handleEmailCheck}
+            />
+            {payload.email && (
+              <Xmark
+                icon={faCircleXmark}
+                style={{ position: "absolute", right: "2%", top: "10%" }}
+                onClick={() => handleWriteCancel("email")}
+              />
+            )}
+            {payload.email && (
+              <p className="warning-message">{warningMsg.emailCheck}</p>
+            )}
+          </div>
         </div>
+
         <div>
           <label htmlFor="login-pass">비밀번호</label>
-          <input
-            type="password"
-            id="login-pass"
-            className={payload.password ? "isActiveLine" : ""}
-            placeholder="비밀번호"
-            autoComplete="current-password"
-            value={payload.password}
-            onChange={e => handleChange(e, "password")}
-          />
-          <Xmark
-            icon={faCircleXmark}
-            onClick={() => handleWriteCancel("password")}
-          />
+          <div>
+            <input
+              type="password"
+              id="login-pass"
+              className={payload.password ? "isActiveLine" : ""}
+              placeholder="비밀번호"
+              autoComplete="current-password"
+              value={payload.password}
+              onChange={e => handleChange(e, "password")}
+            />
+            {payload.password && (
+              <Xmark
+                icon={faCircleXmark}
+                style={{ position: "absolute", right: "2%", top: "10%" }}
+                onClick={() => handleWriteCancel("password")}
+              />
+            )}
+          </div>
         </div>
         <ul>
           <li>

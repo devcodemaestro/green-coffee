@@ -37,7 +37,7 @@ export const ConfirmModalWarp = styled.div`
       color: #683732;
     }
   }
-  
+
   /* 모달 내용 */
   .modalConfirm-content {
     height: 100%;
@@ -83,7 +83,7 @@ export const ModalOkBtn = styled.button`
   width: 250px;
   height: 45px;
   font-size: 16px;
-  background: #BF8A30;
+  background: #bf8a30;
   color: #fff;
   border: none;
   border-radius: 6px;
