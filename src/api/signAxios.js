@@ -10,3 +10,13 @@ export const postSignUp = async ({ payload }) => {
     console.log(err);
   }
 };
+
+export const putResign = async(data) => {
+  try {
+    const res = await api.put(`/user/resign`, data)
+    const result =res.status;
+    console.log(result)
+  } catch (err) {
+    console.log(err)
+  }
+}
