@@ -24,3 +24,14 @@ export const getMenuCate = async (cateId, setMenuData) => {
     console.log(err);
   }
 };
+
+export const getOderList = async(setListData) => {
+try {
+  const res = await api.get(`/orders/list`)
+  const result = res.data;
+  setListData(result)
+  console.log(result)
+} catch (err) {
+  console.log(err)
+}
+}
