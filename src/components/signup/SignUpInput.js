@@ -11,7 +11,6 @@ const SignUpInput = ({
   passConfirm,
   setPassConfirm,
   handleSignUp,
-  buttonColor,
   handleEmailCheck,
   handleNickCheck,
   handleBirthCheck,

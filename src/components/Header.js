@@ -31,8 +31,7 @@ const Header = () => {
     userinfo: "정보수정",
     community: "커뮤니티",
     passchange: "비밀번호 변경",
-    findid: "아이디 찾기",
-    findpw: "비밀번호 찾기",
+    findaccount: "아이디 / 비밀번호 찾기",
   };
 
   const headerTitle = headerList[pathName] || "";

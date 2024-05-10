@@ -75,8 +75,7 @@ const LoginInput = ({
               <label htmlFor="login-check">자동 로그인</label>
             </div>
             <div>
-              <Link to="/findid">아이디찾기</Link> /{" "}
-              <Link to="/findpw">비밀번호 찾기</Link>
+              <Link to="/findaccount">아이디 / 비밀번호 찾기</Link>
             </div>
           </li>
           <li>
