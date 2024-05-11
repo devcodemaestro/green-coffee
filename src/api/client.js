@@ -2,14 +2,14 @@ import axios from "axios";
 import { setCookie } from "./cookie";
 
 const api = axios.create({
-  baseURL: `http://back.green-coffee.shop`,
+  baseURL: `https://back.green-coffee.shop`,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 const client = axios.create({
-  baseURL: `http://back.green-coffee.shop`,
+  baseURL: `https://back.green-coffee.shop`,
   headers: {
     "Content-Type": "application/json",
   },
