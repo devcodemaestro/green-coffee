@@ -1,12 +1,16 @@
 import React from "react";
 import { ItemBoxWrap } from "../../styles/OrderStyle";
 
-const ItemBox = ({ menuData }) => {
+const ItemBox = ({ menuData, handleMenuClick }) => {
   return (
     <ItemBoxWrap>
       <div>
         {menuData.map(item => (
-          <div key={item.menu_id} className="box-wrap">
+          <div
+            key={item.menu_id}
+            className="box-wrap"
+            onClick={() => handleMenuClick(item.menu_id, item.name)}
+          >
             <div className="box-img">
               <img src={`${item.menu_imgurl}`} alt="" />
             </div>

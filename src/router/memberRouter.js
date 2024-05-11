@@ -34,7 +34,7 @@ const memberRouter = () => {
       ),
     },
     {
-      path: "/menudetail",
+      path: "/menudetail/:menu_id/:name",
       element: (
         <Suspense fallback={<Loading />}>
           <MenuDetail />

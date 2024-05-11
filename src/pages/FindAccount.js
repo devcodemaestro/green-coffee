@@ -81,17 +81,18 @@ const FindAccount = () => {
       });
       setResultState(resStatus);
       setModalOpen(true);
-
-      console.log(resultState);
-      console.log(resStatus);
     } catch (err) {
-      console.log(err);
+      setErrMsg("작성하신 내용을 다시 확인해주세요.");
     }
   };
 
   const handleConfirm = () => {
-    setModalOpen(false);
-    navigate("/");
+    if (resultState === 200 && 201) {
+      setModalOpen(false);
+      navigate("/");
+    } else {
+      setModalOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -148,9 +149,9 @@ const FindAccount = () => {
       )}
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
-          {resultState === 500 ? (
+          {errMsg !== "" ? (
             <span>{errMsg}</span>
-          ) : resultState === 200 ? (
+          ) : resultState === (200 || 201) && findState === true ? (
             <span>아이디: {resultMsg}</span>
           ) : (
             <span>임시비밀번호: {resultMsg}</span>

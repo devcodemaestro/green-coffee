@@ -34,13 +34,12 @@ export const postFindAccount = async ({
         url = `/user/findemail`;
         break;
       case false:
-        url = `/user/findpw`;
+        url = `/user/findpw?nickname=${payload.nickname}&phone=${payload.phone}`;
         break;
     }
     const res = await api.post(url, payload);
     const resStatus = res.status;
     const result = res.data;
-    console.log(result);
     switch (resStatus) {
       case 200:
         setResultMsg(result);
@@ -48,13 +47,10 @@ export const postFindAccount = async ({
       case 201:
         setResultMsg(result);
         break;
-      case 500:
-        setErrMsg("작성하신 내용을 다시 확인해주세요.");
-        break;
     }
 
     return resStatus;
   } catch (err) {
-    console.log(err);
+    setErrMsg("작성하신 내용을 다시 확인해주세요.");
   }
 };

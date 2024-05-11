@@ -25,13 +25,23 @@ export const getMenuCate = async (cateId, setMenuData) => {
   }
 };
 
-export const getOderList = async(setListData) => {
-try {
-  const res = await api.get(`/orders/list`)
-  const result = res.data;
-  setListData(result)
-  console.log(result)
-} catch (err) {
-  console.log(err)
-}
-}
+export const getOderList = async setListData => {
+  try {
+    const res = await api.get(`/orders/list`);
+    const result = res.data;
+    setListData(result);
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postOrderDetail = async (formData, setMenuData) => {
+  try {
+    const res = await api.post(`/menu/detail`, formData);
+    const result = res.data;
+    setMenuData(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
