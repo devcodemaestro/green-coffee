@@ -31,6 +31,7 @@ export const getOderList = async setListData => {
     const result = res.data;
     setListData(result);
     console.log(result);
+    return result;
   } catch (err) {
     console.log(err);
   }

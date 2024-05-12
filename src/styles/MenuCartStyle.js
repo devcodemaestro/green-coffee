@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors } from "./basic";
+import { colors, ellipsis } from "./basic";
 
 export const MenuCartWrap = styled.div`
   button {
@@ -11,147 +11,157 @@ export const MenuCartWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid ${colors.disabled};
     padding: 15px;
-    color: #583732;
+    color: ${colors.black};
     font-weight: 700;
   }
 `;
 
-export const MenuCartItemsWrap = styled.ul`
-  li {
-    position: relative;
-    padding: 20px 15px;
-    border-bottom: 1px solid #d9d9d9;
+export const MenuCartItemsWrap = styled.div`
+  width: 100%;
+  padding-top: 10px;
+  color: ${colors.point};
+  > div {
     display: flex;
-    gap: 20px;
-    .menu_img {
+    align-items: center;
+    flex-direction: column;
+    .item-wrap {
       display: flex;
+      justify-content: flex-start;
       align-items: center;
-      .img_wrap {
-        width: 120px;
-        height: 120px;
-        min-width: 120px;
-        border-radius: 15px;
-        background: lightgray;
+      gap: 15px;
+      width: 100%;
+      height: 140px;
+      border-bottom: 1px solid ${colors.disabled};
+      .item-img-wrap {
+        width: calc(25% - 20px);
+        height: 100px;
+        border-radius: 20px;
+        box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.3);
+        background: red;
         img {
-          border-radius: 15px;
-          overflow: hidden;
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          border-radius: 20px;
+          object-fit: fill;
         }
       }
-    }
-
-    .menu_info {
-      position: relative;
-      width: calc(100% - 120px);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      color: #583732;
-      font-weight: 700;
-      .del_btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 24px;
-        height: 24px;
-        border: 2px solid lightgray;
-        border-radius: 50%;
-        transform: rotate(45deg);
-        &::before {
-          content: '';
-          position: relative;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: block;
-          width: 18px;
-          height: 2px;
-          background: lightgray;
-        }
-        &::after {
-          content: '';
-          position: relative;
-          top: 40%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: block;
-          width: 2px;
-          height: 18px;
-          background: lightgray;
-        }
-      }
-    }
-    .menu_title {
-      font-weight: 500;
-    }
-    .menu_price {
-      margin: 4px 0 8px;
-      font-size: 19px;
-    }
-    .menu_option {
-      font-size: 13px;
-    }
-    .menu_change_option {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 16px;
-      & > button {
-        // width: 60px;
-        height: 32px;
-        line-height: 32px;
-        border-radius: 12px;
-        padding: 0 8px;
-        background: rgb(185, 148, 112);
-        color: white;
-        font-size: 13px;
-        font-weight: 700;
-        text-align: center;
-      }
-      .menu_add {
-        display: flex;
-        align-items: center;
-        font-size: 19px;
-        span {
-          display: block;
-          padding: 0 16px;
-        }
-        button {
-          position: relative;
-          width: 30px;
-          height: 30px;
-          border: 3px solid rgb(112, 65, 22);
-          border-radius: 50%;
-          &::before {
-            content: '';
-            position: relative;
-            top: 1.5px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: block;
-            width: 18px;
-            height: 3px;
-            background: rgb(112, 65, 22);
+      .item-text-wrap {
+        width: 35%;
+        font-size: 12px;
+        > div {
+          :nth-of-type(1) {
+            font-size: 14px;
+            font-weight: 500;
+            ${ellipsis.line1}
           }
-          &:last-of-type::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: block;
-            width: 3px;
-            height: 18px;
-            background: rgb(112, 65, 22);
+          :nth-of-type(2) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            & span {
+              display: block;
+              ::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 16.5%;
+                transform: translate(-50%, -50%);
+                display: block;
+                width: 1px;
+                height: 14px;
+                background: ${colors.disabled};
+              }
+            }
+          }
+          :nth-of-type(3) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            & span {
+              display: block;
+              ::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 19.5%;
+                transform: translate(-50%, -50%);
+                display: block;
+                width: 1px;
+                height: 14px;
+                background: ${colors.disabled};
+              }
+            }
+          }
+          :nth-of-type(4) {
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 10px;
+          }
+        }
+      }
+      .item-price-wrap {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-direction: column;
+        padding: 11px 0;
+        > div {
+          font-size: 16px;
+          font-weight: 600;
+          :nth-of-type(2) {
+          }
+        }
+        .pm-icon-wrap {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 10px;
+          button {
+            width: 80px;
+            height: 30px;
+            background: ${colors.main};
+            border-radius: 8px;
+            color: ${colors.white};
+          }
+          .pm-icon {
+            width: 25px;
+            height: 25px;
+            line-height: 21px;
+            text-align: center;
+            border: 1px solid ${colors.point};
+            border-radius: 50%;
+            cursor: pointer;
+          }
+        }
+        .del-btn {
+          cursor: pointer;
+          .del-bt {
+            color: ${colors.disabled};
           }
         }
       }
     }
   }
+`;
+
+export const PaymentBtn = styled.button`
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 300px;
+  padding: 9px 18px;
+  border-radius: 24px;
+  background: rgb(88, 55, 50) !important;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
 `;
 
 export const ChangeOptionWrap = styled.div`
@@ -164,8 +174,10 @@ export const ChangeOptionWrap = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: rgba(0, 23, 60, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  backdrop-filter: blur(2px);
+  overflow: "unset";
 
   .modal_box {
     display: flex;
@@ -235,7 +247,7 @@ export const ChangeOptionWrap = styled.div`
       border: 3px solid rgb(112, 65, 22);
       border-radius: 50%;
       &::before {
-        content: '';
+        content: "";
         position: relative;
         top: 1.5px;
         left: 50%;
@@ -246,7 +258,7 @@ export const ChangeOptionWrap = styled.div`
         background: rgb(112, 65, 22);
       }
       &:last-of-type::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;

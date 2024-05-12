@@ -86,7 +86,7 @@ const memberRouter = () => {
       ),
     },
     {
-      path: "/orderlist-detail",
+      path: "/orderlist-detail/:order_id/",
       element: (
         <Suspense fallback={<Loading />}>
           <OrderListDetail />

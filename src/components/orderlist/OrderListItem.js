@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { OrderListItemWrap } from "../../styles/OrderListStyle";
 
 const OrderListItem = ({ listData }) => {
+  const nav = useNavigate();
   const formatDate = createDate => {
     const dateObj = new Date(createDate);
 
@@ -37,14 +39,22 @@ const OrderListItem = ({ listData }) => {
               </div>
             </div>
             <div className="right_area">
-              <div className="name">{item.orderItems[0].menu.name} 외</div>
+              <div
+                className="name"
+                style={{ cursor: "pointer" }}
+                onClick={() => nav(`/orderlist-detail/${item.orderId}`)}
+              >
+                {item.orderItems[0].menu.name} 외
+              </div>
               <div className="info">
                 <div className="box box01">{formatDate(item.create_date)}</div>
                 {/* <div className="box box02">
                   대구 중앙로점 {formatPrice(item.totalOrderPrice)}원
                 </div> */}
               </div>
-              <div className="state">수령완료 (대구 중앙로점 {formatPrice(item.totalOrderPrice)}원)</div>
+              <div className="state">
+                수령완료 (대구 중앙로점 {formatPrice(item.totalOrderPrice)}원)
+              </div>
             </div>
           </li>
         ))}

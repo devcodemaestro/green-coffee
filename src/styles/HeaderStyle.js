@@ -6,6 +6,7 @@ export const HeaderWrap = styled.div`
   position: fixed;
   top: 0;
   background: #f7f7f7;
+  z-index: 998;
   overflow: hidden;
   @media all and (min-width: 767px) {
     width: 480px;
