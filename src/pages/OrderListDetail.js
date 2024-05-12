@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { getOderList } from "../api/orderAxios";
 import { OrderListDetailWrap } from "../styles/OrderListStyle";
 import OrderDetailItem from "../components/orderlist/OrderDetailItem";
+import OrderDetailTop from "../components/orderlist/OrderDetailTop";
 
 const OrderListDetail = () => {
   const { order_id } = useParams();
@@ -16,6 +17,8 @@ const OrderListDetail = () => {
   }, []);
   console.log(order_id);
 
+  const formatPrice = price => price.toLocaleString();
+
   const getOderListWait = async () => {
     const data = await getOderList(setDetailData);
     const idx = await data.findIndex(item => item?.orderId == order_id);
@@ -27,7 +30,7 @@ const OrderListDetail = () => {
 
   return (
     <OrderListDetailWrap>
-      <div className="order_status">OrderListDetail</div>
+      <OrderDetailTop />
       <span className="hr"></span>
       <div className="detail_item">
         <div className="item_title">매장정보</div>
@@ -46,6 +49,7 @@ const OrderListDetail = () => {
         detailData={detailData}
         orderDetail={orderDetail}
         index={index}
+        formatPrice={formatPrice}
       />
       <span className="hr"></span>
       <div className="detail_item">

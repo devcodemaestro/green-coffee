@@ -97,3 +97,68 @@ export const OrderListDetailWrap = styled.div`
     height: 1px;
   }
 `;
+
+export const OrderListDetailTopWrap = styled.div`
+  padding: 30px 0 10px 0;
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 25px;
+    span {
+      width: 350px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 10px;
+      background: ${colors.green};
+      text-align: center;
+      color: ${colors.white};
+      font-size: 19px;
+    }
+  }
+`;
+
+export const DetailStatusWrap = styled.div`
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    li {
+      position: relative;
+      .circle {
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+      }
+      .line {
+        width: 100px;
+        ::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 119px;
+          height: 2px;
+          background: ${colors.disabled};
+        }
+      }
+    }
+  }
+`;
+export const DetailItemWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 62px;
+  padding: 8px 0 30px 0;
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;

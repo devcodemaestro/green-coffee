@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderDetailItem = ({ detailData, orderDetail, index }) => {
+const OrderDetailItem = ({ detailData, orderDetail, index, formatPrice }) => {
   return (
     <>
       <span className="hr"></span>
@@ -12,7 +12,7 @@ const OrderDetailItem = ({ detailData, orderDetail, index }) => {
               <ul className="order_menu">
                 <div>
                   <span>{item.menu.name}</span>
-                  <span>{item.menu.menu_price}원</span>
+                  <span>{formatPrice(item.menu.menu_price)}원</span>
                 </div>
                 <li className="order_option">
                   <span className="lightgray">샷추가</span>
@@ -48,7 +48,10 @@ const OrderDetailItem = ({ detailData, orderDetail, index }) => {
         <div className="item_title">
           <span>총 주문 금액</span>
           <span>
-            {index != undefined ? detailData[index]?.totalOrderPrice : ""}원
+            {index != undefined
+              ? formatPrice(detailData[index]?.totalOrderPrice)
+              : ""}
+            원
           </span>
         </div>
       </div>
