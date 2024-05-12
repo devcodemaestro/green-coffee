@@ -16,8 +16,8 @@ const Search = () => {
     }
   };
 
-  const handleMenuClick = (id, name) => {
-    navigate(`/menudetail/${id}/${name}`);
+  const handleMenuClick = (cate, id, name) => {
+    navigate(`/menudetail/${cate}/${id}/${name}`);
     console.log(id, name);
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import TotalPrice from "../menudetail/TotalPrice";
+import { PaymentItemWrap } from "../../styles/PaymentStyle";
 
 const PaymentItem = () => {
   const dummy = [
@@ -17,7 +17,7 @@ const PaymentItem = () => {
     },
     {
       id: 2,
-      img: "까궁",
+      img: "개구리사진",
       name: "개구리탕",
       ice: "많이",
       size: "Grande",
@@ -29,7 +29,7 @@ const PaymentItem = () => {
     },
     {
       id: 3,
-      img: "까궁",
+      img: "항아리사진",
       name: "십전대보탕",
       ice: "많이",
       size: "Grande",
@@ -40,7 +40,30 @@ const PaymentItem = () => {
       coupon: 5,
     },
   ];
-  return <div>PaymentItem</div>;
+  return (
+    <PaymentItemWrap>
+      <div>
+        {dummy.map(item => (
+          <div key={item.id} className="item-wrap">
+            <div className="item-img-wrap">
+              <img src={`${item.img}`} alt="" />
+            </div>
+            <div className="item-text-wrap">
+              <div>{item.name}</div>
+              <div>Ice: {item.ice}</div>
+              <div>Size: {item.size}</div>
+              <div>Shot: {item.shot}개</div>
+              <div>Cream: {item.cream}개</div>
+            </div>
+            <div className="item-price-wrap">
+              <div>{item.price}원</div>
+              <div>{item.TotalPrice}원</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </PaymentItemWrap>
+  );
 };
 
 export default PaymentItem;

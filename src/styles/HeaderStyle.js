@@ -3,6 +3,14 @@ import styled from "@emotion/styled";
 export const HeaderWrap = styled.div`
   width: 100%;
   height: 60px;
+  position: fixed;
+  top: 0;
+  background: #f7f7f7;
+  overflow: hidden;
+  @media all and (min-width: 767px) {
+    width: 480px;
+    /* margin: 0 auto; */
+  }
 `;
 
 export const HeaderInner = styled.ul`

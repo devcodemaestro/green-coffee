@@ -43,12 +43,12 @@ const OptionItem = ({ payload, setPayload, handlePlusMinus }) => {
           <span>샷 추가</span>
           <div>
             <div>+{payload.shotPrice}원</div>
-            <div onClick={() => handlePlusMinus("shot", 1)}>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <div>{payload.shot}</div>
             <div onClick={() => handlePlusMinus("shot", -1)}>
               <FontAwesomeIcon icon={faMinus} />
+            </div>
+            <div>{payload.shot}</div>
+            <div onClick={() => handlePlusMinus("shot", 1)}>
+              <FontAwesomeIcon icon={faPlus} />
             </div>
           </div>
         </li>
@@ -56,12 +56,12 @@ const OptionItem = ({ payload, setPayload, handlePlusMinus }) => {
           <span>크림 추가</span>
           <div>
             <div>+{payload.creamPrice}원</div>
-            <div onClick={() => handlePlusMinus("cream", 1)}>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <div>{payload.cream}</div>
             <div onClick={() => handlePlusMinus("cream", -1)}>
               <FontAwesomeIcon icon={faMinus} />
+            </div>
+            <div>{payload.cream}</div>
+            <div onClick={() => handlePlusMinus("cream", 1)}>
+              <FontAwesomeIcon icon={faPlus} />
             </div>
           </div>
         </li>

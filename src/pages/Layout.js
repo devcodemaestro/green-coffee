@@ -8,7 +8,13 @@ const Layout = () => {
   const location = useLocation();
   return (
     <LayoutWrap>
-      {location.pathname === "/home" ? "" : <Header />}
+      {location.pathname === "/home" ? (
+        ""
+      ) : (
+        <div className="space">
+          <Header />
+        </div>
+      )}
       <LayoutInner>
         <main>
           <Outlet />

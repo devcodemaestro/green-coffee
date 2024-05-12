@@ -10,12 +10,12 @@ const TotalPrice = ({ totalEa, totalPrice, handletotalPM, handleAddCart }) => {
         <div className="qa-select">
           <span>수량 선택</span>
           <div className="ea-icon-wrap">
-            <div className="ea-icon" onClick={() => handletotalPM(1)}>
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-            <div>{totalEa}</div>
             <div className="ea-icon" onClick={() => handletotalPM(-1)}>
               <FontAwesomeIcon icon={faMinus} />
+            </div>
+            <div>{totalEa}</div>
+            <div className="ea-icon" onClick={() => handletotalPM(1)}>
+              <FontAwesomeIcon icon={faPlus} />
             </div>
           </div>
         </div>
