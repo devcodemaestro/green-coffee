@@ -25,6 +25,15 @@ export const OrderWrap = styled.div`
       cursor: pointer;
       border-bottom: 2px solid ${colors.main};
     }
+    .search-wrap {
+      width: calc(100% - 260px);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .search-icon {
+      color: ${colors.main};
+      cursor: pointer;
+    }
   }
   .bottom-info {
     display: flex;

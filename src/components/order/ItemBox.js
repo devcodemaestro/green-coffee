@@ -9,7 +9,9 @@ const ItemBox = ({ menuData, handleMenuClick }) => {
           <div
             key={item.menu_id}
             className="box-wrap"
-            onClick={() => handleMenuClick(item.menu_id, item.name)}
+            onClick={() =>
+              handleMenuClick(item.category, item.menu_id, item.name)
+            }
           >
             <div className="box-img">
               <img src={`${item.menu_imgurl}`} alt="" />

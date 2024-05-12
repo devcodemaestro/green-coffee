@@ -103,7 +103,7 @@ export const SizeItemWrap = styled.div`
 
 export const OptionItemWrap = styled.div`
   .option-title {
-    padding: 0 0 30px 20px;
+    padding-left: 5px;
     font-size: 19px;
   }
   ul {
@@ -159,6 +159,7 @@ export const OptionItemWrap = styled.div`
               border-radius: 50%;
               text-align: center;
               background: ${colors.disabled};
+              cursor: pointer;
             }
           }
         }
@@ -176,6 +177,7 @@ export const OptionItemWrap = styled.div`
               border-radius: 50%;
               text-align: center;
               background: ${colors.disabled};
+              cursor: pointer;
             }
           }
         }
@@ -185,41 +187,61 @@ export const OptionItemWrap = styled.div`
 `;
 
 export const TotalPriceWrap = styled.div`
-  .buttons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px;
-    padding: 30px 0;
-  }
-
   .total-price-wrap {
     display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-top: 1px solid ${colors.disabled};
-
+    flex-direction: column;
     .qa-select {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      padding: 20px 0;
-      > div {
-        :not(:nth-of-type(2)) {
+      height: 50px;
+      padding: 0 10px;
+      margin: 30px 0;
+      /* background: ${colors.disabled}; */
+      background: #e9e9e9;
+      span {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .ea-icon-wrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+        .ea-icon {
           width: 30px;
           height: 30px;
           line-height: 30px;
           text-align: center;
           border-radius: 50%;
-          background: ${colors.disabled};
+          background: ${colors.white};
+          cursor: pointer;
         }
       }
     }
-
     .total-price {
-      padding: 20px 0;
-      font-size: 20px;
-      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 20px 10px;
+      .price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      button {
+        width: 320px;
+        height: 50px;
+        background: ${colors.main};
+        border: none;
+        border-radius: 8px;
+        color: ${colors.white};
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+      }
     }
   }
 `;

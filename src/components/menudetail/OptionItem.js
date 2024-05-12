@@ -3,7 +3,7 @@ import { OptionItemWrap } from "../../styles/MenuDetailStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const OptionItem = () => {
+const OptionItem = ({ payload, setPayload, handlePlusMinus }) => {
   return (
     <OptionItemWrap>
       <div className="option-title">
@@ -17,27 +17,24 @@ const OptionItem = () => {
               type="radio"
               id="ice-small"
               name="ice"
-              value="small"
-              // checked={userType === "ROLE_USER"}
-              // onChange={handleUserTypeChange}
+              value={1}
+              onChange={e => setPayload({ ...payload, ice: e.target.value })}
             />
             <label htmlFor="ice-small">적게</label>
             <input
               type="radio"
               id="ice-middle"
               name="ice"
-              value="middle"
-              // checked={userType === "ROLE_COMPANY"}
-              // onChange={handleUserTypeChange}
+              value={2}
+              onChange={e => setPayload({ ...payload, ice: e.target.value })}
             />
             <label htmlFor="ice-middle">보통</label>
             <input
               type="radio"
               id="ice-large"
               name="ice"
-              value="large"
-              // checked={userType === "ROLE_COMPANY"}
-              // onChange={handleUserTypeChange}
+              value={3}
+              onChange={e => setPayload({ ...payload, ice: e.target.value })}
             />
             <label htmlFor="ice-large">많이</label>
           </div>
@@ -45,12 +42,12 @@ const OptionItem = () => {
         <li>
           <span>샷 추가</span>
           <div>
-            <div>500원</div>
-            <div>
+            <div>+{payload.shotPrice}원</div>
+            <div onClick={() => handlePlusMinus("shot", 1)}>
               <FontAwesomeIcon icon={faPlus} />
             </div>
-            <div>1</div>
-            <div>
+            <div>{payload.shot}</div>
+            <div onClick={() => handlePlusMinus("shot", -1)}>
               <FontAwesomeIcon icon={faMinus} />
             </div>
           </div>
@@ -58,12 +55,12 @@ const OptionItem = () => {
         <li>
           <span>크림 추가</span>
           <div>
-            <div>500원</div>
-            <div>
+            <div>+{payload.creamPrice}원</div>
+            <div onClick={() => handlePlusMinus("cream", 1)}>
               <FontAwesomeIcon icon={faPlus} />
             </div>
-            <div>1</div>
-            <div>
+            <div>{payload.cream}</div>
+            <div onClick={() => handlePlusMinus("cream", -1)}>
               <FontAwesomeIcon icon={faMinus} />
             </div>
           </div>
