@@ -55,14 +55,8 @@ const Resign = () => {
         <div className="mypage_withdrawal">
           <div className="alert_text">정말로 탈퇴하시겠습니까?</div>
           <div className="member_info">
-            <dl>
-              <dt>닉네임 : {userData.nickname}</dt>
-              <dd></dd>
-            </dl>
-            <dl>
-              <dt>휴대폰 :</dt>
-              <dd>{userData.phone}</dd>
-            </dl>
+            <span>닉네임: {userData.nickname}</span>
+            <span>휴대폰: {userData.phone}</span>
           </div>
           <ResignInfo userData={userData} />
           <div className="agree_wrap">
