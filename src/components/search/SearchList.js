@@ -1,11 +1,15 @@
 import React from "react";
-import { ItemBoxWrap } from "../../styles/OrderStyle";
+import { SearchListWrap } from "../../styles/SearchStyle";
 
-const ItemBox = ({ menuData, handleMenuClick }) => {
+const SearchList = ({ searchData, handleMenuClick }) => {
+  const totalEa = searchData.length;
   return (
-    <ItemBoxWrap>
-      <div>
-        {menuData.map(item => (
+    <SearchListWrap>
+      {searchData?.length > 1 && (
+        <div className="search-result">검색 결과 {totalEa}개</div>
+      )}
+      <div className="search-inner">
+        {searchData?.map(item => (
           <div
             key={item.menu_id}
             className="box-wrap"
@@ -24,8 +28,8 @@ const ItemBox = ({ menuData, handleMenuClick }) => {
           </div>
         ))}
       </div>
-    </ItemBoxWrap>
+    </SearchListWrap>
   );
 };
 
-export default ItemBox;
+export default SearchList;

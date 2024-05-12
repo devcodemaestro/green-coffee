@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { OrderWrap } from "../styles/OrderStyle";
 import { getMenuCate } from "../api/orderAxios";
 import ItemBox from "../components/order/ItemBox";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Order = () => {
   const [cateId, setCateId] = useState(1);
@@ -31,9 +33,12 @@ const Order = () => {
     setCateId(id);
   };
 
-  const handleMenuClick = (id, name) => {
-    navigate(`/menudetail/${id}/${name}`);
-    console.log(id, name);
+  const handleMenuClick = (cate, id, name) => {
+    navigate(`/menudetail/${cate}/${id}/${name}`);
+  };
+
+  const handlePageMove = () => {
+    navigate("/search");
   };
 
   useEffect(() => {
@@ -52,6 +57,13 @@ const Order = () => {
             <span>{item.mname}</span>
           </li>
         ))}
+        <li className="search-wrap">
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            className="search-icon"
+            onClick={handlePageMove}
+          />
+        </li>
       </ul>
       <ItemBox menuData={menuData} handleMenuClick={handleMenuClick} />
       <div className="bottom-info">
