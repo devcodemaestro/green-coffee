@@ -89,7 +89,7 @@ const PasswordChange = () => {
               type="password"
               id="change-newpass"
               className={payload.password ? "isActive-input" : ""}
-              placeholder="영문과 숫자를 모두 포함하는 6~20자"
+              placeholder="영문과 숫자와 기호를 모두 포함하는 6~20자"
               autoComplete="current-password"
               value={payload.password}
               onChange={e =>
@@ -114,7 +114,7 @@ const PasswordChange = () => {
               type="password"
               id="change-newpassok"
               className={passConfirm ? "isActive-input" : ""}
-              placeholder="영문과 숫자를 모두 포함하는 6~20자"
+              placeholder="영문과 숫자와 기호를 모두 포함하는 6~20자"
               autoComplete="current-password"
               value={passConfirm}
               onChange={e => setPassConfirm(e.target.value)}

@@ -4,6 +4,8 @@ import Loading from "../components/Loading";
 const Home = lazy(() => import("../pages/Home"));
 const MenuCart = lazy(() => import("../pages/MenuCart"));
 const MenuDetail = lazy(() => import("../pages/MenuDetail"));
+const Event = lazy(() => import("../pages/Event"));
+const EventDetail = lazy(() => import("../pages/EventDetail"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 const Order = lazy(() => import("../pages/Order"));
 const OrderList = lazy(() => import("../pages/OrderList"));
@@ -40,6 +42,22 @@ const memberRouter = () => {
       element: (
         <Suspense fallback={<Loading />}>
           <MenuDetail />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/event",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Event />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/eventdetail",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <EventDetail />
         </Suspense>
       ),
     },

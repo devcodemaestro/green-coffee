@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
-export const HomeWrap = styled.div`
+export const EventWrap = styled.div`
   width: 100%;
-  padding-bottom: 20px;
+  padding: 1.875rem 0;
 `;
 
-export const HomeInner = styled.div`
+export const EventInner = styled.div`
   .home-logo {
     width: 100%;
     height: 150px;
@@ -17,43 +17,6 @@ export const HomeInner = styled.div`
     > img {
       width: 100%;
       height: 150px;
-    }
-  }
-`;
-
-export const HomeWelcomWrap = styled.div`
-  margin-bottom: 20px;
-  > .inner {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    > div {
-      :first-of-type {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40%;
-        height: 140px;
-      }
-      :last-of-type {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding-left: 20px;
-        color: #444;
-        .welcome {
-          font-size: 20px;
-          font-weight: 500;
-        }
-        .coupon {
-          display: flex;
-          flex-direction: column;
-          font-size: 14px;
-        }
-      }
     }
   }
 `;

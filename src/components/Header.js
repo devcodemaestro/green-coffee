@@ -32,6 +32,8 @@ const Header = () => {
     userinfo: "정보수정",
     community: "커뮤니티",
     passchange: "비밀번호 변경",
+    event: "이벤트",
+    eventdetail: "이벤트상세",
     findaccount: "아이디 / 비밀번호 찾기",
     search: "주문",
   };

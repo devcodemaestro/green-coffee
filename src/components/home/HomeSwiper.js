@@ -7,12 +7,29 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/scss/pagination";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomeSwiper = ({ eventData }) => {
+  const navigate = useNavigate();
+
   return (
     <HomeSwiperWrap>
       <div className="inner">
-        <h3>진행중인 이벤트</h3>
+        <div style={{ display: "flex" }}>
+          <h3>진행중인 이벤트</h3>
+          <Link to="/event">
+            <h4
+              style={{
+                color: "#6A1B1B",
+                fontSize: "12px",
+                paddingTop: "0.625rem",
+                paddingRight: "0.625rem",
+              }}
+            >
+              전체보기
+            </h4>
+          </Link>
+        </div>
         <Swiper
           className="swiper-wrap"
           modules={[Navigation, Pagination, Autoplay]}

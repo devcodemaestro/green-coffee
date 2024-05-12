@@ -19,20 +19,6 @@ export const FavoriteItemWrap = styled.div`
       align-items: center;
       gap: 10px;
       padding: 20px 10px 0 0;
-      button {
-        width: 75px;
-        height: 30px;
-        color: #f7f7f7;
-        background: #bf8a30;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        :last-of-type {
-          width: 100px;
-          height: 30px;
-          background: #683732;
-        }
-      }
     }
   }
 `;
