@@ -10,7 +10,7 @@ const Header = () => {
     navigate(-1);
   };
 
-  const pathName = location.pathname.replace("/", "");
+  const pathName = location.pathname.replace("/", "").split("/")[0];
 
   const headerList = {
     "": "로그인",
@@ -19,6 +19,7 @@ const Header = () => {
     mypage: "마이페이지",
     order: "주문",
     orderlist: "주문내역",
+    "orderlist-detail": "상세내역",
     orderstatus: "주문현황",
     favorite: "즐겨찾기",
     payment: "결제하기",
@@ -31,10 +32,10 @@ const Header = () => {
     userinfo: "정보수정",
     community: "커뮤니티",
     passchange: "비밀번호 변경",
-    findid: "아이디 찾기",
-    findpw: "비밀번호 찾기",
     event: "이벤트",
     eventdetail: "이벤트상세",
+    findaccount: "아이디 / 비밀번호 찾기",
+    search: "주문",
   };
 
   const headerTitle = headerList[pathName] || "";

@@ -29,4 +29,4 @@ const postLogin = async ({ payload }) => {
 };
 
 export default api;
-export { postLogin };
+export { postLogin, client };

@@ -28,7 +28,7 @@ export const ConfirmModalWarp = styled.div`
     overflow: hidden;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
   }
-  
+
   .modalConfirm-img {
     display: flex;
     justify-content: center;
@@ -59,6 +59,28 @@ export const ConfirmModalWarp = styled.div`
       align-items: center;
       padding: 0 15px 30px 0;
     }
+    .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      & button {
+        width: 80px;
+        height: 40px;
+        font-size: 16px;
+        background: ${colors.disabled};
+        color: ${colors.black};
+        border: none;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        :last-of-type {
+          background: ${colors.main};
+        color: ${colors.white};
+        }
+      }
+    }
   }
 
   .Confimmodal.openConfirmModal {
@@ -88,6 +110,20 @@ export const ConfirmModalWarp = styled.div`
 `;
 
 export const ModalOkBtn = styled.button`
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  background: ${colors.main};
+  color: ${colors.white};
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const ModalNoBtn = styled.button`
   width: 100px;
   height: 40px;
   font-size: 16px;
