@@ -4,6 +4,7 @@ import {
   ItemDetail,
   ItemImg,
 } from "../../styles/FavoriteStyle";
+import { OrderBtn, PutBtn } from "../../styles/ui/buttons";
 
 const FavoriteItem = () => {
   const dummy = [
@@ -76,8 +77,8 @@ const FavoriteItem = () => {
             </ItemDetail>
           </div>
           <div>
-            <button>담기</button>
-            <button>주문하기</button>
+            <PutBtn>담기</PutBtn>
+            <OrderBtn>주문하기</OrderBtn>
           </div>
         </FavoriteItemWrap>
       ))}

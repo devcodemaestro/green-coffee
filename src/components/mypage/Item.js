@@ -36,6 +36,11 @@ const Item = ({ handleLogout }) => {
     },
     {
       id: "7",
+      title: "이벤트",
+      path: "/event",
+    },
+    {
+      id: "8",
       title: "회원탈퇴",
       path: "/resign",
     },

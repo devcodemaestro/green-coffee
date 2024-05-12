@@ -2,6 +2,9 @@ import React from "react";
 import { ItemBoxWrap } from "../../styles/OrderStyle";
 
 const ItemBox = ({ menuData }) => {
+  const formatPrice = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <ItemBoxWrap>
       <div>
@@ -13,7 +16,7 @@ const ItemBox = ({ menuData }) => {
             <div className="box-text">
               <div>{item.name}</div>
               <div>{item.menu_ename}</div>
-              <div>{item.menu_price}원</div>
+              <div>{formatPrice(item.menu_price)}원</div>
             </div>
           </div>
         ))}

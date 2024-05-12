@@ -33,6 +33,8 @@ const Header = () => {
     passchange: "비밀번호 변경",
     findid: "아이디 찾기",
     findpw: "비밀번호 찾기",
+    event: "이벤트",
+    eventdetail: "이벤트상세",
   };
 
   const headerTitle = headerList[pathName] || "";
