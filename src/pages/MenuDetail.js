@@ -24,6 +24,8 @@ const MenuDetail = () => {
   const navigate = useNavigate();
   const formData = { menu_id: menu_id, name: name };
 
+  console.log(menuData);
+
   const handlePlusMinus = (option, value) => {
     setPayload(prev => {
       const newValue = prev[option] + value;
@@ -109,7 +111,7 @@ const MenuDetail = () => {
         </div>
         <div className="menu-info-text">
           <span>{menuData[0]?.name}</span>
-          <span>{menuData[0]?.menu_ename}</span>
+          <span>{menuData[0]?.menu_explain}</span>
         </div>
         <div>
           <span>{menuData[0]?.menu_price}원</span>

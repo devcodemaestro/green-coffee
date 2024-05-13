@@ -41,6 +41,7 @@ const Resign = () => {
     try {
       if (checkboxState === true) {
         await putResign(userEmail);
+        navigate("/");
       }
     } catch (err) {
       console.log(err);

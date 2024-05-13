@@ -30,7 +30,7 @@ export const HeaderInner = styled.ul`
   }
   > li:nth-of-type(2) {
     h1 {
-      font-size: 24px;
+      font-size: 20px;
     }
   }
   > li:nth-of-type(3) {

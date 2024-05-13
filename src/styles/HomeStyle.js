@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ellipsis } from "./basic";
 
 export const HomeWrap = styled.div`
   width: 100%;
@@ -131,6 +132,7 @@ export const PopularMenuWrap = styled.div`
             }
           }
           :last-of-type {
+            ${ellipsis.line1}
             padding-top: 0.625rem;
             display: flex;
             flex-direction: column;
