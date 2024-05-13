@@ -76,27 +76,63 @@ export const SizeItemWrap = styled.div`
     justify-content: center;
     align-items: center;
     gap: 20px;
-    > input[type="radio"] {
-      display: none;
-    }
-    > input[type="radio"] + label {
-      display: inline-block;
-      cursor: pointer;
+    .size-box {
       width: 120px;
       height: 100px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       border: 1px solid ${colors.disabled};
-      line-height: 95px;
+      /* line-height: 95px; */
       text-align: center;
       font-size: 18px;
       border-radius: 12px;
-    }
-    > input[type="radio"] + label {
-      background-color: #fff;
-      color: ${colors.disabled};
-    }
-    > input[type="radio"]:checked + label {
-      background-color: ${colors.main};
-      color: ${colors.white};
+      position: relative;
+      label {
+        padding-bottom: 10px;
+      }
+      > input[type="radio"] {
+        display: none;
+      }
+      > input[type="radio"] + label {
+        display: inline-block;
+        cursor: pointer;
+      }
+      > input[type="radio"] + label {
+        width: 100%;
+        height: 100%;
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 12px;
+        background-color: #fff;
+        color: ${colors.disabled};
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+        .fa-mug-saucer {
+          position: relative;
+          z-index: 1;
+          background-color: ${colors.point};
+          color: ${colors.white};
+        }
+      }
+      > input[type="radio"]:checked + label {
+        background-color: ${colors.main};
+        color: ${colors.white};
+      }
+      .fa-mug-saucer {
+        position: absolute;
+        bottom: 40%;
+        z-index: 1;
+        color: ${colors.white};
+        cursor: pointer;
+      }
     }
   }
 `;
