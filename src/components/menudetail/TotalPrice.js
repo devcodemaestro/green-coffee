@@ -4,6 +4,9 @@ import React from "react";
 import { TotalPriceWrap } from "../../styles/MenuDetailStyle";
 
 const TotalPrice = ({ totalEa, totalPrice, handletotalPM, handleAddCart }) => {
+  const formatPrice = price => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <TotalPriceWrap>
       <div className="total-price-wrap">
@@ -22,7 +25,7 @@ const TotalPrice = ({ totalEa, totalPrice, handletotalPM, handleAddCart }) => {
         <div className="total-price">
           <div className="price">
             <span>총 주문 금액</span>
-            <span>{totalPrice}원</span>
+            <span>{formatPrice(totalPrice)}원</span>
           </div>
           <button onClick={handleAddCart}>담기</button>
         </div>

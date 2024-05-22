@@ -24,8 +24,6 @@ const MenuDetail = () => {
   const navigate = useNavigate();
   const formData = { menu_id: menu_id, name: name };
 
-  console.log(menuData);
-
   const handlePlusMinus = (option, value) => {
     setPayload(prev => {
       const newValue = prev[option] + value;
@@ -100,6 +98,13 @@ const MenuDetail = () => {
     handleTotalPrice();
   }, [menuData, payload, totalEa]);
 
+  const formatPrice = price => {
+    if (price == null) {
+      return menuData[0]?.menu_price;
+    }
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <DetailWrap>
       <div className="menu-info-wrap">
@@ -114,7 +119,7 @@ const MenuDetail = () => {
           <span>{menuData[0]?.menu_explain}</span>
         </div>
         <div>
-          <span>{menuData[0]?.menu_price}원</span>
+          <span>{formatPrice(menuData[0]?.menu_price)}원</span>
         </div>
       </div>
       {cate === "coffee" || cate === "beverage" ? <SizeItem /> : <div></div>}
