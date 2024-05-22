@@ -42,7 +42,10 @@ const HomeSwiper = ({ eventData }) => {
           {eventData?.map((item, index) => (
             <SwiperSlide key={index} className="swiper-slide">
               <div className="img">
-                <img src={`${item.imageUrl}`} alt={item.adHead} />
+                <img
+                  src={`https://back.green-coffee.shop/${item.imageUrl}`}
+                  alt={item.adHead}
+                />
               </div>
             </SwiperSlide>
           ))}

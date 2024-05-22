@@ -35,7 +35,10 @@ const OrderListItem = ({ listData }) => {
           <li key={item.orderId}>
             <div className="left_area">
               <div className="img_wrap">
-                <img src={item.orderItems[0].menu.menu_imgurl} alt="" />
+                <img
+                  src={`https://back.green-coffee.shop/${item.orderItems[0].menu.menu_imgurl}`}
+                  alt=""
+                />
               </div>
             </div>
             <div className="right_area">
