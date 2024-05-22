@@ -105,7 +105,7 @@ const MenuDetail = () => {
       <div className="menu-info-wrap">
         <div className="menu-img">
           <img
-            src={`http://back.green-coffee.shop/${menuData[0]?.menu_imgurl}`}
+            src={`https://back.green-coffee.shop/${menuData[0]?.menu_imgurl}`}
             alt=""
           />
         </div>

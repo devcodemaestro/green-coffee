@@ -97,7 +97,7 @@ const MenuCartItems = ({ menuCartData, openChangeOption }) => {
           <div key={item.cartmenu_id} className="item-wrap">
             <div className="item-img-wrap">
               <img
-                src={`http://back.green-coffee.shop/${item.menu?.menu_imgurl}`}
+                src={`https://back.green-coffee.shop/${item.menu?.menu_imgurl}`}
                 alt=""
               />
             </div>

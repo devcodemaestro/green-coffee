@@ -1,5 +1,5 @@
 import api from "./client";
-// const baseURL = `http://back.green-coffee.shop`;
+
 export const getEventDetail = async successFn => {
   try {
     const arr = [];
