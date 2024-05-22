@@ -44,7 +44,7 @@ const Order = () => {
   useEffect(() => {
     getMenuCate(cateId, setMenuData);
   }, [cateId]);
-
+  console.log(menuData);
   return (
     <OrderWrap>
       <ul className="menu-wrap">

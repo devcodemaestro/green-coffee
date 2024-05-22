@@ -66,9 +66,17 @@ export const HomeSwiperWrap = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    h3 {
-      width: 100%;
-      margin-bottom: 8px;
+    .event-header {
+      display: flex;
+      h4 {
+        font-size: 12px;
+        color: #6a1b1b;
+        padding: 0.625rem 0.625rem 0 0;
+      }
+      h3 {
+        width: 100%;
+        margin-bottom: 8px;
+      }
     }
     .swiper-wrap {
       width: 100%;
@@ -106,15 +114,10 @@ export const PopularMenuWrap = styled.div`
       gap: 20px;
       width: 100%;
       ul {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
         width: calc(33.333% - 20px);
         li {
+          width: 100%;
           :first-of-type {
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -125,20 +128,21 @@ export const PopularMenuWrap = styled.div`
               width: 100%;
               height: 100%;
               border-radius: 30px;
-              transition: transform 0.5s ease-in-out;
+              /* transition: transform 0.5s ease-in-out; */
+              object-fit: fill;
             }
             img:hover {
-              transform: scale(1.1);
+              transform: scale(1.05);
             }
           }
           :last-of-type {
-            ${ellipsis.line1}
             padding-top: 0.625rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             font-size: 14px;
             font-weight: 700;
+            ${ellipsis.line1}
           }
         }
       }

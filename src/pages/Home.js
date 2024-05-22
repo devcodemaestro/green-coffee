@@ -9,11 +9,11 @@ const Home = () => {
   const [eventData, setEventData] = useState([]);
   const [popularData, setPopularData] = useState([]);
 
-
   useEffect(() => {
     getEvent(setEventData);
     getPopularMenu(setPopularData);
   }, []);
+
   return (
     <HomeWrap>
       <HomeInner>

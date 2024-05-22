@@ -18,7 +18,10 @@ const ItemBox = ({ menuData, handleMenuClick }) => {
             }
           >
             <div className="box-img">
-              <img src={`${item.menu_imgurl}`} alt="" />
+              <img
+                src={`${process.env.REACT_APP_BASE_URL}/${item.menu_imgurl}`}
+                alt=""
+              />
             </div>
             <div className="box-text">
               <div>{item.name}</div>

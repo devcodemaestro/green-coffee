@@ -58,8 +58,8 @@ export const boxStyle = {
 export const ellipsis = {
   line1: {
     overflow: "hidden",
-    whiteSpace: "nowrap",
     textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
   line2: {
     overflow: "hidden",
