@@ -19,6 +19,7 @@ const UserInfo = () => {
   const [pass, setPass] = useState("");
   const [passCheckBoolean, setPassCheckBoolean] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [checkModalOpen, setCheckModalOpen] = useState(false);
   const [errState, setErrState] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [warningMsg, setWarningMsg] = useState({
@@ -70,6 +71,7 @@ const UserInfo = () => {
         setPassCheckBoolean(true);
       }
     } catch (err) {
+      setCheckModalOpen(true);
       setErrMsg("비밀번호가 틀렸습니다.");
     }
   };
@@ -125,8 +127,14 @@ const UserInfo = () => {
   const handleWriteCancel = item => {
     setPayload({ ...payload, [item]: "" });
   };
+
   return (
     <UserInfoWrap>
+      {modalOpen && (
+        <ConfirmModal open={modalOpen} onConfirm={handleOk}>
+          <span>수정이 완료 되었습니다.</span>
+        </ConfirmModal>
+      )}
       {passCheckBoolean ? (
         <UserInfoInput
           payload={payload}
@@ -146,12 +154,9 @@ const UserInfo = () => {
           errMsg={errMsg}
           pass={pass}
           setPass={setPass}
+          modalOpen={checkModalOpen}
+          setModalOpen={setCheckModalOpen}
         />
-      )}
-      {modalOpen && (
-        <ConfirmModal open={modalOpen} onConfirm={handleOk}>
-          <span>수정이 완료 되었습니다.</span>
-        </ConfirmModal>
       )}
     </UserInfoWrap>
   );

@@ -8,7 +8,7 @@ export const postPassCheck = async (data, setErrState) => {
   } catch (err) {
     const { response } = err;
     const { status } = response;
-    if (status === 500) {
+    if (status === 400) {
       setErrState(true);
     }
   }

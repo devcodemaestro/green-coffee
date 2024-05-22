@@ -25,6 +25,7 @@ const PasswordChange = () => {
   const [errState, setErrState] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [checkModalOpen, setCheckModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handlePassCheck = () => {
@@ -75,6 +76,7 @@ const PasswordChange = () => {
         setPassCheckBoolean(true);
       }
     } catch (err) {
+      setCheckModalOpen(true);
       setErrMsg("비밀번호가 틀렸습니다.");
     }
   };
@@ -144,6 +146,8 @@ const PasswordChange = () => {
           errMsg={errMsg}
           pass={pass}
           setPass={setPass}
+          modalOpen={checkModalOpen}
+          setModalOpen={setCheckModalOpen}
         />
       )}
       {modalOpen && (

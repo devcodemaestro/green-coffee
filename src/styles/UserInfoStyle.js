@@ -137,6 +137,7 @@ export const UserConfirmWrap = styled.div`
       cursor: pointer;
     }
     .err-message {
+      height: 23px;
       color: #eb5757;
     }
   }
