@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PopularMenuWrap } from "../../styles/HomeStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getMenuCate } from "../../api/orderAxios";
+import { getPopularMenu } from "../../api/homeAxios";
 
 const PopularMenu = ({ popularData }) => {
+  const navigate = useNavigate();
+  const [popularMenuData, setPopularMenuData] = useState([]);
+  useEffect(() => {
+    getPopularMenu(setPopularMenuData);
+  }, []);
+
   const formatPrice = price => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
+  console.log("menuData", popularMenuData);
   return (
     <PopularMenuWrap>
       <div className="inner">
@@ -14,7 +22,7 @@ const PopularMenu = ({ popularData }) => {
         <div className="content">
           {popularData.map(item => (
             <ul key={item.recommendId}>
-              <Link to="/menudetail">
+              <Link to={"/menudetail/coffee/10/아이스%20카페%20아메리카노"}>
                 <li>
                   <img
                     src={`https://back.green-coffee.shop/${item.imageUrl}`}
