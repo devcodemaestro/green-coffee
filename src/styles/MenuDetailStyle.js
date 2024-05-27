@@ -84,13 +84,12 @@ export const SizeItemWrap = styled.div`
       flex-direction: column;
       align-items: center;
       border: 1px solid ${colors.disabled};
-      /* line-height: 95px; */
       text-align: center;
       font-size: 18px;
       border-radius: 12px;
       position: relative;
       label {
-        padding-bottom: 10px;
+        padding-top: 10px;
       }
       > input[type="radio"] {
         display: none;
@@ -102,11 +101,9 @@ export const SizeItemWrap = styled.div`
       > input[type="radio"] + label {
         width: 100%;
         height: 100%;
-        /* position: absolute; */
-        top: 0;
-        left: 0;
         display: flex;
-        align-items: end;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
         cursor: pointer;
         border-radius: 12px;
@@ -115,23 +112,10 @@ export const SizeItemWrap = styled.div`
         transition:
           background-color 0.3s,
           color 0.3s;
-        .fa-mug-saucer {
-          position: relative;
-          z-index: 1;
-          background-color: ${colors.point};
-          color: ${colors.white};
-        }
       }
       > input[type="radio"]:checked + label {
         background-color: ${colors.main};
         color: ${colors.white};
-      }
-      .fa-mug-saucer {
-        position: absolute;
-        bottom: 40%;
-        z-index: 1;
-        color: ${colors.white};
-        cursor: pointer;
       }
     }
   }
