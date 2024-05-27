@@ -21,14 +21,7 @@ export const postPayment = async updatedItems => {
   }
 };
 
-export const cartPriceCheck = async setTotalPrice => {
-  try {
-    const { data } = await api.get(`/cart/cart/total`);
-    setTotalPrice(data);
-  } catch (err) {
-    console.log(err);
-  }
-};
+
 // 400에러
 export const cartDeleteOut = async formData => {
   const token = getCookie("token");

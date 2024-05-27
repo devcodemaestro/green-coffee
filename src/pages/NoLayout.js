@@ -15,11 +15,11 @@ const NoLayout = () => {
   useEffect(() => {
     if (pathname === "/" || pathname === "/terms" || pathname === "/signup") {
       removeCookie("token");
+      resetAuthState();
+      resetUserState();
     }
-    resetAuthState();
-    resetUserState();
   }, [pathname]);
-  
+
   return (
     <NoLayoutWrap>
       <Header />

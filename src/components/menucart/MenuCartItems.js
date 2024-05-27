@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  cartDeleteOut,
-  cartPriceCheck,
-  postPayment,
-} from "../../api/menuAxios";
+import { cartDeleteOut, postPayment } from "../../api/menuAxios";
 import { MenuCartItemsWrap, PaymentBtn } from "../../styles/MenuCartStyle";
 import {
   faCircleXmark,
@@ -12,44 +8,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router";
+import { putCartQuaMinus, putCartQuaPlus } from "../../api/cartAxios";
 
-const MenuCartItems = ({ menuCartData, openChangeOption }) => {
+const MenuCartItems = ({
+  menuCartData,
+  openChangeOption,
+  totalPrice,
+  setPayload,
+  payload,
+}) => {
   const [itemQuantities, setItemQuantities] = useState({});
-  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  const priceCheck = async () => await cartPriceCheck(setTotalPrice);
-
-  const handleTotalPrice = () => {
-    let total = 0;
-    menuCartData.forEach(item => {
-      total += itemQuantities[item.cartmenu_id] * item.menu?.menu_price;
-    });
-    setTotalPrice(total);
+  const handleDecrease = async (id, quantity) => {
+    await putCartQuaMinus(id);
+    setPayload({ ...payload, quantity: quantity });
   };
 
-  const handleItemQuantities = () => {
-    const initQuantities = {};
-    menuCartData.forEach(item => {
-      initQuantities[item.cartmenu_id] = item.quantity;
-    });
-    setItemQuantities(initQuantities);
-  };
-
-  const handledecrease = cartmenuId => {
-    setItemQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [cartmenuId]: Math.max(prevQuantities[cartmenuId] - 1, 0),
-    }));
-    handleTotalPrice();
-  };
-
-  const handleincrease = cartmenuId => {
-    setItemQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [cartmenuId]: prevQuantities[cartmenuId] + 1,
-    }));
-    handleTotalPrice();
+  const handleIncrease = async (id, quantity) => {
+    await putCartQuaPlus(id);
+    setPayload({ ...payload, quantity: quantity });
   };
 
   const handlePayment = async () => {
@@ -65,12 +43,17 @@ const MenuCartItems = ({ menuCartData, openChangeOption }) => {
       if (result === 200) {
         navigate("/orderlist");
       }
-    } catch (error) {
-      console.error("결제 오류:", error);
+    } catch (err) {
+      console.err("결제 오류:", err);
     }
   };
 
-  const formatPrice = price => price.toLocaleString();
+  const formatPrice = price => {
+    if (price == null) {
+      return 0;
+    }
+    return price.toLocaleString();
+  };
 
   const deleteMenuItem = async item => {
     console.log("delete menu item", item);
@@ -85,11 +68,7 @@ const MenuCartItems = ({ menuCartData, openChangeOption }) => {
     await cartDeleteOut(form);
   };
 
-  useEffect(() => {
-    handleItemQuantities();
-    priceCheck();
-  }, [menuCartData]);
-
+  useEffect(() => {}, []);
   return (
     <MenuCartItemsWrap>
       <div>
@@ -97,7 +76,7 @@ const MenuCartItems = ({ menuCartData, openChangeOption }) => {
           <div key={item.cartmenu_id} className="item-wrap">
             <div className="item-img-wrap">
               <img
-                src={`https://back.green-coffee.shop/${item.menu?.menu_imgurl}`}
+                src={`${process.env.REACT_APP_BASE_URL}/${item.menu?.menu_imgurl}`}
                 alt=""
               />
             </div>
@@ -126,14 +105,18 @@ const MenuCartItems = ({ menuCartData, openChangeOption }) => {
                 </div>
                 <div
                   className="pm-icon"
-                  onClick={() => handledecrease(item.cartmenu_id)}
+                  onClick={() =>
+                    handleDecrease(item.menu?.menu_id, item.quantity)
+                  }
                 >
                   <FontAwesomeIcon icon={faMinus} />
                 </div>
-                <div>{itemQuantities[item.cartmenu_id]}</div>
+                <div>{item.quantity}</div>
                 <div
                   className="pm-icon"
-                  onClick={() => handleincrease(item.cartmenu_id)}
+                  onClick={() =>
+                    handleIncrease(item.menu?.menu_id, item.quantity)
+                  }
                 >
                   <FontAwesomeIcon icon={faPlus} />
                 </div>

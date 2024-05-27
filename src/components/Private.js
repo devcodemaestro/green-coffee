@@ -8,11 +8,11 @@ export const PrivateRoutes = ({ element }) => {
   const { loginstate, token } = useRecoilValue(AuthStateAtom);
 
   useEffect(() => {
-    if (loginstate === "N" || !token) {
+    if (!token) {
       navigate("/");
-      console.log(loginstate);
     }
-  }, [loginstate, token, navigate]);
+  }, [token, navigate]);
 
-  return loginstate === "Y" && token ? element : null;
+  return token ? element : null;
+  // return loginstate === "Y" && token ? element : null;
 };

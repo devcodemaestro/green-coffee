@@ -39,7 +39,6 @@ export const MenuCartItemsWrap = styled.div`
         height: 100px;
         border-radius: 20px;
         box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.3);
-        background: red;
         img {
           width: 100%;
           height: 100%;

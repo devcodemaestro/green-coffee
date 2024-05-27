@@ -3,9 +3,11 @@ import { getCartList } from "../api/menuAxios";
 import MenuCartItems from "../components/menucart/MenuCartItems";
 import { MenuCartWrap } from "../styles/MenuCartStyle";
 import ChangeOption from "../components/menucart/ChangeOption";
+import { getCartTotalPrice } from "../api/cartAxios";
 
 const MenuCart = () => {
   const [menuCartData, setMenuCartData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState();
   const [payload, setPayload] = useState([
     {
       cartmenu_id: menuCartData.cartmenu_id,
@@ -20,14 +22,14 @@ const MenuCart = () => {
   ]);
   const [modalOpen, setModalOpen] = useState(false);
 
-  console.log(payload.quantity);
   const openChangeOption = () => {
     setModalOpen(true);
   };
 
   useEffect(() => {
     getCartList(setMenuCartData);
-  }, []);
+    getCartTotalPrice(setTotalPrice);
+  }, [totalPrice, payload.quantity]);
 
   console.log(menuCartData);
   return (
@@ -37,6 +39,9 @@ const MenuCart = () => {
         <MenuCartItems
           menuCartData={menuCartData}
           openChangeOption={openChangeOption}
+          totalPrice={totalPrice}
+          setPayload={setPayload}
+          payload={payload}
         />
       </div>
 

@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 
 const PopularMenu = ({ popularData }) => {
   const formatPrice = price => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (price == null) {
+      return popularData.menu_price;
+    }
+    return price.toLocaleString();
   };
 
   return (
@@ -17,13 +20,13 @@ const PopularMenu = ({ popularData }) => {
               <Link to={"/menudetail/coffee/10/아이스%20카페%20아메리카노"}>
                 <li>
                   <img
-                    src={`${process.env.REACT_APP_BASE_URL}/${item.menuImageUrl}`}
+                    src={`${process.env.REACT_APP_BASE_URL}/${item.menu_imgurl}`}
                     alt=""
                   />
                 </li>
                 <li>
-                  <span>{item.menuName}</span>
-                  <span>{formatPrice(item.menuPrice)}원</span>
+                  <span>{item.name}</span>
+                  <span>{formatPrice(item.menu_price)}원</span>
                 </li>
               </Link>
             </ul>

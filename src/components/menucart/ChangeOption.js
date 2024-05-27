@@ -3,17 +3,17 @@ import { ChangeOptionWrap } from "../../styles/MenuCartStyle";
 
 const ChangeOption = ({ setShowModal }) => {
   const options = [
-    {option: '잼', price: '500원'},
-    {option: '버터 추가', price: '500원'},
-    {option: '치즈 추가', price: '500원'},
+    { option: "잼", price: "500원" },
+    { option: "버터 추가", price: "500원" },
+    { option: "치즈 추가", price: "500원" },
   ];
 
   const updateCount = flag => {
-    flag == "plus" ? 'plus' : flag == "minus" ? 'minus' : null;
-  }
+    flag == "plus" ? "plus" : flag == "minus" ? "minus" : null;
+  };
 
   const changeOptionEvent = () => {
-    console.log('옵션변경')
+    console.log("옵션변경");
   };
 
   // jsx
@@ -31,16 +31,16 @@ const ChangeOption = ({ setShowModal }) => {
               <span>{item.option}</span>
               <span>{item.price}</span>
               <div>
-                <button onClick={() => updateCount('minus')}></button>
+                <button onClick={() => updateCount("minus")}></button>
                 <span>1</span>
-                <button onClick={() => updateCount('plus')}></button>
+                <button onClick={() => updateCount("plus")}></button>
               </div>
             </div>
           ))}
         </div>
         <div className="modal_btns">
-          <button onClick={ () => changeOptionEvent() }>확인</button>
-          <button onClick={ () => setShowModal(false) }>취소</button>
+          <button onClick={() => changeOptionEvent()}>확인</button>
+          <button onClick={() => setShowModal(false)}>취소</button>
         </div>
       </div>
     </ChangeOptionWrap>
