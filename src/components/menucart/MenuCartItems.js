@@ -40,13 +40,11 @@ const MenuCartItems = ({
     }));
     try {
       const result = await postPayment(updatedItems);
-      if (result === 200  ) {
+      if (result === 200) {
         navigate("/orderlist");
       }
-    } catch  {
+    } catch {
       console.err("결제 오류:");
-    } finally {
-      
     }
   };
 
