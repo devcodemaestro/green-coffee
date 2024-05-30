@@ -15,7 +15,7 @@ const client = axios.create({
   },
 });
 
-const postLogin = async ({ payload }) => {
+const postLogin = async ({ payload, setErrMsg }) => {
   try {
     const res = await client.post(`/user/login`, payload);
     const { role, token, refreshToken, ...result } = res.data;
@@ -25,7 +25,9 @@ const postLogin = async ({ payload }) => {
     }
     return { role, token, result };
   } catch (err) {
-    console.log(err);
+    if (err.response.status === 400) {
+      setErrMsg(err.response.data);
+    }
   }
 };
 

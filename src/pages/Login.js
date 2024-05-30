@@ -6,12 +6,15 @@ import { useNavigate } from "react-router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { AuthStateAtom } from "../recoil/atoms/AuthState";
 import { UserStateAtom } from "../recoil/atoms/UserState";
+import ConfirmModal from "../components/modals/ConfirmModal";
 
 const Login = () => {
   const [payload, setPayload] = useState({
     email: "",
     password: "",
   });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const setAuthData = useSetRecoilState(AuthStateAtom);
   const setUserData = useSetRecoilState(UserStateAtom);
   const [warningMsg, setWarningMsg] = useState({
@@ -29,7 +32,7 @@ const Login = () => {
   const handleLogin = async e => {
     e.preventDefault();
     try {
-      const { role, token, result } = await postLogin({ payload });
+      const { role, token, result } = await postLogin({ payload, setErrMsg });
       if (role === "USER" && token) {
         console.log(result);
         setAuthData({
@@ -48,7 +51,7 @@ const Login = () => {
         navigate("/home");
       }
     } catch (err) {
-      console.log(err);
+      setModalOpen(true);
     }
   };
 
@@ -82,6 +85,10 @@ const Login = () => {
     }));
   };
 
+  const handleConfirm = () => {
+    setModalOpen(false);
+  };
+
   return (
     <LoginWrap>
       <div className="logo">
@@ -105,6 +112,11 @@ const Login = () => {
         handleEmailCheck={handleEmailCheck}
         warningMsg={warningMsg}
       />
+      {modalOpen && (
+        <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
+          <span>{errMsg}</span>
+        </ConfirmModal>
+      )}
     </LoginWrap>
   );
 };
