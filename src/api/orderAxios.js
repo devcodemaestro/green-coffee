@@ -41,6 +41,7 @@ export const postOrderDetail = async (formData, setMenuData) => {
   try {
     const res = await api.post(`/menu/detail`, formData);
     const result = res.data;
+    console.log(result);
     setMenuData(result);
   } catch (err) {
     console.log(err);

@@ -3,9 +3,7 @@ import { SizeItemWrap } from "../../styles/MenuDetailStyle";
 import { faMugSaucer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SizeItem = () => {
-  const [selectedValue, setSelectedValue] = useState("");
-  console.log(selectedValue);
+const SizeItem = ({ payload, setPayload }) => {
   return (
     <SizeItemWrap>
       <div className="size-radio">
@@ -14,15 +12,15 @@ const SizeItem = () => {
             type="radio"
             id="tall-size"
             name="size"
-            value="1"
-            checked={selectedValue === "1"}
-            onChange={e => setSelectedValue(e.target.value)}
+            value="0"
+            defaultChecked
+            onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
           <label htmlFor="tall-size">
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: selectedValue === "1" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === "0" ? "#ffffff" : "#d9d9d9",
                 fontSize: "20px",
               }}
             />
@@ -34,15 +32,14 @@ const SizeItem = () => {
             type="radio"
             id="grande-size"
             name="size"
-            value="2"
-            checked={selectedValue === "2"}
-            onChange={e => setSelectedValue(e.target.value)}
+            value="1"
+            onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
           <label htmlFor="grande-size">
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: selectedValue === "2" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === "1" ? "#ffffff" : "#d9d9d9",
                 fontSize: "30px",
               }}
             />
@@ -54,15 +51,14 @@ const SizeItem = () => {
             type="radio"
             id="venti-size"
             name="size"
-            value="3"
-            checked={selectedValue === "3"}
-            onChange={e => setSelectedValue(e.target.value)}
+            value="2"
+            onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
           <label htmlFor="venti-size">
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: selectedValue === "3" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === "2" ? "#ffffff" : "#d9d9d9",
                 fontSize: "40px",
               }}
             />

@@ -123,82 +123,111 @@ export const SizeItemWrap = styled.div`
 
 export const OptionItemWrap = styled.div`
   .option-title {
-    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
     font-size: 19px;
+    cursor: pointer;
+    .arrow-down {
+      font-size: 25px;
+    }
+    .arrow-up {
+      font-size: 25px;
+    }
   }
+
   ul {
-    & li {
-      display: flex;
-      justify-content: space-between;
-      text-align: center;
-      border-bottom: 1px solid ${colors.disabled};
-      padding: 25px 10px 8px 10px;
-      span {
-        font-size: 18px;
-        font-weight: 500;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease-out,
+      opacity 0.3s ease-in;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  ul.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  ul.close {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .open li,
+  .close li {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border-bottom: 1px solid ${colors.disabled};
+    padding: 25px 10px 8px 10px;
+    span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    :nth-of-type(1) {
+      .ice-radio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        > input[type="radio"] {
+          display: none;
+        }
+        > input[type="radio"] + label {
+          display: inline-block;
+          cursor: pointer;
+          width: 60px;
+          height: 35px;
+          border: 1px solid ${colors.disabled};
+          line-height: 35px;
+          text-align: center;
+          border-radius: 10px;
+        }
+        > input[type="radio"] + label {
+          background-color: #fff;
+          color: ${colors.disabled};
+        }
+        > input[type="radio"]:checked + label {
+          background-color: ${colors.main};
+          color: ${colors.white};
+        }
       }
-      :nth-of-type(1) {
-        .ice-radio {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 15px;
-          > input[type="radio"] {
-            display: none;
-          }
-          > input[type="radio"] + label {
-            display: inline-block;
-            cursor: pointer;
-            width: 60px;
-            height: 35px;
-            border: 1px solid ${colors.disabled};
-            line-height: 35px;
+    }
+    :nth-of-type(2) {
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        > div {
+          :not(:first-of-type, :nth-of-type(3)) {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
             text-align: center;
-            border-radius: 10px;
-          }
-          > input[type="radio"] + label {
-            background-color: #fff;
-            color: ${colors.disabled};
-          }
-          > input[type="radio"]:checked + label {
-            background-color: ${colors.main};
-            color: ${colors.white};
+            background: ${colors.disabled};
+            cursor: pointer;
           }
         }
       }
-      :nth-of-type(2) {
+    }
+    :nth-of-type(3) {
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
         > div {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          > div {
-            :not(:first-of-type, :nth-of-type(3)) {
-              width: 30px;
-              height: 30px;
-              line-height: 30px;
-              border-radius: 50%;
-              text-align: center;
-              background: ${colors.disabled};
-              cursor: pointer;
-            }
-          }
-        }
-      }
-      :nth-of-type(3) {
-        > div {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          > div {
-            :not(:first-of-type, :nth-of-type(3)) {
-              width: 30px;
-              height: 30px;
-              line-height: 30px;
-              border-radius: 50%;
-              text-align: center;
-              background: ${colors.disabled};
-              cursor: pointer;
-            }
+          :not(:first-of-type, :nth-of-type(3)) {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            background: ${colors.disabled};
+            cursor: pointer;
           }
         }
       }

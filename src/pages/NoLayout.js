@@ -15,6 +15,7 @@ const NoLayout = () => {
   useEffect(() => {
     if (pathname === "/" || pathname === "/terms" || pathname === "/signup") {
       removeCookie("token");
+      removeCookie("refreshToken");
       resetAuthState();
       resetUserState();
     }

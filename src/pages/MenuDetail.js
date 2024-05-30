@@ -10,11 +10,14 @@ import ConfirmModal from "../components/modals/ConfirmModal";
 
 const MenuDetail = () => {
   const { cate, menu_id, name } = useParams();
+  const [selectedValue, setSelectedValue] = useState("");
   const [menuData, setMenuData] = useState([]);
   const [payload, setPayload] = useState({
-    ice: 0,
+    size: 0,
+    ice: 1,
     shot: 0,
     cream: 0,
+    sizePrice: 1000,
     shotPrice: 500,
     creamPrice: 500,
   });
@@ -60,7 +63,9 @@ const MenuDetail = () => {
   const handleTotalPrice = () => {
     const menuPrice = menuData[0]?.menu_price || 0;
     const totalOptionPrice =
-      payload.shot * payload.shotPrice + payload.cream * payload.creamPrice;
+      payload.size * payload.sizePrice +
+      payload.shot * payload.shotPrice +
+      payload.cream * payload.creamPrice;
     const totalMenuPrice = menuPrice * totalEa;
     const totalPrice = totalMenuPrice + totalOptionPrice * totalEa;
     setTotalPrice(totalPrice);
@@ -71,6 +76,7 @@ const MenuDetail = () => {
     const formData = {
       menuId: menu_id,
       quantity: totalEa,
+      size: payload.size,
       ice: payload.ice,
       shot: payload.shot,
       cream: payload.cream,
@@ -104,7 +110,8 @@ const MenuDetail = () => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
+  console.log(selectedValue);
+  console.log(payload);
   return (
     <DetailWrap>
       <div className="menu-info-wrap">
@@ -122,7 +129,11 @@ const MenuDetail = () => {
           <span>{formatPrice(menuData[0]?.menu_price)}원</span>
         </div>
       </div>
-      {cate === "coffee" || cate === "beverage" ? <SizeItem /> : <div></div>}
+      {cate === "coffee" || cate === "beverage" ? (
+        <SizeItem payload={payload} setPayload={setPayload} />
+      ) : (
+        <div></div>
+      )}
       <div className="menu-notice">
         <span>유의사항</span>
         <span>※메뉴 이미지는 이미지컷으로 실제 메뉴와 다를 수 있습니다.</span>
