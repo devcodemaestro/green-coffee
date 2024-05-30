@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { getCookie, removeCookie } from "../api/cookie";
+import { getCookie, removeCookie, setCookie } from "../api/cookie";
 import api from "../api/client";
 
 export const Interceptor = ({ children }) => {
   const navigate = useNavigate();
-
   const requestInterceptor = api.interceptors.request.use(
     async config => {
       const token = getCookie("token");
@@ -27,14 +26,26 @@ export const Interceptor = ({ children }) => {
       const { config } = error;
       const response = error.response || {};
       const status = response.status || null;
+      const refreshToken = getCookie("refreshToken");
+
       if (status === 401) {
         try {
-          if (config && config.headers && config.headers.Authorization) {
-            removeCookie("token");
+          const { data } = await api.post(`/user/refresh`, {
+            refreshToken,
+          });
+          const token = data;
+          setCookie("token", token);
+          if (config?.headers && config.headers?.Authorization) {
+            config.headers.Authorization = `Bearer ${token}`;
+            const retryResponse = await api(config);
+            console.log("갱신 재시도 : ", retryResponse);
+            return retryResponse;
           }
-          navigate("/");
         } catch (error) {
-          console.error(error);
+          navigate("/");
+          removeCookie("token");
+          removeCookie("refreshToken");
+          console.log("리프레시실패 : 해당 영업점에 문의해주세요.");
         }
       }
       return Promise.reject(error);
