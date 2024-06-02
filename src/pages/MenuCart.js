@@ -4,6 +4,7 @@ import MenuCartItems from "../components/menucart/MenuCartItems";
 import { MenuCartWrap } from "../styles/MenuCartStyle";
 import ChangeOption from "../components/menucart/ChangeOption";
 import { getCartTotalPrice } from "../api/cartAxios";
+import { TossCheck } from "../components/TossCheck";
 
 const MenuCart = () => {
   const [menuCartData, setMenuCartData] = useState([]);
@@ -21,6 +22,7 @@ const MenuCart = () => {
     },
   ]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [tossOpen, setTossOpen] = useState(false);
 
   const openChangeOption = () => {
     setModalOpen(true);
@@ -32,6 +34,10 @@ const MenuCart = () => {
   }, [totalPrice, payload.quantity]);
 
   console.log(menuCartData);
+  const handleToss = () => {
+    setTossOpen(true);
+  };
+  
   return (
     <MenuCartWrap>
       <div className="mypage_menu_cart">
@@ -42,10 +48,12 @@ const MenuCart = () => {
           totalPrice={totalPrice}
           setPayload={setPayload}
           payload={payload}
+          setTossOpen={setTossOpen}
         />
       </div>
 
       {modalOpen && <ChangeOption setShowModal={setModalOpen} />}
+      {/* {tossOpen && <TossCheck />} */}
     </MenuCartWrap>
   );
 };

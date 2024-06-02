@@ -3,11 +3,11 @@ import { FooterInner, FooterWrap } from "../styles/FooterStyle";
 import { NavLink, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBagShopping,
   faEllipsis,
   faHouse,
   faMugSaucer,
   faStar,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
@@ -36,10 +36,10 @@ const Footer = () => {
         location.pathname.startsWith("/menudetail"),
     },
     {
-      pathName: "commu",
-      path: "/community",
-      icon: <FontAwesomeIcon icon={faUser} />,
-      isActive: location.pathname === "/community",
+      pathName: "cart",
+      path: "/cart",
+      icon: <FontAwesomeIcon icon={faBagShopping} />,
+      isActive: location.pathname === "/cart",
     },
     {
       pathName: "mypage",
@@ -49,8 +49,7 @@ const Footer = () => {
         location.pathname === "/mypage" ||
         location.pathname === "/passchange" ||
         location.pathname === "/userinfo" ||
-        location.pathname === "/resign" ||
-        location.pathname === "/cart",
+        location.pathname === "/resign",
     },
   ];
   return (

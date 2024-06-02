@@ -15,6 +15,16 @@ const OrderDetailItem = ({ detailData, orderDetail, index, formatPrice }) => {
                   <span>{formatPrice(item.menu.menu_price)}원</span>
                 </div>
                 <li className="order_option">
+                  <span className="lightgray">컵사이즈</span>
+                  <span>
+                    {item.cream == 0
+                      ? `Tall`
+                      : item.cream == 1
+                        ? `Grande`
+                        : `Venti`}
+                  </span>
+                </li>
+                <li className="order_option">
                   <span className="lightgray">샷추가</span>
                   <span>
                     {parseInt(item.shot).toString() != "NaN"

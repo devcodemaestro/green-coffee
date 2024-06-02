@@ -54,3 +54,23 @@ export const postFindAccount = async ({
     setErrMsg("작성하신 내용을 다시 확인해주세요.");
   }
 };
+
+export const postEmailCode = async () => {
+  try {
+    const res = await api.post(`/user/code`);
+    const result = res.data;
+    console.log(result);
+  } catch (err) {
+    console.log(err)
+  }
+};
+
+export const postEmailConfirm = async () => {
+  try {
+    const res = await api.post(`/user/verigyCode`);
+    const result = res.data;
+    console.log(result);
+  } catch (err) {
+    console.log(err)
+  }
+};

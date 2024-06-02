@@ -3,7 +3,7 @@ import { LoginWrap } from "../styles/LoginStyle";
 import LoginInput from "../components/login/LoginInput";
 import { postLogin } from "../api/client";
 import { useNavigate } from "react-router";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { AuthStateAtom } from "../recoil/atoms/AuthState";
 import { UserStateAtom } from "../recoil/atoms/UserState";
 import ConfirmModal from "../components/modals/ConfirmModal";
@@ -21,7 +21,6 @@ const Login = () => {
     emailCheck: "",
     passCheck: "",
   });
-  const data = useRecoilValue(UserStateAtom);
   const navigate = useNavigate();
 
   const handleChange = (e, item) => {
@@ -75,7 +74,6 @@ const Login = () => {
     }
   };
 
-  console.log(data);
   const handleEmailCheck = () => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const isValid = regex.test(payload.email);

@@ -1,5 +1,4 @@
 import api from "./client";
-import { getCookie } from "./cookie";
 
 export const getCartList = async setMenuCartData => {
   try {
@@ -21,17 +20,12 @@ export const postPayment = async updatedItems => {
   }
 };
 
-
 // 400에러
-export const cartDeleteOut = async formData => {
-  const token = getCookie("token");
-  const headers = {
-    accept: "*/*",
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-  };
+export const deleteCart = async formData => {
   try {
-    await api.delete(`/cart/cartout`, headers, formData);
+    console.log(formData);
+    const res = await api.delete(`/cart/cartout`, { data: formData });
+    console.log(res);
   } catch (err) {
     console.log(err);
   }

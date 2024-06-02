@@ -5,10 +5,10 @@ import { AccountWrap } from "../styles/AccountStyle";
 import { postFindAccount } from "../api/signAxios";
 import ConfirmModal from "../components/modals/ConfirmModal";
 import { useNavigate } from "react-router";
+import EmailConfirm from "../components/menucart/EmailConfirm";
 
 const FindAccount = () => {
   const [payload, setPayload] = useState({
-    nickname: "",
     phone: "",
   });
   const [warningMsg, setWarningMsg] = useState({
@@ -102,10 +102,10 @@ const FindAccount = () => {
 
   useEffect(() => {
     setPayload({
-      nickname: "",
       phone: "",
     });
   }, [findState]);
+
   return (
     <AccountWrap>
       <ul>
@@ -127,7 +127,6 @@ const FindAccount = () => {
           payload={payload}
           formatPhoneNumber={formatPhoneNumber}
           handleChange={handleChange}
-          handleNickCheck={handleNickCheck}
           handlePhoneCheck={handlePhoneCheck}
           warningMsg={warningMsg}
           handleFindAccount={handleFindAccount}
@@ -135,17 +134,20 @@ const FindAccount = () => {
           buttonColor={buttonColor}
         />
       ) : (
-        <FindPw
-          payload={payload}
-          formatPhoneNumber={formatPhoneNumber}
-          handleChange={handleChange}
-          handleNickCheck={handleNickCheck}
-          handlePhoneCheck={handlePhoneCheck}
-          warningMsg={warningMsg}
-          handleFindAccount={handleFindAccount}
-          handleWriteCancel={handleWriteCancel}
-          buttonColor={buttonColor}
-        />
+        <>
+          <EmailConfirm />
+          {/* <FindPw
+            payload={payload}
+            formatPhoneNumber={formatPhoneNumber}
+            handleChange={handleChange}
+            handleNickCheck={handleNickCheck}
+            handlePhoneCheck={handlePhoneCheck}
+            warningMsg={warningMsg}
+            handleFindAccount={handleFindAccount}
+            handleWriteCancel={handleWriteCancel}
+            buttonColor={buttonColor}
+          /> */}
+        </>
       )}
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
