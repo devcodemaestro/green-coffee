@@ -7,7 +7,6 @@ const FindId = ({
   payload,
   formatPhoneNumber,
   handleChange,
-  handleNickCheck,
   handlePhoneCheck,
   warningMsg,
   handleFindAccount,
@@ -17,32 +16,6 @@ const FindId = ({
   return (
     <AccountIdWrap>
       <form>
-        <div>
-          <label htmlFor="sign-nick">닉네임</label>
-          <div>
-            <input
-              type="text"
-              id="sign-nick"
-              placeholder="한글 2자 이상"
-              className={payload.nickname ? "isActive-input" : ""}
-              value={payload.nickname}
-              onChange={e => handleChange(e, "nickname")}
-              onBlur={handleNickCheck}
-            />
-            {payload.nickname && (
-              <Xmark
-                style={{ top: "30%" }}
-                icon={faCircleXmark}
-                onClick={() => handleWriteCancel("nickname")}
-              />
-            )}
-          </div>
-          {payload.nickname ? (
-            <p className="warning-message">{warningMsg.nickCheck}</p>
-          ) : (
-            <div className="spacer" />
-          )}
-        </div>
         <div>
           <label htmlFor="sign-phone">휴대전화</label>
           <div>

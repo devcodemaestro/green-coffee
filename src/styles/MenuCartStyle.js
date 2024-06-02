@@ -4,7 +4,7 @@ import { colors, ellipsis } from "./basic";
 export const MenuCartWrap = styled.div`
   button {
     border: none;
-    background: transparent;
+    /* background: transparent; */
     cursor: pointer;
   }
   .store_title {
@@ -22,6 +22,9 @@ export const MenuCartItemsWrap = styled.div`
   width: 100%;
   padding-top: 10px;
   color: ${colors.point};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   > div {
     display: flex;
     align-items: center;
@@ -149,18 +152,20 @@ export const MenuCartItemsWrap = styled.div`
 `;
 
 export const PaymentBtn = styled.button`
-  position: fixed;
-  left: 50%;
-  bottom: 80px;
-  transform: translateX(-50%);
+  /* position: fixed; */
+  /* left: 50%; */
+  /* bottom: 80px; */
+  /* transform: translateX(-50%); */
   width: 90%;
+  height: 60px;
   max-width: 300px;
   padding: 9px 18px;
   border-radius: 24px;
-  background: rgb(88, 55, 50) !important;
-  color: white;
+  background: ${colors.point};
+  color: ${colors.white};
   font-size: 24px;
   font-weight: 700;
+  margin-top: 30px;
 `;
 
 export const ChangeOptionWrap = styled.div`

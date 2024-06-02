@@ -115,6 +115,7 @@ export const PopularMenuWrap = styled.div`
       width: 100%;
       ul {
         width: calc(33.333% - 20px);
+        cursor: pointer;
         li {
           width: 100%;
           :first-of-type {
