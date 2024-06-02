@@ -10,7 +10,6 @@ const OptionItem = ({ payload, setPayload, handlePlusMinus }) => {
   const handleAccordion = () => {
     setAccordion(!accordion);
   };
-  console.log(accordion);
 
   return (
     <OptionItemWrap>
