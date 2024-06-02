@@ -7,6 +7,7 @@ import { DetailWrap } from "../styles/MenuDetailStyle";
 import TotalPrice from "../components/menudetail/TotalPrice";
 import { postCartAdd } from "../api/cartAxios";
 import ConfirmModal from "../components/modals/ConfirmModal";
+import CartModal from "../components/modals/CartModal";
 
 const MenuDetail = () => {
   const { cate, menu_id, name } = useParams();
@@ -91,7 +92,12 @@ const MenuDetail = () => {
     }
   };
 
-  const handleConfirm = () => {
+  const handleMoveCart = () => {
+    setModalOpen(false);
+    navigate("/cart");
+  };
+  
+  const handleAddOrder = () => {
     setModalOpen(false);
     navigate("/order");
   };
@@ -155,9 +161,16 @@ const MenuDetail = () => {
         handleAddCart={handleAddCart}
       />
       {modalOpen && (
-        <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
-          <span>장바구니에 메뉴를 추가했습니다.</span>
-        </ConfirmModal>
+        <CartModal
+          open={modalOpen}
+          handleMoveCart={handleMoveCart}
+          handleAddOrder={handleAddOrder}
+        >
+          <span>선택하신 상품을 <br/>장바구니에 담았습니다.</span>
+        </CartModal>
+        // <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
+        //   <span>장바구니에 메뉴를 추가했습니다.</span>
+        // </ConfirmModal>
       )}
     </DetailWrap>
   );

@@ -36,6 +36,7 @@ const Header = () => {
     eventdetail: "이벤트상세",
     findaccount: "아이디 / 비밀번호 찾기",
     search: "주문",
+    findpass: "비밀번호 변경"
   };
 
   const headerTitle = headerList[pathName] || "";

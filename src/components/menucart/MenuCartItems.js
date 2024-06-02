@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { cartDeleteOut, postPayment } from "../../api/menuAxios";
+import React, { useState } from "react";
+import { deleteCart } from "../../api/menuAxios";
 import { MenuCartItemsWrap, PaymentBtn } from "../../styles/MenuCartStyle";
 import {
   faCircleXmark,
@@ -9,7 +9,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router";
 import { putCartQuaMinus, putCartQuaPlus } from "../../api/cartAxios";
-
 const MenuCartItems = ({
   menuCartData,
   openChangeOption,
@@ -30,22 +29,26 @@ const MenuCartItems = ({
     setPayload({ ...payload, quantity: quantity });
   };
 
-  const handlePayment = async () => {
-    const updatedItems = menuCartData.map(item => ({
-      cartmenu_id: item.cartmenu_id,
-      ice: item.ice,
-      shot: item.shot,
-      cream: item.cream,
-      quantity: itemQuantities[item.cartmenu_id] || 0,
-    }));
-    try {
-      const result = await postPayment(updatedItems);
-      if (result === 200) {
-        navigate("/orderlist");
-      }
-    } catch {
-      console.err("결제 오류:");
-    }
+  // const handlePayment = async () => {
+  //   const updatedItems = menuCartData.map(item => ({
+  //     cartmenu_id: item.cartmenu_id,
+  //     ice: item.ice,
+  //     shot: item.shot,
+  //     cream: item.cream,
+  //     quantity: itemQuantities[item.cartmenu_id] || 0,
+  //   }));
+  //   try {
+  //     const result = await postPayment(updatedItems);
+  //     if (result === 200) {
+  //       navigate("/orderlist");
+  //     }
+  //   } catch {
+  //     console.err("결제 오류:");
+  //   }
+  // };
+
+  const handlePayment = () => {
+    navigate("/payment");
   };
 
   const formatPrice = price => {
@@ -55,20 +58,23 @@ const MenuCartItems = ({
     return price.toLocaleString();
   };
 
-  const deleteMenuItem = async item => {
-    console.log("delete menu item", item);
-    const form = {
-      menuId: item[0],
-      quantity: item[1],
-      cartId: item[2],
-      ice: item[3],
-      shot: item[4],
-      cream: item[5],
+  const handleDelete = async (id, quantity, size, ice, shot, cream) => {
+    const formData = {
+      menuId: id,
+      quantity: quantity,
+      size: size,
+      ice: ice,
+      shot: shot,
+      cream: cream,
     };
-    await cartDeleteOut(form);
+    console.log(formData);
+    try {
+      await deleteCart(formData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  useEffect(() => {}, []);
   return (
     <MenuCartItemsWrap>
       <div>
@@ -85,7 +91,7 @@ const MenuCartItems = ({
               <div>
                 <span>
                   Ice:
-                  {item.ice == "1" ? "적게" : item.ice == "2" ? "보통" : "많이"}
+                  {item.ice == "0" ? "적게" : item.ice == "1" ? "보통" : "많이"}
                 </span>
                 <span>Size: Grande</span>
               </div>
@@ -96,7 +102,19 @@ const MenuCartItems = ({
               <div>{formatPrice(item.menu?.menu_price)}원</div>
             </div>
             <div className="item-price-wrap">
-              <div className="del-btn">
+              <div
+                className="del-btn"
+                onClick={() =>
+                  handleDelete(
+                    item.menu?.menu_id,
+                    item.quantity,
+                    item.size,
+                    item.ice,
+                    item.shot,
+                    item.cream,
+                  )
+                }
+              >
                 <FontAwesomeIcon icon={faCircleXmark} className="del-bt" />
               </div>
               <div className="pm-icon-wrap">
@@ -125,8 +143,7 @@ const MenuCartItems = ({
           </div>
         ))}
       </div>
-
-      <PaymentBtn onClick={() => handlePayment()}>
+      <PaymentBtn onClick={handlePayment}>
         {formatPrice(totalPrice)}원 결제하기
       </PaymentBtn>
     </MenuCartItemsWrap>

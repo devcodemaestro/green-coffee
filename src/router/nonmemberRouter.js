@@ -4,6 +4,7 @@ import termsDetailRouter from "./termsDetailRouter";
 const Login = lazy(() => import("../pages/Login"));
 const SignUp = lazy(() => import("../pages/SignUp"));
 const FindAccount = lazy(() => import("../pages/FindAccount"));
+const NoMemberPassChange = lazy(() => import("../pages/NoMemberPassChange"));
 
 const nonmemberRouter = () => {
   return [
@@ -34,6 +35,14 @@ const nonmemberRouter = () => {
       element: (
         <Suspense fallback={<Loading />}>
           <FindAccount />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/findpass",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <NoMemberPassChange />
         </Suspense>
       ),
     },
