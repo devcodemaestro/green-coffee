@@ -1,9 +1,15 @@
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { TotalPriceWrap } from "../../styles/MenuDetailStyle";
 
-const TotalPrice = ({ totalEa, totalPrice, handletotalPM, handleAddCart }) => {
+const TotalPrice = ({
+  totalEa,
+  totalPrice,
+  handletotalPM,
+  handleAddCart,
+  handleCustom,
+}) => {
   const formatPrice = price => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -27,7 +33,12 @@ const TotalPrice = ({ totalEa, totalPrice, handletotalPM, handleAddCart }) => {
             <span>총 주문 금액</span>
             <span>{formatPrice(totalPrice)}원</span>
           </div>
-          <button onClick={handleAddCart}>담기</button>
+          <div className="buttons">
+            <div className="custom" onClick={handleCustom}>
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            <button onClick={handleAddCart}>담기</button>
+          </div>
         </div>
       </div>
     </TotalPriceWrap>

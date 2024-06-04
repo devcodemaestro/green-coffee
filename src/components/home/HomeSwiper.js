@@ -32,7 +32,7 @@ const HomeSwiper = ({ eventData }) => {
             <SwiperSlide key={index} className="swiper-slide">
               <div className="img">
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL}/${item.imageUrl}`}
+                  src={`${process.env.REACT_APP_BASE_URL}/${item.bannerImageUrl}`}
                   alt={item.adHead}
                 />
               </div>

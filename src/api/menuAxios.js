@@ -30,3 +30,17 @@ export const deleteCart = async formData => {
     console.log(err);
   }
 };
+
+export const postCustomAdd = async (formData, setCustomResultMsg) => {
+  try {
+    // const res = await api.post(`/custom/add`, { data: formData });
+    const res = await api.post(`/custom/add`, formData);
+    const result = res.data;
+    const resultStatus = res.status;
+    setCustomResultMsg(result);
+    console.log(resultStatus);
+    return resultStatus;
+  } catch (err) {
+    console.log(err);
+  }
+};

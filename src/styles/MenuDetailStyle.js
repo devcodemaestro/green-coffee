@@ -280,16 +280,34 @@ export const TotalPriceWrap = styled.div`
         font-size: 18px;
         font-weight: 500;
       }
-      button {
-        width: 320px;
-        height: 50px;
-        background: ${colors.main};
-        border: none;
-        border-radius: 8px;
-        color: ${colors.white};
-        font-size: 20px;
-        font-weight: 600;
-        cursor: pointer;
+      .buttons {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        gap: 5px;
+        .custom {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+          border-radius: 8px;
+          background: ${colors.point};
+          color: ${colors.white};
+          cursor: pointer;
+        }
+        & button {
+          width: 280px;
+          height: 50px;
+          background: ${colors.main};
+          border: none;
+          border-radius: 8px;
+          color: ${colors.white};
+          font-size: 20px;
+          font-weight: 600;
+          cursor: pointer;
+        }
       }
     }
   }

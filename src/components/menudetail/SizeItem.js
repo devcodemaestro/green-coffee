@@ -12,7 +12,7 @@ const SizeItem = ({ payload, setPayload }) => {
             type="radio"
             id="tall-size"
             name="size"
-            value="0"
+            value={0}
             defaultChecked
             onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
@@ -20,7 +20,7 @@ const SizeItem = ({ payload, setPayload }) => {
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: payload.size === "0" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === 0 ? "#ffffff" : "#d9d9d9",
                 fontSize: "20px",
               }}
             />
@@ -32,14 +32,14 @@ const SizeItem = ({ payload, setPayload }) => {
             type="radio"
             id="grande-size"
             name="size"
-            value="1"
+            value={1}
             onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
           <label htmlFor="grande-size">
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: payload.size === "1" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === 1 ? "#ffffff" : "#d9d9d9",
                 fontSize: "30px",
               }}
             />
@@ -51,14 +51,14 @@ const SizeItem = ({ payload, setPayload }) => {
             type="radio"
             id="venti-size"
             name="size"
-            value="2"
+            value={2}
             onChange={e => setPayload({ ...payload, size: e.target.value })}
           />
           <label htmlFor="venti-size">
             <FontAwesomeIcon
               icon={faMugSaucer}
               style={{
-                color: payload.size === "2" ? "#ffffff" : "#d9d9d9",
+                color: payload.size === 2 ? "#ffffff" : "#d9d9d9",
                 fontSize: "40px",
               }}
             />

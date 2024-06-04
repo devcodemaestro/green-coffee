@@ -14,7 +14,6 @@ const PopularMenu = ({ popularData }) => {
   const handleMenuClick = (cate, id, name) => {
     navigate(`/menudetail/${cate}/${id}/${name}`);
   };
-  
   return (
     <PopularMenuWrap>
       <div className="inner">

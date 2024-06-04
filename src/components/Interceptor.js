@@ -43,10 +43,8 @@ export const Interceptor = ({ children }) => {
       const status = response ? response.status : null;
       const req = error.config;
       const refreshToken = getCookie("refreshToken");
-      const token = getCookie("token");
 
-      if (status === 400 && refreshToken) {
-      // if (!token && refreshToken) {
+      if (status === 401 && refreshToken) {
         if (!isRefresh) {
           isRefresh = true;
           try {

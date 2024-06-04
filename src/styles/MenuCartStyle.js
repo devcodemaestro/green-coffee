@@ -16,6 +16,30 @@ export const MenuCartWrap = styled.div`
     color: ${colors.black};
     font-weight: 700;
   }
+  .cart-noitem {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding-top: 250px;
+    span {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    button {
+      width: 300px;
+      height: 60px;
+      font-size: 23px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      color: ${colors.white};
+      background: ${colors.main};
+    }
+  }
 `;
 
 export const MenuCartItemsWrap = styled.div`
@@ -130,6 +154,9 @@ export const MenuCartItemsWrap = styled.div`
             border-radius: 8px;
             color: ${colors.white};
           }
+          .pm-icon-none {
+            width: 80px;
+          }
           .pm-icon {
             width: 25px;
             height: 25px;
@@ -188,10 +215,10 @@ export const ChangeOptionWrap = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 95%;
+    width: 400px;
     max-width: 480px;
-    height: 95%;
-    max-height: 500px;
+    height: 90%;
+    max-height: 600px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 16px;
@@ -205,13 +232,11 @@ export const ChangeOptionWrap = styled.div`
       width: 120px;
       height: 120px;
       margin: 16px;
-      border: 2px solid #583732;
-      border-radius: 12px;
-      .img_wrap {
-        width: 100%;
-        height: 100%;
+      img {
+        width: 120px;
+        height: 120px;
         border-radius: 12px;
-        background: lightgray;
+        box-shadow: 1px 1px 10px 1px rgba(51, 51, 51, 0.3);
       }
     }
   }
@@ -223,13 +248,125 @@ export const ChangeOptionWrap = styled.div`
       font-size: 18px;
       font-weight: 700;
     }
+    .ice-radio-wrap {
+      li {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        border-bottom: 1px solid ${colors.disabled};
+        padding: 25px 10px 8px 10px;
+        span {
+          font-size: 18px;
+          font-weight: 500;
+        }
+        :nth-of-type(1) {
+          .ice-radio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            > input[type="radio"] {
+              display: none;
+            }
+            > input[type="radio"] + label {
+              display: inline-block;
+              cursor: pointer;
+              width: 60px;
+              height: 35px;
+              border: 1px solid ${colors.disabled};
+              line-height: 35px;
+              text-align: center;
+              border-radius: 10px;
+            }
+            > input[type="radio"] + label {
+              background-color: #fff;
+              color: ${colors.disabled};
+            }
+            > input[type="radio"]:checked + label {
+              background-color: ${colors.main};
+              color: ${colors.white};
+            }
+          }
+        }
+        :nth-of-type(2) {
+          > div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            > div {
+              :not(:first-of-type, :nth-of-type(3)) {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                background: ${colors.disabled};
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        :nth-of-type(3) {
+          > div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            > div {
+              :not(:first-of-type, :nth-of-type(3)) {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                background: ${colors.disabled};
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+    .size-radio-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 10px 8px 10px;
+      font-size: 18px;
+      border-bottom: 1px solid ${colors.disabled};
+      .size-radio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        > input[type="radio"] {
+          display: none;
+        }
+        > input[type="radio"] + label {
+          display: inline-block;
+          cursor: pointer;
+          width: 70px;
+          height: 40px;
+          border: 1px solid ${colors.disabled};
+          line-height: 40px;
+          text-align: center;
+          border-radius: 10px;
+        }
+        > input[type="radio"] + label {
+          background-color: #fff;
+          color: ${colors.disabled};
+        }
+        > input[type="radio"]:checked + label {
+          background-color: ${colors.main};
+          color: ${colors.white};
+        }
+      }
+    }
   }
   .option_item {
     display: flex;
     align-items: center;
-    border-top: 2px solid #583732;
-    border-bottom: 2px solid #583732;
-    margin: 10px 0;
+    border-bottom: 1px solid ${colors.disabled};
+    margin: 20px 0;
     padding: 0 8px;
     font-weight: 500;
     & > span:first-of-type {
@@ -244,34 +381,14 @@ export const ChangeOptionWrap = styled.div`
         padding: 0 8px;
       }
     }
-    button {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      border: 3px solid rgb(112, 65, 22);
+    .pm-icon {
+      width: 25px;
+      height: 25px;
+      line-height: 21px;
+      text-align: center;
+      border: 1px solid ${colors.point};
       border-radius: 50%;
-      &::before {
-        content: "";
-        position: relative;
-        top: 1.5px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: block;
-        width: 18px;
-        height: 3px;
-        background: rgb(112, 65, 22);
-      }
-      &:last-of-type::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: block;
-        width: 3px;
-        height: 18px;
-        background: rgb(112, 65, 22);
-      }
+      cursor: pointer;
     }
   }
 
@@ -280,17 +397,21 @@ export const ChangeOptionWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
     & > button {
-      height: 33px;
-      line-height: 33px;
-      border-radius: 12px;
-      padding: 0 12px;
+      :first-of-type {
+        background: ${colors.disabled};
+        color: ${colors.black};
+      }
+      width: 120px;
+      height: 40px;
+      border-radius: 8px;
       background: rgb(185, 148, 112);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
+      color: ${colors.white};
+      font-size: 17px;
+      font-weight: 600;
       text-align: center;
+      background: ${colors.main};
     }
   }
 `;

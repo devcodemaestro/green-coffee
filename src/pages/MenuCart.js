@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getCartList } from "../api/menuAxios";
+import { deleteCart, getCartList } from "../api/menuAxios";
 import MenuCartItems from "../components/menucart/MenuCartItems";
 import { MenuCartWrap } from "../styles/MenuCartStyle";
 import ChangeOption from "../components/menucart/ChangeOption";
-import { getCartTotalPrice } from "../api/cartAxios";
-import { TossCheck } from "../components/TossCheck";
+import {
+  getCartTotalPrice,
+  putCartQuaMinus,
+  putCartQuaPlus,
+} from "../api/cartAxios";
+import { useNavigate } from "react-router";
+import Loading from "../components/Loading";
 
 const MenuCart = () => {
   const [menuCartData, setMenuCartData] = useState([]);
@@ -19,41 +24,94 @@ const MenuCart = () => {
       cream: menuCartData.cream,
       quantity: menuCartData.quantity,
       menu_price: menuCartData.menu_price,
+      menu_id: "",
     },
   ]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [tossOpen, setTossOpen] = useState(false);
+  const [isPending, setIsPending] = useState(true);
+  const navigate = useNavigate();
 
-  const openChangeOption = () => {
+  const handleDecrease = async (id, quantity) => {
+    await putCartQuaMinus(id);
+    setPayload({ ...payload, quantity: quantity });
+  };
+
+  const handleIncrease = async (id, quantity) => {
+    await putCartQuaPlus(id);
+    setPayload({ ...payload, quantity: quantity });
+  };
+  const openChangeOption = id => {
+    setPayload({ ...payload, menu_id: id });
     setModalOpen(true);
   };
 
-  useEffect(() => {
-    getCartList(setMenuCartData);
-    getCartTotalPrice(setTotalPrice);
-  }, [totalPrice, payload.quantity]);
-
-  console.log(menuCartData);
-  const handleToss = () => {
-    setTossOpen(true);
+  const handleMove = () => {
+    navigate("/order");
   };
-  
+
+  const handleDelete = async (id, quantity, size, ice, shot, cream) => {
+    const formData = {
+      menuId: id,
+      quantity: quantity,
+      size: size,
+      ice: ice,
+      shot: shot,
+      cream: cream,
+    };
+    try {
+      await deleteCart(formData);
+      getCartList(setMenuCartData);
+      getCartTotalPrice(setTotalPrice);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsPending(true);
+      await getCartList(setMenuCartData);
+      await getCartTotalPrice(setTotalPrice);
+      setIsPending(false);
+    };
+    fetchData();
+  }, [payload.quantity]);
+
   return (
     <MenuCartWrap>
       <div className="mypage_menu_cart">
-        <div className="store_title">대구 중구 중앙로점</div>
-        <MenuCartItems
-          menuCartData={menuCartData}
-          openChangeOption={openChangeOption}
-          totalPrice={totalPrice}
-          setPayload={setPayload}
-          payload={payload}
-          setTossOpen={setTossOpen}
-        />
+        {isPending ? (
+          <div className="cart-loading">
+            <Loading />
+          </div>
+        ) : menuCartData.length === 0 ? (
+          <div className="cart-noitem">
+            <span>장바구니가 텅 ~ 텅 ~</span>
+            <button onClick={handleMove}>주문하러 가기</button>
+          </div>
+        ) : (
+          <>
+            <div className="store_title">대구 중구 중앙로점</div>
+            <MenuCartItems
+              menuCartData={menuCartData}
+              openChangeOption={openChangeOption}
+              totalPrice={totalPrice}
+              handleDelete={handleDelete}
+              handleIncrease={handleIncrease}
+              handleDecrease={handleDecrease}
+            />
+          </>
+        )}
       </div>
-
-      {modalOpen && <ChangeOption setShowModal={setModalOpen} />}
-      {/* {tossOpen && <TossCheck />} */}
+      {modalOpen && (
+        <ChangeOption
+          menuCartData={menuCartData}
+          setShowModal={setModalOpen}
+          handleIncrease={handleIncrease}
+          handleDecrease={handleDecrease}
+          payload={payload}
+        />
+      )}
     </MenuCartWrap>
   );
 };

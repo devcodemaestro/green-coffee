@@ -1,8 +1,6 @@
 import React from "react";
 import {
   ConfirmModalWarp,
-  ModalNoBtn,
-  ModalOkBtn,
 } from "../../styles/ModalStyle";
 
 const ChoiceModal = ({ open, onConfirm, onCancel, children }) => {

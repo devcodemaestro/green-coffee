@@ -8,6 +8,8 @@ import TotalPrice from "../components/menudetail/TotalPrice";
 import { postCartAdd } from "../api/cartAxios";
 import ConfirmModal from "../components/modals/ConfirmModal";
 import CartModal from "../components/modals/CartModal";
+import CustomConfirmModal from "../components/modals/CustomConfirmModal";
+import { postCustomAdd } from "../api/menuAxios";
 
 const MenuDetail = () => {
   const { cate, menu_id, name } = useParams();
@@ -21,10 +23,14 @@ const MenuDetail = () => {
     sizePrice: 1000,
     shotPrice: 500,
     creamPrice: 500,
+    myname: "",
   });
   const [totalEa, SetTotalEa] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const [customModal, setCustomModal] = useState(false);
+  const [customConfirm, setCustomConfirm] = useState(false);
+  const [customResultMsg, setCustomResultMsg] = useState("");
   const navigate = useNavigate();
   const formData = { menu_id: menu_id, name: name };
 
@@ -96,10 +102,36 @@ const MenuDetail = () => {
     setModalOpen(false);
     navigate("/cart");
   };
-  
+
   const handleAddOrder = () => {
     setModalOpen(false);
     navigate("/order");
+  };
+
+  const handleCustomOpen = () => {
+    setCustomModal(true);
+  };
+  const handleCustomClose = () => {
+    setCustomModal(false);
+  };
+
+  const handleCustomAdd = async () => {
+    const formData = {
+      menuId: parseInt(menu_id),
+      myname: payload.myname,
+      size: parseInt(payload.size),
+      ice: payload.ice,
+      shot: payload.shot,
+      cream: payload.cream,
+    };
+    console.log(formData);
+    const resultStatus = await postCustomAdd(formData, setCustomResultMsg);
+    if (resultStatus === 200) {
+      setCustomModal(false);
+      setCustomConfirm(true);
+    } else if (resultStatus === 500) {
+      setCustomConfirm(true);
+    }
   };
 
   useEffect(() => {
@@ -116,8 +148,7 @@ const MenuDetail = () => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  console.log(selectedValue);
-  console.log(payload);
+  console.log();
   return (
     <DetailWrap>
       <div className="menu-info-wrap">
@@ -159,6 +190,7 @@ const MenuDetail = () => {
         totalPrice={totalPrice}
         handletotalPM={handletotalPM}
         handleAddCart={handleAddCart}
+        handleCustom={handleCustomOpen}
       />
       {modalOpen && (
         <CartModal
@@ -166,11 +198,26 @@ const MenuDetail = () => {
           handleMoveCart={handleMoveCart}
           handleAddOrder={handleAddOrder}
         >
-          <span>선택하신 상품을 <br/>장바구니에 담았습니다.</span>
+          <span>
+            선택하신 상품을 <br />
+            장바구니에 담았습니다.
+          </span>
         </CartModal>
-        // <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
-        //   <span>장바구니에 메뉴를 추가했습니다.</span>
-        // </ConfirmModal>
+      )}
+      {customModal && (
+        <CustomConfirmModal
+          open={customModal}
+          payload={payload}
+          menuData={menuData}
+          setPayload={setPayload}
+          handleCustomAdd={handleCustomAdd}
+          handleCustomClose={handleCustomClose}
+        />
+      )}
+      {customConfirm && (
+        <ConfirmModal open={customConfirm} onConfirm={setCustomConfirm}>
+          <span>{customResultMsg}</span>
+        </ConfirmModal>
       )}
     </DetailWrap>
   );

@@ -61,8 +61,8 @@ export function TossCheck() {
         customerName: "김토스",
         customerEmail: "customer123@gmail.com",
         customerMobilePhone: "01012341234",
-        successUrl: `/orderlist`,
-        failUrl: `${window.location.origin}/fail`,
+        successUrl: `${window.location.origin}/orderlist`,
+        failUrl: `${window.location.origin}/cart`,
       });
     } catch (error) {
       console.error("Error requesting payment:", error);
@@ -76,26 +76,6 @@ export function TossCheck() {
         <div id="payment-widget" />
         <div id="agreement" />
         <div style={{ paddingLeft: "24px" }}>
-          {/* 할인 쿠폰 */}
-          {/* <div className="checkable typography--p">
-            <label
-              htmlFor="coupon-box"
-              className="checkable__label typography--regular"
-            >
-              <input
-                id="coupon-box"
-                className="checkable__input"
-                type="checkbox"
-                aria-checked="true"
-                onChange={event => {
-                  setPrice(
-                    event.target.checked ? price - 5_000 : price + 5_000,
-                  );
-                }}
-              />
-              <span className="checkable__label-text">5,000원 쿠폰 적용</span>
-            </label>
-          </div> */}
         </div>
         <div className="result wrapper">
           {/* 결제하기 버튼 */}

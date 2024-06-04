@@ -145,6 +145,9 @@ export const PopularMenuWrap = styled.div`
             font-weight: 700;
             ${ellipsis.line1}
           }
+          span {
+            ${ellipsis.line1}
+          }
         }
       }
     }
