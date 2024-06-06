@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { PwaInstall } from "../styles/ui/InstallAppStyle";
+import PwaModal from "./modals/PwaModal";
 
 const InstallApp = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [installResult, setInstallResult] = useState("");
 
   const handleBeforeInstallPrompt = e => {
     e.preventDefault();
@@ -27,26 +30,37 @@ const InstallApp = () => {
       deferredPrompt.userChoice.then(choiceResult => {
         if (choiceResult.outcome === "accepted") {
           console.log("사용자가 설치 프롬프트에 동의했습니다.");
+          setInstallResult("앱이 설치 되었습니다!");
         } else {
           console.log("사용자가 설치 프롬프트를 무시했습니다.");
+          setInstallResult("언제든 앱을 설치해주세요!");
         }
 
+        setModalOpen(true);
         setDeferredPrompt(null);
       });
     }
   };
 
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <PwaInstall>
-      <div>
-        <span>앱을 설치하면 더욱 편리하게 사용할 수 있어요!</span>
-      </div>
-      {/* {deferredPrompt && ( */}
-      <button onClick={handleInstallClick}>
-        {/* <RiInstallLine /> */}
-        다운로드
-      </button>
-      {/* )} */}
+      {deferredPrompt && (
+        <>
+          <div>
+            <span>설치하시면 더욱 편리하게 이용할 수 있어요!</span>
+          </div>
+          <button onClick={handleInstallClick}>앱 다운로드!</button>
+        </>
+      )}
+      {modalOpen && (
+        <PwaModal open={modalOpen} onConfirm={handleModalClose}>
+          <span>{installResult}</span>
+        </PwaModal>
+      )}
     </PwaInstall>
   );
 };

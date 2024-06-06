@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { colors } from "../basic";
 
 export const PwaInstall = styled.div`
-padding-top: 30px;
+  padding-top: 30px;
   div {
     span {
       font-size: 17px;
@@ -16,8 +16,8 @@ padding-top: 30px;
     border: none;
     background: ${colors.main};
     color: ${colors.white};
-    font-size: 18px;
-    font-weight: 600s;
+    font-size: 16px;
+    font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
   }

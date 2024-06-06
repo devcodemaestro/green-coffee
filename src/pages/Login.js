@@ -89,6 +89,7 @@ const Login = () => {
   };
   return (
     <LoginWrap>
+      <InstallApp />
       <div className="logo">
         <div>
           <h2>Green Coffee</h2>
@@ -110,7 +111,6 @@ const Login = () => {
         handleEmailCheck={handleEmailCheck}
         warningMsg={warningMsg}
       />
-      <InstallApp />
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
           <span>{errMsg}</span>

@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
-import { colors, mq, shadow } from "../styles/basic";
+import { colors } from "../styles/basic";
 
 export const LoginWrap = styled.div`
-  padding-top: 10%;
+  /* padding-top: 10%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   .logo {
+    padding-top: 30px;
     > div {
       :first-of-type {
         display: flex;
