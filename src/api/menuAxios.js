@@ -33,13 +33,19 @@ export const deleteCart = async formData => {
 
 export const postCustomAdd = async (formData, setCustomResultMsg) => {
   try {
-    // const res = await api.post(`/custom/add`, { data: formData });
     const res = await api.post(`/custom/add`, formData);
     const result = res.data;
-    const resultStatus = res.status;
     setCustomResultMsg(result);
-    console.log(resultStatus);
-    return resultStatus;
+  } catch (err) {
+    setCustomResultMsg(err.response.data);
+  }
+};
+
+export const getCustomMenu = async setCustomData => {
+  try {
+    const res = await api.get(`/custom/search`);
+    const result = res.data;
+    setCustomData(result);
   } catch (err) {
     console.log(err);
   }

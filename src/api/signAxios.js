@@ -11,13 +11,15 @@ export const postSignUp = async ({ payload }) => {
   }
 };
 
-export const putResign = async data => {
+export const putResign = async setErrMsg => {
   try {
-    const res = await api.put(`/user/resign`, data);
+    const res = await api.put(`/user/resign`);
     const result = res.status;
-    console.log(result);
+    if(result === 200) {
+      setErrMsg()
+    }
   } catch (err) {
-    console.log(err);
+    setErrMsg(`${err.response.data.message}`);
   }
 };
 
@@ -61,7 +63,7 @@ export const postEmailCode = async () => {
     const result = res.data;
     console.log(result);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -71,6 +73,6 @@ export const postEmailConfirm = async () => {
     const result = res.data;
     console.log(result);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };

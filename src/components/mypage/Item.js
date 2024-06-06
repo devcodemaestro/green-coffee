@@ -31,16 +31,11 @@ const Item = ({ handleLogout }) => {
     },
     {
       id: "6",
-      title: "Pay",
-      path: "/mypage",
-    },
-    {
-      id: "7",
       title: "이벤트",
       path: "/event",
     },
     {
-      id: "8",
+      id: "7",
       title: "회원탈퇴",
       path: "/resign",
     },

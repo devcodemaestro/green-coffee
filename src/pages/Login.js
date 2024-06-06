@@ -7,6 +7,7 @@ import { useSetRecoilState } from "recoil";
 import { AuthStateAtom } from "../recoil/atoms/AuthState";
 import { UserStateAtom } from "../recoil/atoms/UserState";
 import ConfirmModal from "../components/modals/ConfirmModal";
+import InstallApp from "../components/InstallApp";
 
 const Login = () => {
   const [payload, setPayload] = useState({
@@ -86,7 +87,6 @@ const Login = () => {
   const handleConfirm = () => {
     setModalOpen(false);
   };
-
   return (
     <LoginWrap>
       <div className="logo">
@@ -110,6 +110,7 @@ const Login = () => {
         handleEmailCheck={handleEmailCheck}
         warningMsg={warningMsg}
       />
+      <InstallApp />
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleConfirm}>
           <span>{errMsg}</span>

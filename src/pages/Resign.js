@@ -6,13 +6,16 @@ import { putResign } from "../api/signAxios";
 import { useRecoilValue } from "recoil";
 import { UserStateAtom } from "../recoil/atoms/UserState";
 import ChoiceModal from "../components/modals/ChoiceModal";
+import ConfirmModal from "../components/modals/ConfirmModal";
 
 const Resign = () => {
   const userData = useRecoilValue(UserStateAtom);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
   const [checkboxState, setCheckboxState] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [errState, setErrState] = useState(false);
+  const navigate = useNavigate();
 
   const handleCancel = () => {
     navigate(-1);
@@ -28,6 +31,10 @@ const Resign = () => {
     setModalOpen(false);
   };
 
+  const handleOk = () => {
+    setErrState(false);
+  };
+
   const handleCheckBox = e => {
     if (e.target.checked === true) {
       setCheckboxState(true);
@@ -37,14 +44,15 @@ const Resign = () => {
   };
 
   const handelAccept = async () => {
-    const userEmail = { email: userData.email };
     try {
       if (checkboxState === true) {
-        await putResign(userEmail);
+        await putResign(setErrMsg);
+        setModalOpen(false);
         navigate("/");
       }
     } catch (err) {
-      console.log(err);
+      setModalOpen(false);
+      setErrState(true);
     }
   };
 
@@ -88,6 +96,11 @@ const Resign = () => {
         >
           <span>회원탈퇴를 하시겠습니까?</span>
         </ChoiceModal>
+      )}
+      {errState && (
+        <ConfirmModal open={errState} onConfirm={handleOk}>
+          <span>{errMsg}</span>
+        </ConfirmModal>
       )}
     </ResignWrap>
   );

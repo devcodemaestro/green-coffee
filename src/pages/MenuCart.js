@@ -11,6 +11,28 @@ import {
 import { useNavigate } from "react-router";
 import Loading from "../components/Loading";
 
+const dummy = [
+  {
+    id: 1,
+    title: "대구광역시 중구 중앙로점",
+  },
+  {
+    id: 2,
+    title: "대구광역시 중구 종로점",
+  },
+  {
+    id: 3,
+    title: "대구광역시 중구 범어점",
+  },
+  {
+    id: 4,
+    title: "대구광역시 중구 경대점",
+  },
+  {
+    id: 5,
+    title: "대구광역시 중구 두류점",
+  },
+];
 const MenuCart = () => {
   const [menuCartData, setMenuCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
@@ -69,10 +91,10 @@ const MenuCart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsPending(true);
+      // setIsPending(true);
       await getCartList(setMenuCartData);
       await getCartTotalPrice(setTotalPrice);
-      setIsPending(false);
+      // setIsPending(false);
     };
     fetchData();
   }, [payload.quantity]);
@@ -80,28 +102,30 @@ const MenuCart = () => {
   return (
     <MenuCartWrap>
       <div className="mypage_menu_cart">
-        {isPending ? (
+        {/* {isPending ? (
           <div className="cart-loading">
             <Loading />
           </div>
-        ) : menuCartData.length === 0 ? (
+        ) :  */}
+        {/* {menuCartData.length === 0 ? (
           <div className="cart-noitem">
             <span>장바구니가 텅 ~ 텅 ~</span>
             <button onClick={handleMove}>주문하러 가기</button>
           </div>
-        ) : (
-          <>
-            <div className="store_title">대구 중구 중앙로점</div>
-            <MenuCartItems
-              menuCartData={menuCartData}
-              openChangeOption={openChangeOption}
-              totalPrice={totalPrice}
-              handleDelete={handleDelete}
-              handleIncrease={handleIncrease}
-              handleDecrease={handleDecrease}
-            />
-          </>
-        )}
+        ) : ( */}
+        <>
+          {/* <div className="store_title">대구 중구 중앙로점</div> */}
+          <MenuCartItems
+            menuCartData={menuCartData}
+            openChangeOption={openChangeOption}
+            totalPrice={totalPrice}
+            handleDelete={handleDelete}
+            handleIncrease={handleIncrease}
+            handleDecrease={handleDecrease}
+            dummy={dummy}
+          />
+        </>
+        {/* // )} */}
       </div>
       {modalOpen && (
         <ChangeOption

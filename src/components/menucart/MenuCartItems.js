@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router";
+import DropDown from "../DropDown";
 const MenuCartItems = ({
   menuCartData,
   openChangeOption,
@@ -15,6 +16,7 @@ const MenuCartItems = ({
   handleDelete,
   handleIncrease,
   handleDecrease,
+  dummy,
 }) => {
   const [itemQuantities, setItemQuantities] = useState({});
   const navigate = useNavigate();
@@ -139,9 +141,19 @@ const MenuCartItems = ({
           </div>
         ))}
       </div>
-      <PaymentBtn onClick={handlePayment}>
-        {formatPrice(totalPrice)}원 결제하기
-      </PaymentBtn>
+      <div className="item-bottom">
+        <DropDown dummy={dummy} />
+        <div className="total-price">
+          <div className="price">
+            <span>총 주문 금액</span>
+            {/* <span>{formatPrice(totalPrice)}원</span> */}
+            <span>1,000,000원</span>
+          </div>
+          <div className="buttons">
+            <button onClick={handlePayment}>결제하기</button>
+          </div>
+        </div>
+      </div>
     </MenuCartItemsWrap>
   );
 };

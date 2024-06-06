@@ -114,22 +114,25 @@ const MenuDetail = () => {
   const handleCustomClose = () => {
     setCustomModal(false);
   };
+  const handleCustomConfirmClose = () => {
+    setCustomConfirm(false);
+  };
 
   const handleCustomAdd = async () => {
     const formData = {
       menuId: parseInt(menu_id),
       myname: payload.myname,
       size: parseInt(payload.size),
-      ice: payload.ice,
+      ice: parseInt(payload.ice),
       shot: payload.shot,
       cream: payload.cream,
     };
-    console.log(formData);
-    const resultStatus = await postCustomAdd(formData, setCustomResultMsg);
-    if (resultStatus === 200) {
+
+    const result = await postCustomAdd(formData, setCustomResultMsg);
+    if (result) {
       setCustomModal(false);
       setCustomConfirm(true);
-    } else if (resultStatus === 500) {
+    } else {
       setCustomConfirm(true);
     }
   };
@@ -198,10 +201,10 @@ const MenuDetail = () => {
           handleMoveCart={handleMoveCart}
           handleAddOrder={handleAddOrder}
         >
-          <span>
-            선택하신 상품을 <br />
-            장바구니에 담았습니다.
-          </span>
+        <span>
+          선택하신 상품을 <br />
+          장바구니에 담았습니다.
+        </span>
         </CartModal>
       )}
       {customModal && (
@@ -215,7 +218,7 @@ const MenuDetail = () => {
         />
       )}
       {customConfirm && (
-        <ConfirmModal open={customConfirm} onConfirm={setCustomConfirm}>
+        <ConfirmModal open={customConfirm} onConfirm={handleCustomConfirmClose}>
           <span>{customResultMsg}</span>
         </ConfirmModal>
       )}

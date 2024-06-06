@@ -176,23 +176,55 @@ export const MenuCartItemsWrap = styled.div`
       }
     }
   }
-`;
-
-export const PaymentBtn = styled.button`
-  /* position: fixed; */
-  /* left: 50%; */
-  /* bottom: 80px; */
-  /* transform: translateX(-50%); */
-  width: 90%;
-  height: 60px;
-  max-width: 300px;
-  padding: 9px 18px;
-  border-radius: 24px;
-  background: ${colors.point};
-  color: ${colors.white};
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: 30px;
+  .item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0 20px 10px;
+    .price {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .buttons {
+      display: flex;
+      align-items: center;
+      /* justify-content: center; */
+      gap: 5px;
+      .custom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        border-radius: 8px;
+        background: ${colors.point};
+        color: ${colors.white};
+        cursor: pointer;
+      }
+      & button {
+        width: 280px;
+        height: 50px;
+        background: ${colors.main};
+        border: none;
+        border-radius: 8px;
+        color: ${colors.white};
+        font-size: 24px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const ChangeOptionWrap = styled.div`

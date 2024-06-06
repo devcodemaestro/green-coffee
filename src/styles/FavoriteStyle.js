@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { colors } from "./basic";
 
 export const FavoriteWrap = styled.div`
   padding-top: 25px;
 `;
 export const FavoriteItemWrap = styled.div`
   width: 100%;
-  height: 150px;
+  height: 140px;
   border-bottom: 1px solid #d9d9d9;
   margin-bottom: 20px;
   > div {
@@ -19,6 +20,23 @@ export const FavoriteItemWrap = styled.div`
       align-items: center;
       gap: 10px;
       padding: 20px 10px 0 0;
+    }
+  }
+  .buttons {
+    button {
+      width: 90px;
+      height: 40px;
+      font-size: 17px;
+      font-weight: 500;
+      color: ${colors.white};
+      background: ${colors.main};
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      :first-of-type {
+        width: 50px;
+        background: ${colors.point};
+      }
     }
   }
 `;
