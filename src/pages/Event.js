@@ -9,7 +9,6 @@ const Event = () => {
     getEvent(setEventData);
   }, []);
 
-  console.log("eventData", eventData);
   return (
     <EventWrap>
       <EventInner>

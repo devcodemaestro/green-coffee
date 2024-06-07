@@ -15,7 +15,6 @@ const OrderListDetail = () => {
   useEffect(() => {
     getOderListWait();
   }, []);
-  console.log(order_id);
 
   const formatPrice = price => price.toLocaleString();
 
@@ -23,8 +22,6 @@ const OrderListDetail = () => {
     const data = await getOderList(setDetailData);
     const idx = await data.findIndex(item => item?.orderId == order_id);
     setIndex(idx);
-    console.log(data);
-    console.log(data[idx].orderItems);
     setOrderDetail(data[idx].orderItems);
   };
 

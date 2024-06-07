@@ -64,8 +64,6 @@ const Terms = () => {
     setSaveCheckBox([]);
   }, []);
 
-  console.log(saveCheckBox);
-
   return (
     <TermsWrap>
       <div className="logo">

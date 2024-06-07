@@ -18,7 +18,6 @@ const Search = () => {
 
   const handleMenuClick = (cate, id, name) => {
     navigate(`/menudetail/${cate}/${id}/${name}`);
-    console.log(id, name);
   };
 
   useEffect(() => {

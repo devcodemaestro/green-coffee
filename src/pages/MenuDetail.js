@@ -151,7 +151,6 @@ const MenuDetail = () => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-  console.log();
   return (
     <DetailWrap>
       <div className="menu-info-wrap">

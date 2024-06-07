@@ -5,7 +5,6 @@ import { UserStateAtom } from "../../recoil/atoms/UserState";
 
 const Welcome = () => {
   const userInfo = useRecoilValue(UserStateAtom);
-  console.log(userInfo);
   return (
     <HomeWelcomWrap>
       <div className="inner">

@@ -56,7 +56,6 @@ const Resign = () => {
     }
   };
 
-  console.log(checkboxState);
   return (
     <ResignWrap>
       <div className="title"></div>

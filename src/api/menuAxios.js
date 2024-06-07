@@ -23,9 +23,7 @@ export const postPayment = async updatedItems => {
 // 400에러
 export const deleteCart = async formData => {
   try {
-    console.log(formData);
     const res = await api.delete(`/cart/cartout`, { data: formData });
-    console.log(res);
   } catch (err) {
     console.log(err);
   }

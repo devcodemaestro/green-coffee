@@ -34,7 +34,6 @@ const Login = () => {
     try {
       const { role, token, result } = await postLogin({ payload, setErrMsg });
       if (role === "USER" && token) {
-        console.log(result);
         setAuthData({
           token: token,
           loginstate: result.loginstate,

@@ -5,7 +5,6 @@ export const postTossPay = async payReq => {
     const res = await api.post(
       `/v1/api/payment?payType=${payReq.payType}&amount=${payReq.amount}&email=${payReq.email}&customerName=${payReq.customerName}`,
     );
-    console.log(res);
     const result = res.status;
 
     return result;

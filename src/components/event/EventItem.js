@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ItemWrap } from "../../styles/MyPageStyle";
 
 const EventItem = ({ eventData }) => {
-  console.log("eventData", eventData);
 
   return (
     <ItemWrap>

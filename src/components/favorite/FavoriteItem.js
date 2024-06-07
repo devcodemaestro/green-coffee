@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const FavoriteItem = ({ customData }) => {
-  console.log(customData);
   return (
     <>
       {customData.map((item, index) => (

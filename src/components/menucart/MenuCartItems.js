@@ -50,7 +50,6 @@ const MenuCartItems = ({
     return price.toLocaleString();
   };
 
-  console.log(menuCartData);
   return (
     <MenuCartItemsWrap>
       <div>

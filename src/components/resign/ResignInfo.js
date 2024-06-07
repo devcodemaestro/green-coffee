@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ResignInfo = ({userData}) => {
-    console.log(userData)
   return (
     <>
       <div className="dash_borard">

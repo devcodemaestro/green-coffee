@@ -4,7 +4,6 @@ export const postSignUp = async ({ payload }) => {
   try {
     const res = await api.post(`/user/signup`, payload);
     const result = res.status;
-    console.log(result);
     return result;
   } catch (err) {
     console.log(err);
@@ -61,7 +60,6 @@ export const postEmailCode = async () => {
   try {
     const res = await api.post(`/user/code`);
     const result = res.data;
-    console.log(result);
   } catch (err) {
     console.log(err);
   }
@@ -71,7 +69,6 @@ export const postEmailConfirm = async () => {
   try {
     const res = await api.post(`/user/verigyCode`);
     const result = res.data;
-    console.log(result);
   } catch (err) {
     console.log(err);
   }
