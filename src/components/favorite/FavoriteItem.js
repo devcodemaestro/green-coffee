@@ -7,7 +7,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-const FavoriteItem = ({ customData, handelDelete }) => {
+const FavoriteItem = ({ customData, handelDelete, handleCartAdd }) => {
+  console.log(customData.content);
   return (
     <>
       {customData?.content?.map((item, index) => {
@@ -59,7 +60,19 @@ const FavoriteItem = ({ customData, handelDelete }) => {
               <button onClick={() => handelDelete(item.myname)}>
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>
-              <button>주문하기</button>
+              <button
+                onClick={() =>
+                  handleCartAdd(
+                    item?.size,
+                    item?.shot,
+                    item?.cream,
+                    item?.ice,
+                    item?.menu.menu_id,
+                  )
+                }
+              >
+                주문하기
+              </button>
             </div>
           </FavoriteItemWrap>
         );
