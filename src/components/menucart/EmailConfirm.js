@@ -15,6 +15,8 @@ const EmailConfirm = () => {
   const [isConfirm, setIsConfirm] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [msg, setMsg] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const [errModal, setErrModal] = useState("");
   const navigate = useNavigate();
 
   const handlePostCode = async e => {
@@ -29,13 +31,13 @@ const EmailConfirm = () => {
   const handleConfirm = async e => {
     e.preventDefault();
     const formData = { email: payload.userEmail, code: payload.confirmCode };
-    const result = await postEmailConfirm(formData);
+    const result = await postEmailConfirm(formData, setErrModal, setErrMsg);
     console.log(result);
     if (result) {
       setModalOpen(true);
       setMsg(result);
+      navigate("/");
     }
-    // navigate("/");
   };
 
   const handleChange = (e, item) => {
@@ -46,9 +48,15 @@ const EmailConfirm = () => {
   const handleWriteCancel = item => {
     setPayload(prev => ({ ...prev, [item]: "" }));
   };
+
   const handleOk = () => {
     setModalOpen(false);
   };
+
+  const handleOkOk = () => {
+    setErrModal(false);
+  };
+
   return (
     <EmailConfirmWrap>
       <form>
@@ -122,6 +130,11 @@ const EmailConfirm = () => {
       {modalOpen && (
         <ConfirmModal open={modalOpen} onConfirm={handleOk}>
           <span>{msg}</span>
+        </ConfirmModal>
+      )}
+      {errModal && (
+        <ConfirmModal open={errModal} onConfirm={handleOkOk}>
+          <span>{errMsg}</span>
         </ConfirmModal>
       )}
     </EmailConfirmWrap>

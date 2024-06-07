@@ -72,13 +72,14 @@ export const postEmailCode = async formData => {
   }
 };
 
-export const postEmailConfirm = async formData => {
+export const postEmailConfirm = async (formData, setErrModal, setErrMsg) => {
   try {
     const res = await api.post(`/user/verifyCodeForPassword`, formData);
     const result = res.data;
 
     return result;
   } catch (err) {
-    console.log(err);
+    setErrModal(true);
+    setErrMsg(err.response.data);
   }
 };
