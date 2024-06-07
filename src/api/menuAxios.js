@@ -39,11 +39,24 @@ export const postCustomAdd = async (formData, setCustomResultMsg) => {
   }
 };
 
-export const getCustomMenu = async setCustomData => {
+export const getCustomMenu = async (setCustomData, page, setCount) => {
+  const pages = page - 1;
   try {
-    const res = await api.get(`/custom/search`);
+    const res = await api.get(`/custom/search?page=${pages}&size=5`);
     const result = res.data;
+    setCount(res.data.totalElements);
     setCustomData(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteCustomMenu = async formData => {
+  try {
+    const res = await api.delete(`/custom/customdelete`, { data: formData });
+    const result = res.data;
+
+    return result;
   } catch (err) {
     console.log(err);
   }

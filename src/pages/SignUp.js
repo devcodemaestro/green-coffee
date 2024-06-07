@@ -25,20 +25,23 @@ const SignUp = () => {
     birthCheck: "",
   });
   const [modalOpen, setModalOpen] = useState(false);
+  const [errModalOpen, setErrModalOpen] = useState(false);
+  const [signErr, setSignErr] = useState("");
   const navigate = useNavigate();
 
   const handleSignUp = async e => {
     e.preventDefault();
     try {
-      const result = await postSignUp({ payload });
+      const result = await postSignUp({ payload, setSignErr, setErrModalOpen });
+      console.log(result);
       if (result === 200) {
         setModalOpen(true);
       }
     } catch (err) {
-      console.log(err);
+      setErrModalOpen(true);
     }
   };
-
+  console.log(signErr);
   const handleChange = (e, item) => {
     const { value } = e.target;
     setPayload({ ...payload, [item]: value });
@@ -78,7 +81,6 @@ const SignUp = () => {
       return newWarningMsg;
     });
   };
-
 
   const handleNickCheck = () => {
     const regex = /[^가-힣]/;
@@ -171,6 +173,11 @@ const SignUp = () => {
     }
   };
 
+  const handleErrConfirm = () => {
+    setErrModalOpen(false);
+    setSignErr("");
+  };
+
   return (
     <SignUpWrap>
       <SignUpInput
@@ -196,6 +203,11 @@ const SignUp = () => {
             가입이 완료되었습니다. <br />
             로그인 화면으로 이동합니다.
           </span>
+        </ConfirmModal>
+      )}
+      {errModalOpen && (
+        <ConfirmModal open={errModalOpen} onConfirm={handleErrConfirm}>
+          <span>{signErr}</span>
         </ConfirmModal>
       )}
     </SignUpWrap>

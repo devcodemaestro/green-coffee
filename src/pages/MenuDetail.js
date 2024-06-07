@@ -116,6 +116,7 @@ const MenuDetail = () => {
   };
   const handleCustomConfirmClose = () => {
     setCustomConfirm(false);
+    setCustomModal(false);
   };
 
   const handleCustomAdd = async () => {
@@ -200,10 +201,10 @@ const MenuDetail = () => {
           handleMoveCart={handleMoveCart}
           handleAddOrder={handleAddOrder}
         >
-        <span>
-          선택하신 상품을 <br />
-          장바구니에 담았습니다.
-        </span>
+          <span>
+            선택하신 상품을 <br />
+            장바구니에 담았습니다.
+          </span>
         </CartModal>
       )}
       {customModal && (

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { EmailConfirmWrap } from "../../styles/AccountStyle";
 import { Xmark } from "../../styles/ui/buttons";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { postEmailConfirm } from "../../api/signAxios";
+import { postEmailCode, postEmailConfirm } from "../../api/signAxios";
 import { useNavigate } from "react-router";
+import ConfirmModal from "../modals/ConfirmModal";
 
 const EmailConfirm = () => {
   const [payload, setPayload] = useState({
@@ -11,22 +12,42 @@ const EmailConfirm = () => {
     confirmCode: "",
   });
 
-  const [isConfirm, setIsConfirm] = useState(false);
+  const [isConfirm, setIsConfirm] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
-  const handlePostCode = () => {
-    postEmailConfirm(setIsConfirm);
+
+  const handlePostCode = async e => {
+    e.preventDefault();
+    const formData = { email: payload.userEmail };
+    const result = await postEmailCode(formData);
+    if (result) {
+      setIsConfirm(false);
+    }
   };
-  const handleConfirm = () => {
-    // postEmailConfirm(setIsConfirm);
-    const res = "abbcd123";
-    navigate("/findpass", { state: { pass: res } });
+
+  const handleConfirm = async e => {
+    e.preventDefault();
+    const formData = { email: payload.userEmail, code: payload.confirmCode };
+    const result = await postEmailConfirm(formData);
+    console.log(result);
+    if (result) {
+      setModalOpen(true);
+      setMsg(result);
+    }
+    // navigate("/");
   };
+
   const handleChange = (e, item) => {
     const { value } = e.target;
     setPayload(prev => ({ ...prev, [item]: value }));
   };
+
   const handleWriteCancel = item => {
     setPayload(prev => ({ ...prev, [item]: "" }));
+  };
+  const handleOk = () => {
+    setModalOpen(false);
   };
   return (
     <EmailConfirmWrap>
@@ -98,6 +119,11 @@ const EmailConfirm = () => {
           </>
         )}
       </form>
+      {modalOpen && (
+        <ConfirmModal open={modalOpen} onConfirm={handleOk}>
+          <span>{msg}</span>
+        </ConfirmModal>
+      )}
     </EmailConfirmWrap>
   );
 };

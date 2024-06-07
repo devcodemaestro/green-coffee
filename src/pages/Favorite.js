@@ -1,31 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { FavoriteWrap } from "../styles/FavoriteStyle";
 import FavoriteItem from "../components/favorite/FavoriteItem";
-import { getCustomMenu } from "../api/menuAxios";
-import DropDown from "../components/DropDown";
+import { deleteCustomMenu, getCustomMenu } from "../api/menuAxios";
+import Paging from "../components/Paging";
+import ConfirmModal from "../components/modals/ConfirmModal";
 
 const Favorite = () => {
   const [customData, setCustomData] = useState([]);
-
+  const [totlaPrice, setTotalPrice] = useState(0);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
-  const handleTotalPrice = () => {
-    const menuPrice = customData?.menu.menu_price || 0;
-    const totalOptionPrice =
-      customData.size * customData.price_size +
-      customData.shot * customData.price_shot +
-      customData.cream * customData.price_cream;
-    const totalPrice = menuPrice + totalOptionPrice;
+  const fetchData = async () => {
+    await getCustomMenu(setCustomData, page, setCount);
   };
 
   useEffect(() => {
-    getCustomMenu(setCustomData);
-  }, []);
+    fetchData();
+  }, [page]);
 
+  const handelDelete = async myname => {
+    const formData = { myname: myname };
+    const result = await deleteCustomMenu(formData);
+    if (result) {
+      setModalOpen(true);
+      setErrMsg(result);
+    }
+    fetchData();
+  };
+
+  const handleOk = () => {
+    setModalOpen(false);
+  };
   return (
     <FavoriteWrap>
-      <FavoriteItem customData={customData} />
-      <DropDown />
+      {customData ? (
+        <>
+          <FavoriteItem customData={customData} handelDelete={handelDelete} />
+          <Paging page={page} setPage={setPage} count={count} />
+        </>
+      ) : (
+        <div className="no-item">
+          <span>나만의 음료를 추가해보세요!</span>
+        </div>
+      )}
+
+      {modalOpen && (
+        <ConfirmModal open={modalOpen} onConfirm={handleOk}>
+          <span>{errMsg}</span>
+        </ConfirmModal>
+      )}
     </FavoriteWrap>
   );
 };

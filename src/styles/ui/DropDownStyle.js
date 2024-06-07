@@ -4,6 +4,7 @@ import { colors } from "../basic";
 export const DropboxWrap = styled.div`
   position: relative;
   display: inline-block;
+  padding-top: 20px;
   div {
     button {
       width: 390px;

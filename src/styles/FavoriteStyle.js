@@ -3,10 +3,17 @@ import { colors } from "./basic";
 
 export const FavoriteWrap = styled.div`
   padding-top: 25px;
+  .no-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+  }
 `;
 export const FavoriteItemWrap = styled.div`
   width: 100%;
-  height: 140px;
+  height: 150px;
   border-bottom: 1px solid #d9d9d9;
   margin-bottom: 20px;
   > div {
@@ -19,7 +26,7 @@ export const FavoriteItemWrap = styled.div`
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
-      padding: 20px 10px 0 0;
+      /* padding: 20px 10px 0 0; */
     }
   }
   .buttons {
@@ -42,10 +49,14 @@ export const FavoriteItemWrap = styled.div`
 `;
 
 export const ItemImg = styled.div`
-  width: 25%;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  img {
+    width: 100px;
+    border-radius: 10px;
+  }
 `;
 
 export const ItemDetail = styled.div`

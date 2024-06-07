@@ -1,12 +1,15 @@
 import api, { client } from "./client";
 
-export const postSignUp = async ({ payload }) => {
+export const postSignUp = async ({ payload, setSignErr, setErrModalOpen }) => {
   try {
     const res = await api.post(`/user/signup`, payload);
     const result = res.status;
     return result;
   } catch (err) {
-    console.log(err);
+    if (err.response) {
+      setSignErr(err.response.data);
+      setErrModalOpen(true);
+    }
   }
 };
 
@@ -14,9 +17,7 @@ export const putResign = async setErrMsg => {
   try {
     const res = await api.put(`/user/resign`);
     const result = res.status;
-    if(result === 200) {
-      setErrMsg()
-    }
+    return result;
   } catch (err) {
     setErrMsg(`${err.response.data.message}`);
   }
@@ -56,19 +57,27 @@ export const postFindAccount = async ({
   }
 };
 
-export const postEmailCode = async () => {
+export const postEmailCode = async formData => {
   try {
-    const res = await api.post(`/user/code`);
+    const res = await api.post(
+      `/user/findPassword
+`,
+      formData,
+    );
     const result = res.data;
+
+    return result;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const postEmailConfirm = async () => {
+export const postEmailConfirm = async formData => {
   try {
-    const res = await api.post(`/user/verigyCode`);
+    const res = await api.post(`/user/verifyCodeForPassword`, formData);
     const result = res.data;
+
+    return result;
   } catch (err) {
     console.log(err);
   }

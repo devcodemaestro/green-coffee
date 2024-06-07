@@ -20,7 +20,7 @@ const DropDown = ({ dummy }) => {
 
   return (
     <DropboxWrap>
-      <div onClick={handleClick}>
+      <div onClick={handleClick} onBlur={handleBackGroundClick}>
         <button>
           {selectedStore || "매장선택"} {isView ? "▼" : "▲"}
         </button>
